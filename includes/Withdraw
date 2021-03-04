@@ -1,0 +1,933 @@
+<h1 id='withdraw'>Withdraw (출금)</h1><h2 id='withdraw_info_all'>Withdraw_info_all (출금 리스트 조회)</h2>
+<p>출금 리스트 조회합니다.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.client</span> <span class="kn">import</span> <span class="n">Upbit</span>
+
+<span class="n">access_key</span> <span class="o">=</span> <span class="s">"Your Access Key"</span>
+<span class="n">secret_key</span> <span class="o">=</span> <span class="s">"Your Secret Key"</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Withdraw</span><span class="p">.</span><span class="n">Withdraw_info_all</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
+</code></pre></div>
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"withdraw"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35a4f1dc-1db5-4d6b-89b5-7ec137875956"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"txid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98c15999f0bdc4ae0e8a-ed35868bb0c204fe6ec29e4058a3451e-88636d1040f4baddf943274ce37cf9cc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DONE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-28T15:17:51+09:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"done_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-28T15:22:12+09:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"transaction_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='method'>Method</h3>
+<p><strong>GET</strong> <code>/v1/withdraws</code></p>
+<h3 id='operation-code'>Operation Code</h3>
+<p><code>Withdraw.Withdraw_info_all</code></p>
+<h3 id='request'>요청 (Request)</h3>
+<table>
+  <tr>
+    <th>
+      Parameter
+    </th>
+    <th>
+      Description
+    </th>
+  </tr>
+  <tr>
+    <td>
+        currency
+    </td>
+    <td>
+        Currency 코드
+    </td>
+  </tr>
+  <tr>
+    <td>
+        state
+    </td>
+    <td>
+      출금 상태
+      <ul>
+        <li>submitting: 처리 중</li>
+        <li>submitted: 처리 완료</li>
+        <li>almost_accepted: 출금 대기 중</li>
+        <li>rejected: 거부</li>
+        <li>accepted: 승인됨</li>
+        <li>processing: 처리 중</li>
+        <li>done: 완료</li>
+        <li>canceled: 취소됨</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+  <td>
+      uuids
+  </td>
+  <td>
+      출금 UUID의 목록
+  </td>
+</tr>
+<tr>
+  <td>
+      txids
+  </td>
+  <td>
+      출금 TXID의 목록
+  </td>
+</tr>
+<tr>
+  <td>
+      limit
+  </td>
+  <td>
+      개수 제한 (default: 100, limit: 100)
+  </td>
+</tr>
+<tr>
+  <td>
+      page
+  </td>
+  <td>
+      페이지 수 (default: 1)
+  </td>
+</tr>
+<tr>
+  <td>
+      order_by
+  </td>
+  <td>
+      정렬 방식
+      <ul>
+        <li>asc: 오름 차순</li>
+        <li>desc: 내림 차순 (default)</li>
+      </ul>
+  </td>
+</tr>
+</table>
+<h3 id='response'>응답 (Response)</h3>
+<table>
+  <tr>
+    <th>
+      Parameter
+    </th>
+    <th>
+      Description
+    </th>
+  </tr>
+  <tr>
+    <td>
+        type
+    </td>
+    <td>
+        입출금 종류
+    </td>
+  </tr>
+  <tr>
+    <td>
+        uuid
+    </td>
+    <td>
+      출금에 대한 고유 아이디
+    </td>
+  </tr>
+  <tr>
+  <td>
+      currency
+  </td>
+  <td>
+      화폐를 의미하는 영문 대문자 코드
+  </td>
+</tr>
+<tr>
+  <td>
+      txid
+  </td>
+  <td>
+      출금의 트랜잭션 아이디
+  </td>
+</tr>
+<tr>
+  <td>
+      state
+  </td>
+  <td>
+      출금 상태
+  </td>
+</tr>
+<tr>
+  <td>
+      created_at
+  </td>
+  <td>
+      출금 생성 시간
+  </td>
+</tr>
+<tr>
+  <td>
+      done_at
+  </td>
+  <td>
+      출금 완료 시간
+  </td>
+</tr>
+<tr>
+  <td>
+      amount
+  </td>
+  <td>
+      출금 금액/수량
+  </td>
+</tr>
+<tr>
+  <td>
+      fee
+  </td>
+  <td>
+      출금 수수료
+  </td>
+</tr>
+<tr>
+  <td>
+      transaction_type
+  </td>
+  <td>
+      출금 유형
+      <ul>
+        <li>default: 일반 출금</li>
+        <li>internal: 바로 출금</li>
+      </ul>
+  </td>
+</tr>
+</table>
+<h2 id='withdraw_info'>Withdraw_info (개별 출금 조회)</h2>
+<p>출금 UUID를 통해 개별 출금 정보를 조회합니다.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.client</span> <span class="kn">import</span> <span class="n">Upbit</span>
+
+<span class="n">access_key</span> <span class="o">=</span> <span class="s">"Your Access Key"</span>
+<span class="n">secret_key</span> <span class="o">=</span> <span class="s">"Your Secret Key"</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Withdraw</span><span class="p">.</span><span class="n">Withdraw_info</span><span class="p">(</span>
+    <span class="n">uuid</span><span class="o">=</span><span class="s">'35a4f1dc-1db5-4d6b-89b5-7ec137875956'</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
+</code></pre></div>
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"withdraw"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35a4f1dc-1db5-4d6b-89b5-7ec137875956"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"txid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98c15999f0bdc4ae0e8a-ed35868bb0c204fe6ec29e4058a3451e-88636d1040f4baddf943274ce37cf9cc"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DONE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-28T15:17:51+09:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"done_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-28T15:22:12+09:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"transaction_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='method-2'>Method</h3>
+<p><strong>GET</strong> <code>/v1/withdraw</code></p>
+<h3 id='operation-code-2'>Operation Code</h3>
+<p><code>Withdraw.Withdraw_info</code></p>
+<h3 id='request-2'>요청 (Request)</h3>
+<table>
+  <tr>
+    <th>
+      Parameter
+    </th>
+    <th>
+      Description
+    </th>
+  </tr>
+  <tr>
+    <td>
+        uuid
+    </td>
+    <td>
+        출금 UUID
+    </td>
+  </tr>
+  <tr>
+    <td>
+        txid
+    </td>
+    <td>
+      출금 TXID
+    </td>
+  </tr>
+  <tr>
+  <td>
+      currency
+  </td>
+  <td>
+      Currency 코드
+  </td>
+</tr>
+</table>
+
+<aside class="notice">
+  <b>NOTE</b>: 파라미터를 입력하지 않으면 가장 최근의 출금 내역을 불러옵니다.
+</aside>
+<h3 id='response-2'>응답 (Response)</h3>
+<table>
+  <tr>
+    <th>
+      Parameter
+    </th>
+    <th>
+      Description
+    </th>
+  </tr>
+  <tr>
+    <td>
+        type
+    </td>
+    <td>
+        입출금 종류
+    </td>
+  </tr>
+  <tr>
+    <td>
+        uuid
+    </td>
+    <td>
+      출금에 대한 고유 아이디
+    </td>
+  </tr>
+  <tr>
+  <td>
+      currency
+  </td>
+  <td>
+      화폐를 의미하는 영문 대문자 코드
+  </td>
+</tr>
+<tr>
+  <td>
+      txid
+  </td>
+  <td>
+      출금의 트랜잭션 아이디
+  </td>
+</tr>
+<tr>
+  <td>
+      state
+  </td>
+  <td>
+      출금 상태
+  </td>
+</tr>
+<tr>
+  <td>
+      created_at
+  </td>
+  <td>
+      출금 생성 시간
+  </td>
+</tr>
+<tr>
+  <td>
+      done_at
+  </td>
+  <td>
+      출금 완료 시간
+  </td>
+</tr>
+<tr>
+  <td>
+      amount
+  </td>
+  <td>
+      출금 수량
+  </td>
+</tr>
+<tr>
+  <td>
+      fee
+  </td>
+  <td>
+      출금 수수료
+  </td>
+</tr>
+<tr>
+  <td>
+      transaction_type
+  </td>
+  <td>
+      출금 유형
+      <ul>
+        <li>default: 일반 출금</li>
+        <li>internal: 바로 출금</li>
+      </ul>
+  </td>
+</tr>
+</table>
+<h2 id='withdraw_chance'>Withdraw_chance (출금 가능 정보)</h2>
+<p>해당 통화의 가능한 출금 정보를 확인합니다.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.client</span> <span class="kn">import</span> <span class="n">Upbit</span>
+
+<span class="n">access_key</span> <span class="o">=</span> <span class="s">"Your Access Key"</span>
+<span class="n">secret_key</span> <span class="o">=</span> <span class="s">"Your Secret Key"</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Withdraw</span><span class="p">.</span><span class="n">Withdraw_chance</span><span class="p">(</span>
+    <span class="n">currency</span><span class="o">=</span><span class="s">'BTC'</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
+</code></pre></div>
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"member_level"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"security_level"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee_level"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email_verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"identity_auth_verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bank_account_verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"kakao_pay_auth_verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"wallet_locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"withdraw_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0009"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"is_coin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"wallet_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"wallet_support"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"deposit"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"withdraw"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00048"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"avg_buy_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20870000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"avg_buy_price_modified"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"unit_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"withdraw_limit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"onetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50.0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"daily"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"remaining_daily"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"remaining_daily_fiat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000.0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fiat_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"minimum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fixed"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"can_withdraw"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"remaining_daily_krw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000.0"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='method-3'>Method</h3>
+<p><strong>GET</strong> <code>/v1/withdraws/chance</code></p>
+<h3 id='operation-code-3'>Operation Code</h3>
+<p><code>Withdraw.Withdraw_chance</code></p>
+<h3 id='request-3'>요청 (Request)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>currency *</td>
+<td>화폐를 의미하는 영문 대문자 코드</td>
+</tr>
+</tbody></table>
+<h3 id='response-3'>응답 (Response)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>member_level</td>
+<td>사용자의 보안 등급 정보</td>
+</tr>
+<tr>
+<td>member_level.security_level</td>
+<td>사용자의 보안 등급</td>
+</tr>
+<tr>
+<td>member_level.fee_level</td>
+<td>사용자의 수수료 등급</td>
+</tr>
+<tr>
+<td>member_level.email_verified</td>
+<td>사용자의 이메일 인증 여부</td>
+</tr>
+<tr>
+<td>member_level.identity_auth_verified</td>
+<td>사용자의 실명 인증 여부</td>
+</tr>
+<tr>
+<td>member_level.bank_account_verified</td>
+<td>사용자의 계좌 인증 여부</td>
+</tr>
+<tr>
+<td>member_level.kakao_pay_auth_verified</td>
+<td>사용자의 카카오페이 인증 여부</td>
+</tr>
+<tr>
+<td>member_level.locked</td>
+<td>사용자의 계정 보호 상태</td>
+</tr>
+<tr>
+<td>member_level.wallet_locked</td>
+<td>사용자의 출금 보호 상태</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>화폐 정보</td>
+</tr>
+<tr>
+<td>currency.code</td>
+<td>화폐를 의미하는 영문 대문자 코드</td>
+</tr>
+<tr>
+<td>currency.withdraw_fee</td>
+<td>해당 화폐의 출금 수수료</td>
+</tr>
+<tr>
+<td>currency.is_coin</td>
+<td>화폐의 코인 여부</td>
+</tr>
+<tr>
+<td>currency.wallet_state</td>
+<td>해당 화폐의 지갑 상태</td>
+</tr>
+<tr>
+<td>currency.wallet_support</td>
+<td>해당 화폐가 지원하는 입출금 정보</td>
+</tr>
+<tr>
+<td>account</td>
+<td>사용자의 계좌 정보</td>
+</tr>
+<tr>
+<td>account.currency</td>
+<td>화폐를 의미하는 영문 대문자 코드</td>
+</tr>
+<tr>
+<td>account.balance</td>
+<td>주문 가능 금액/수량</td>
+</tr>
+<tr>
+<td>account.locked</td>
+<td>주문 중 묶여있는 금액/수량</td>
+</tr>
+<tr>
+<td>account.avg_buy_price</td>
+<td>매수 평균가</td>
+</tr>
+<tr>
+<td>account.avg_buy_price_modified</td>
+<td>매수 평균가 수정 여부</td>
+</tr>
+<tr>
+<td>account.unit_currency</td>
+<td>평단가 기준 화폐</td>
+</tr>
+<tr>
+<td>withdraw_limit</td>
+<td>출금 제약 정보</td>
+</tr>
+<tr>
+<td>withdraw_limit.currency</td>
+<td>화폐를 의미하는 영문 대문자 코드</td>
+</tr>
+<tr>
+<td>withdraw_limit.minimum</td>
+<td>출금 최소 금액/수량</td>
+</tr>
+<tr>
+<td>withdraw_limit.onetime</td>
+<td>1회 출금 한도</td>
+</tr>
+<tr>
+<td>withdraw_limit.daily</td>
+<td>1일 출금 한도</td>
+</tr>
+<tr>
+<td>withdraw_limit.remaining_daily</td>
+<td>1일 잔여 출금 한도</td>
+</tr>
+<tr>
+<td>withdraw_limit.remaining_daily_krw</td>
+<td>통합 1일 잔여 출금 한도</td>
+</tr>
+<tr>
+<td>withdraw_limit.fixed</td>
+<td>출금 금액/수량 소수점 자리 수</td>
+</tr>
+<tr>
+<td>withdraw_limit.can_withdraw</td>
+<td>출금 지원 여부</td>
+</tr>
+</tbody></table>
+<h2 id='withdraw_coin'>Withdraw_coin (코인 출금 하기)</h2>
+<p>코인 출금을 요청합니다.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.client</span> <span class="kn">import</span> <span class="n">Upbit</span>
+
+<span class="n">access_key</span> <span class="o">=</span> <span class="s">"Your Access Key"</span>
+<span class="n">secret_key</span> <span class="o">=</span> <span class="s">"Your Secret Key"</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Withdraw</span><span class="p">.</span><span class="n">Withdraw_coin</span><span class="p">(</span>
+    <span class="n">currency</span><span class="o">=</span><span class="s">'BTC'</span><span class="p">,</span>
+    <span class="n">amount</span><span class="o">=</span><span class="s">'0.01'</span><span class="p">,</span>
+    <span class="n">address</span><span class="o">=</span><span class="s">'3NVw2seiTQddGQwc1apqudKxuTqebpyL3s'</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
+</code></pre></div>
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"withdraw"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9f432943-54e0-40b7-825f-b6fec8b42b79"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"txid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ebe6937b-130e-4066-8ac6-4b0e67f28adc"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"processing"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-13T11:24:01+09:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"done_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"krw_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80420.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"transaction_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='method-4'>Method</h3>
+<p><strong>POST</strong> <code>/v1/withdraws/coin</code></p>
+<h3 id='operation-code-4'>Operation Code</h3>
+<p><code>Withdraw.Withdraw_coin</code></p>
+<h3 id='request-4'>요청 (Request)</h3>
+<table>
+  <tr>
+    <th>
+      Parameter
+    </th>
+    <th>
+      Description
+    </th>
+  </tr>
+  <tr>
+    <td>
+        currency *
+    </td>
+    <td>
+        Currency 코드
+    </td>
+  </tr>
+  <tr>
+    <td>
+        amount *
+    </td>
+    <td>
+      출금 수량
+    </td>
+  </tr>
+  <tr>
+  <td>
+      address *
+  </td>
+  <td>
+      출금 가능 주소에 등록된 출금 주소
+  </td>
+</tr>
+<tr>
+  <td>
+      secondary_address
+  </td>
+  <td>
+      2차 출금 주소 (필요한 코인에 한해서)
+  </td>
+</tr>
+<tr>
+  <td>
+      transaction_type
+  </td>
+  <td>
+      출금 유형
+      <ul>
+        <li>default: 일반 출금</li>
+        <li>internal: 바로 출금</li>
+      </ul>
+  </td>
+</tr>
+</table>
+<h3 id='response-4'>응답 (Response)</h3>
+<table>
+  <tr>
+    <th>
+      Parameter
+    </th>
+    <th>
+      Description
+    </th>
+  </tr>
+  <tr>
+    <td>
+        type
+    </td>
+    <td>
+        입출금 종류
+    </td>
+  </tr>
+  <tr>
+    <td>
+        uuid
+    </td>
+    <td>
+      출금에 대한 고유 아이디
+    </td>
+  </tr>
+  <tr>
+  <td>
+      currency
+  </td>
+  <td>
+      화폐를 의미하는 영문 대문자 코드
+  </td>
+</tr>
+<tr>
+  <td>
+      txid
+  </td>
+  <td>
+      출금의 트랜잭션 아이디
+  </td>
+</tr>
+<tr>
+  <td>
+      state
+  </td>
+  <td>
+      출금 상태
+  </td>
+</tr>
+<tr>
+  <td>
+      created_at
+  </td>
+  <td>
+      출금 생성 시간
+  </td>
+</tr>
+<tr>
+  <td>
+      done_at
+  </td>
+  <td>
+      출금 완료 시간
+  </td>
+</tr>
+<tr>
+  <td>
+      amount
+  </td>
+  <td>
+      출금 수량
+  </td>
+</tr>
+<tr>
+  <td>
+      fee
+  </td>
+  <td>
+      출금 수수료
+  </td>
+</tr>
+<tr>
+  <td>
+      krw_amount
+  </td>
+  <td>
+      원화 환산 가격
+  </td>
+</tr>
+<tr>
+  <td>
+      transaction_type
+  </td>
+  <td>
+      출금 유형
+      <ul>
+        <li>default: 일반 출금</li>
+        <li>internal: 바로 출금</li>
+      </ul>
+  </td>
+</tr>
+</table>
+<h2 id='withdraw_krw'>Withdraw_krw (원화 출금 하기)</h2>
+<p>원화 출금 요청을 합니다. 등록된 출금 계좌로 출금됩니다.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.client</span> <span class="kn">import</span> <span class="n">Upbit</span>
+
+<span class="n">access_key</span> <span class="o">=</span> <span class="s">"Your Access Key"</span>
+<span class="n">secret_key</span> <span class="o">=</span> <span class="s">"Your Secret Key"</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Withdraw</span><span class="p">.</span><span class="n">Withdraw_krw</span><span class="p">(</span>
+    <span class="n">amount</span><span class="o">=</span><span class="s">'10000'</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
+</code></pre></div>
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"withdraw"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35a4f1dc-1db5-4d6b-89b5-7ec137875956"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"txid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98c15999f0bdc4ae0e8a-ed35868bb0c204fe6ec29e4058a3451e-88636d1040f4baddf943274ce37cf9cc"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DONE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-28T15:17:51+09:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"done_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-28T15:22:12+09:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"transaction_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='method-5'>Method</h3>
+<p><strong>POST</strong> <code>/v1/withdraws/krw</code></p>
+<h3 id='operation-code-5'>Operation Code</h3>
+<p><code>Withdraw.Withdraw_krw</code></p>
+<h3 id='request-5'>요청 (Request)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount *</td>
+<td>출금액 (출금 원화 수량)</td>
+</tr>
+</tbody></table>
+<h3 id='response-5'>응답 (Response)</h3>
+<table>
+  <tr>
+    <th>
+      Parameter
+    </th>
+    <th>
+      Description
+    </th>
+  </tr>
+  <tr>
+    <td>
+        type
+    </td>
+    <td>
+        입출금 종류
+    </td>
+  </tr>
+  <tr>
+    <td>
+        uuid
+    </td>
+    <td>
+      출금에 대한 고유 아이디
+    </td>
+  </tr>
+  <tr>
+  <td>
+      currency
+  </td>
+  <td>
+      화폐를 의미하는 영문 대문자 코드
+  </td>
+</tr>
+<tr>
+  <td>
+      txid
+  </td>
+  <td>
+      출금의 트랜잭션 아이디
+  </td>
+</tr>
+<tr>
+  <td>
+      state
+  </td>
+  <td>
+      출금 상태
+  </td>
+</tr>
+<tr>
+  <td>
+      created_at
+  </td>
+  <td>
+      출금 생성 시간
+  </td>
+</tr>
+<tr>
+  <td>
+      done_at
+  </td>
+  <td>
+      출금 완료 시간
+  </td>
+</tr>
+<tr>
+  <td>
+      amount
+  </td>
+  <td>
+      출금 수량
+  </td>
+</tr>
+<tr>
+  <td>
+      fee
+  </td>
+  <td>
+      출금 수수료
+  </td>
+</tr>
+<tr>
+  <td>
+      transaction_type
+  </td>
+  <td>
+      출금 유형
+      <ul>
+        <li>default: 일반 출금</li>
+        <li>internal: 바로 출금</li>
+      </ul>
+  </td>
+</tr>
+</table>

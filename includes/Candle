@@ -1,0 +1,455 @@
+<h1 id='candle'>Candle (시세 캔들; 봉)</h1><h2 id='candle_minutes-minute'>Candle_minutes (분; Minute 캔들)</h2>
+<p>분(Miniute) 단위로 시세 캔들을 조회합니다.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.client</span> <span class="kn">import</span> <span class="n">Upbit</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">()</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Candle</span><span class="p">.</span><span class="n">Candle_minutes</span><span class="p">(</span>
+    <span class="n">unit</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">market</span><span class="o">=</span><span class="s">'KRW-BTC'</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
+</code></pre></div>
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW-BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"candle_date_time_utc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T17:05:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"candle_date_time_kst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-09T02:05:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"opening_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">47550000.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"high_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">47563000.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"low_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">47550000.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"trade_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">47551000.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1610125540014</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"candle_acc_trade_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">44005459.60087</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"candle_acc_trade_volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.92535793</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='method'>Method</h3>
+<p><strong>GET</strong> <code>/v1/candles/minutes/{unit}</code></p>
+<h3 id='operation-code'>Operation Code</h3>
+<p><code>Candle.Candle_minutes</code></p>
+<h3 id='request'>요청 (Request)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>unit *</td>
+<td>분 단위 (가능한 값: 1, 3, 5, 15, 10, 30, 60, 240)</td>
+</tr>
+<tr>
+<td>market *</td>
+<td>마켓 코드 (ex. KRW-BTC, BTC-BCC)</td>
+</tr>
+<tr>
+<td>to</td>
+<td>마지막 캔들 시각 (exclusive). 포맷 : <code>yyyy-MM-dd&#39;T&#39;HH:mm:ssXXX</code> or <code>yyyy-MM-dd HH:mm:ss</code>. 비워서 요청시 가장 최근 캔들</td>
+</tr>
+<tr>
+<td>count</td>
+<td>캔들 개수 (최대 200개까지 요청 가능)</td>
+</tr>
+</tbody></table>
+<h3 id='response'>응답 (Response)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>market</td>
+<td>마켓명</td>
+</tr>
+<tr>
+<td>candle_date_time_utc</td>
+<td>캔들 기준 시각(UTC 기준)</td>
+</tr>
+<tr>
+<td>candle_date_time_kst</td>
+<td>캔들 기준 시각(KST 기준)</td>
+</tr>
+<tr>
+<td>opening_price</td>
+<td>시가</td>
+</tr>
+<tr>
+<td>high_price</td>
+<td>고가</td>
+</tr>
+<tr>
+<td>low_price</td>
+<td>저가</td>
+</tr>
+<tr>
+<td>trade_price</td>
+<td>종가</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>해당 캔들에서 마지막 틱이 저장된 시각</td>
+</tr>
+<tr>
+<td>candle_acc_trade_price</td>
+<td>누적 거래 금액</td>
+</tr>
+<tr>
+<td>candle_acc_trade_volume</td>
+<td>누적 거래량</td>
+</tr>
+<tr>
+<td>unit</td>
+<td>분 단위 (유닛)</td>
+</tr>
+</tbody></table>
+<h2 id='candle_days-day'>Candle_days (일; Day 캔들)</h2>
+<p>일(Day) 단위로 시세 캔들을 조회합니다.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.client</span> <span class="kn">import</span> <span class="n">Upbit</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">()</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Candle</span><span class="p">.</span><span class="n">Candle_days</span><span class="p">(</span>
+    <span class="n">market</span><span class="o">=</span><span class="s">'KRW-BTC'</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
+</code></pre></div>
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW-BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"candle_date_time_utc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T00:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"candle_date_time_kst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T09:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"opening_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">44698000.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"high_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">48550000.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"low_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">42271000.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"trade_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">47544000.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1610126678593</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"candle_acc_trade_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">868607517589.245</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"candle_acc_trade_volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">18953.44414088</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"prev_closing_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">44698000.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"change_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">2846000.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"change_rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0636717527</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='method-2'>Method</h3>
+<p><strong>GET</strong> <code>/v1/candles/days</code></p>
+<h3 id='operation-code-2'>Operation Code</h3>
+<p><code>Candle.Candle_days</code></p>
+<h3 id='request-2'>요청 (Request)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>market *</td>
+<td>마켓 코드 (ex. KRW-BTC, BTC-BCC)</td>
+</tr>
+<tr>
+<td>to</td>
+<td>마지막 캔들 시각 (exclusive). 포맷 : <code>yyyy-MM-dd&#39;T&#39;HH:mm:ssXXX</code> or <code>yyyy-MM-dd HH:mm:ss</code>. 비워서 요청시 가장 최근 캔들</td>
+</tr>
+<tr>
+<td>convertingPriceUnit</td>
+<td>종가 환산 화폐 단위 (생략 가능, KRW로 명시할 시 원화 환산 가격을 반환.)</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>응답 (Response)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>market</td>
+<td>마켓명</td>
+</tr>
+<tr>
+<td>candle_date_time_utc</td>
+<td>캔들 기준 시각(UTC 기준)</td>
+</tr>
+<tr>
+<td>candle_date_time_kst</td>
+<td>캔들 기준 시각(KST 기준)</td>
+</tr>
+<tr>
+<td>opening_price</td>
+<td>시가</td>
+</tr>
+<tr>
+<td>high_price</td>
+<td>고가</td>
+</tr>
+<tr>
+<td>low_price</td>
+<td>저가</td>
+</tr>
+<tr>
+<td>trade_price</td>
+<td>종가</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>해당 캔들에서 마지막 틱이 저장된 시각</td>
+</tr>
+<tr>
+<td>candle_acc_trade_price</td>
+<td>누적 거래 금액</td>
+</tr>
+<tr>
+<td>candle_acc_trade_volume</td>
+<td>누적 거래량</td>
+</tr>
+<tr>
+<td>prev_closing_price</td>
+<td>전일 종가(UTC 0시 기준)</td>
+</tr>
+<tr>
+<td>change_price</td>
+<td>전일 종가 대비 변화 금액</td>
+</tr>
+<tr>
+<td>change_rate</td>
+<td>전일 종가 대비 변화량</td>
+</tr>
+<tr>
+<td>converted_trade_price</td>
+<td>종가 환산 화폐 단위로 환산된 가격(요청에 <code>convertingPriceUnit</code> 파라미터 없을 시 해당 필드 포함되지 않음.)</td>
+</tr>
+</tbody></table>
+<h2 id='candle_weeks-week'>Candle_weeks (주; Week 캔들)</h2>
+<p>주(Week) 단위로 시세 캔들을 조회합니다.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.client</span> <span class="kn">import</span> <span class="n">Upbit</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">()</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Candle</span><span class="p">.</span><span class="n">Candle_weeks</span><span class="p">(</span>
+    <span class="n">market</span><span class="o">=</span><span class="s">'KRW-BTC'</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
+</code></pre></div>
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW-BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"candle_date_time_utc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-04T00:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"candle_date_time_kst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-04T09:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"opening_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">37537000.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"high_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">48550000.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"low_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">33000000.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"trade_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">47617000.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1610126559879</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"candle_acc_trade_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">3531977900551.1753</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"candle_acc_trade_volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">88370.43948385</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"first_day_of_period"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-04"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='method-3'>Method</h3>
+<p><strong>GET</strong> <code>/v1/candles/weeks</code></p>
+<h3 id='operation-code-3'>Operation Code</h3>
+<p><code>Candle.Candle_weeks</code></p>
+<h3 id='request-3'>요청 (Request)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>market *</td>
+<td>마켓 코드 (ex. KRW-BTC, BTC-BCC)</td>
+</tr>
+<tr>
+<td>to</td>
+<td>마지막 캔들 시각 (exclusive). 포맷 : <code>yyyy-MM-dd&#39;T&#39;HH:mm:ssXXX</code> or <code>yyyy-MM-dd HH:mm:ss</code>. 비워서 요청시 가장 최근 캔들</td>
+</tr>
+<tr>
+<td>count</td>
+<td>캔들 개수 (최대 200개까지 요청 가능)</td>
+</tr>
+</tbody></table>
+<h3 id='response-3'>응답 (Response)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>market</td>
+<td>마켓명</td>
+</tr>
+<tr>
+<td>candle_date_time_utc</td>
+<td>캔들 기준 시각(UTC 기준)</td>
+</tr>
+<tr>
+<td>candle_date_time_kst</td>
+<td>캔들 기준 시각(KST 기준)</td>
+</tr>
+<tr>
+<td>opening_price</td>
+<td>시가</td>
+</tr>
+<tr>
+<td>high_price</td>
+<td>고가</td>
+</tr>
+<tr>
+<td>low_price</td>
+<td>저가</td>
+</tr>
+<tr>
+<td>trade_price</td>
+<td>종가</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>해당 캔들에서 마지막 틱이 저장된 시각</td>
+</tr>
+<tr>
+<td>candle_acc_trade_price</td>
+<td>누적 거래 금액</td>
+</tr>
+<tr>
+<td>candle_acc_trade_volume</td>
+<td>누적 거래량</td>
+</tr>
+<tr>
+<td>first_day_of_period</td>
+<td>캔들 기간의 가장 첫 날</td>
+</tr>
+</tbody></table>
+<h2 id='candle_month-month'>Candle_month (월; Month 캔들)</h2>
+<p>월(Month) 단위로 시세 캔들을 조회합니다.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.client</span> <span class="kn">import</span> <span class="n">Upbit</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">()</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Candle</span><span class="p">.</span><span class="n">Candle_month</span><span class="p">(</span>
+    <span class="n">market</span><span class="o">=</span><span class="s">'KRW-BTC'</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
+</code></pre></div>
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW-BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"candle_date_time_utc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01T00:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"candle_date_time_kst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01T09:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"opening_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">32037000.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"high_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">48550000.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"low_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">31800000.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"trade_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">47609000.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1610126792251</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"candle_acc_trade_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">5279753367606.828</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"candle_acc_trade_volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">136975.61257404</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"first_day_of_period"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='method-4'>Method</h3>
+<p><strong>GET</strong> <code>/v1/candles/months</code></p>
+<h3 id='operation-code-4'>Operation Code</h3>
+<p><code>Candle.Candle_month</code></p>
+<h3 id='request-4'>요청 (Request)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>market *</td>
+<td>마켓 코드 (ex. KRW-BTC, BTC-BCC)</td>
+</tr>
+<tr>
+<td>to</td>
+<td>마지막 캔들 시각 (exclusive). 포맷 : <code>yyyy-MM-dd&#39;T&#39;HH:mm:ssXXX</code> or <code>yyyy-MM-dd HH:mm:ss</code>. 비워서 요청시 가장 최근 캔들</td>
+</tr>
+<tr>
+<td>count</td>
+<td>캔들 개수 (최대 200개까지 요청 가능)</td>
+</tr>
+</tbody></table>
+<h3 id='response-4'>응답 (Response)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>market</td>
+<td>마켓명</td>
+</tr>
+<tr>
+<td>candle_date_time_utc</td>
+<td>캔들 기준 시각(UTC 기준)</td>
+</tr>
+<tr>
+<td>candle_date_time_kst</td>
+<td>캔들 기준 시각(KST 기준)</td>
+</tr>
+<tr>
+<td>opening_price</td>
+<td>시가</td>
+</tr>
+<tr>
+<td>high_price</td>
+<td>고가</td>
+</tr>
+<tr>
+<td>low_price</td>
+<td>저가</td>
+</tr>
+<tr>
+<td>trade_price</td>
+<td>종가</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>해당 캔들에서 마지막 틱이 저장된 시각</td>
+</tr>
+<tr>
+<td>candle_acc_trade_price</td>
+<td>누적 거래 금액</td>
+</tr>
+<tr>
+<td>candle_acc_trade_volume</td>
+<td>누적 거래량</td>
+</tr>
+<tr>
+<td>first_day_of_period</td>
+<td>캔들 기간의 가장 첫 날</td>
+</tr>
+</tbody></table>

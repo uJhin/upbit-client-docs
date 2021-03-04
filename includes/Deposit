@@ -1,0 +1,634 @@
+<h1 id='deposit'>Deposit (입금)</h1><h2 id='deposit_info_all'>Deposit_info_all (입금 리스트 조회)</h2>
+<p>입금 리스트 조회합니다.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.client</span> <span class="kn">import</span> <span class="n">Upbit</span>
+
+<span class="n">access_key</span> <span class="o">=</span> <span class="s">"Your Access Key"</span>
+<span class="n">secret_key</span> <span class="o">=</span> <span class="s">"Your Secret Key"</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Deposit</span><span class="p">.</span><span class="n">Deposit_info_all</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
+</code></pre></div>
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deposit"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20c84493-6e70-4e54-83ce-90915a19d110"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"txid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BKD-2021-01-07-82a877188ce61d7b4b3c709dad"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACCEPTED"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-07T11:59:31+09:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"done_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-07T12:00:12+09:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000.0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transaction_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deposit"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7b34ea4d-fb46-4da1-9172-8dd42b8814f5"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"txid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BKD-2021-01-06-fd2ba0cc92670c72fba22f78d0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACCEPTED"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-06T20:42:41+09:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"done_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-06T20:43:15+09:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000.0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transaction_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='method'>Method</h3>
+<p><strong>GET</strong> <code>/v1/deposits</code></p>
+<h3 id='operation-code'>Operation Code</h3>
+<p><code>Deposit.Deposit_info_all</code></p>
+<h3 id='request'>요청 (Request)</h3>
+<table>
+  <tr>
+    <th>
+      Parameter
+    </th>
+    <th>
+      Description
+    </th>
+  </tr>
+  <tr>
+    <td>
+        currency
+    </td>
+    <td>
+        Currency 코드
+    </td>
+  </tr>
+  <tr>
+    <td>
+        state
+    </td>
+    <td>
+      입금 상태
+      <ul>
+        <li>submitting: 처리 중</li>
+        <li>submitted: 처리 완료</li>
+        <li>almost_accepted: 입금 대기 중</li>
+        <li>rejected: 거절</li>
+        <li>accepted: 승인됨</li>
+        <li>processing: 처리 중</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+  <td>
+      uuids
+  </td>
+  <td>
+      입금 UUID의 목록
+  </td>
+</tr>
+<tr>
+  <td>
+      txids
+  </td>
+  <td>
+      입금 TXID의 목록
+  </td>
+</tr>
+<tr>
+  <td>
+      limit
+  </td>
+  <td>
+      개수 제한 (default: 100, limit: 100)
+  </td>
+</tr>
+<tr>
+  <td>
+      page
+  </td>
+  <td>
+      페이지 수 (default: 1)
+  </td>
+</tr>
+<tr>
+  <td>
+      order_by
+  </td>
+  <td>
+      정렬 방식
+      <ul>
+        <li>asc: 오름 차순</li>
+        <li>desc: 내림 차순 (default)</li>
+      </ul>
+  </td>
+</tr>
+</table>
+<h3 id='response'>응답 (Response)</h3>
+<table>
+  <tr>
+    <th>
+      Parameter
+    </th>
+    <th>
+      Description
+    </th>
+  </tr>
+  <tr>
+    <td>
+        type
+    </td>
+    <td>
+        입출금 종류
+    </td>
+  </tr>
+  <tr>
+    <td>
+        uuid
+    </td>
+    <td>
+      입금에 대한 고유 아이디
+    </td>
+  </tr>
+  <tr>
+  <td>
+      currency
+  </td>
+  <td>
+      화폐를 의미하는 영문 대문자 코드
+  </td>
+</tr>
+<tr>
+  <td>
+      txid
+  </td>
+  <td>
+      입금의 트랜잭션 아이디
+  </td>
+</tr>
+<tr>
+  <td>
+      state
+  </td>
+  <td>
+      입금 상태
+  </td>
+</tr>
+<tr>
+  <td>
+      created_at
+  </td>
+  <td>
+      입금 생성 시간
+  </td>
+</tr>
+<tr>
+  <td>
+      done_at
+  </td>
+  <td>
+      입금 완료 시간
+  </td>
+</tr>
+<tr>
+  <td>
+      amount
+  </td>
+  <td>
+      입금 수량
+  </td>
+</tr>
+<tr>
+  <td>
+      fee
+  </td>
+  <td>
+      입금 수수료
+  </td>
+</tr>
+<tr>
+  <td>
+      transaction_type
+  </td>
+  <td>
+      입금 유형
+      <ul>
+        <li>default: 일반 입금</li>
+        <li>internal: 바로 입금</li>
+      </ul>
+  </td>
+</tr>
+</table>
+<h2 id='deposit_info'>Deposit_info (개별 입금 조회)</h2>
+<p>개별 입금 내역을 조회합니다.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.client</span> <span class="kn">import</span> <span class="n">Upbit</span>
+
+<span class="n">access_key</span> <span class="o">=</span> <span class="s">"Your Access Key"</span>
+<span class="n">secret_key</span> <span class="o">=</span> <span class="s">"Your Secret Key"</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Deposit</span><span class="p">.</span><span class="n">Deposit_info</span><span class="p">(</span>
+    <span class="n">uuid</span><span class="o">=</span><span class="s">'20c84493-6e70-4e54-83ce-90915a19d110'</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
+</code></pre></div>
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deposit"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20c84493-6e70-4e54-83ce-90915a19d110"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"txid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BKD-2021-01-07-82a877188ce61d7b4b3c709dad"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACCEPTED"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-07T11:59:31+09:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"done_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-07T12:00:12+09:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"transaction_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='method-2'>Method</h3>
+<p><strong>GET</strong> <code>/v1/deposit</code></p>
+<h3 id='operation-code-2'>Operation Code</h3>
+<p><code>Deposit.Deposit_info</code></p>
+<h3 id='request-2'>요청 (Request)</h3>
+<table>
+  <tr>
+    <th>
+      Parameter
+    </th>
+    <th>
+      Description
+    </th>
+  </tr>
+  <tr>
+    <td>
+        uuid
+    </td>
+    <td>
+        입금 UUID
+    </td>
+  </tr>
+  <tr>
+    <td>
+        txid
+    </td>
+    <td>
+      입금 TXID
+    </td>
+  </tr>
+  <tr>
+  <td>
+      currency
+  </td>
+  <td>
+      Currency 코드
+  </td>
+</tr>
+</table>
+
+<aside class="notice">
+  <b>NOTE</b>: 파라미터를 입력하지 않으면 가장 최근의 입금 내역을 불러옵니다.
+</aside>
+<h3 id='response-2'>응답 (Response)</h3>
+<table>
+  <tr>
+    <th>
+      Parameter
+    </th>
+    <th>
+      Description
+    </th>
+  </tr>
+  <tr>
+    <td>
+        type
+    </td>
+    <td>
+        입출금 종류
+    </td>
+  </tr>
+  <tr>
+    <td>
+        uuid
+    </td>
+    <td>
+      입금에 대한 고유 아이디
+    </td>
+  </tr>
+  <tr>
+  <td>
+      currency
+  </td>
+  <td>
+      화폐를 의미하는 영문 대문자 코드
+  </td>
+</tr>
+<tr>
+  <td>
+      txid
+  </td>
+  <td>
+      입금의 트랜잭션 아이디
+  </td>
+</tr>
+<tr>
+  <td>
+      state
+  </td>
+  <td>
+      입금 상태
+  </td>
+</tr>
+<tr>
+  <td>
+      created_at
+  </td>
+  <td>
+      입금 생성 시간
+  </td>
+</tr>
+<tr>
+  <td>
+      done_at
+  </td>
+  <td>
+      입금 완료 시간
+  </td>
+</tr>
+<tr>
+  <td>
+      amount
+  </td>
+  <td>
+      입금 수량
+  </td>
+</tr>
+<tr>
+  <td>
+      fee
+  </td>
+  <td>
+      입금 수수료
+  </td>
+</tr>
+<tr>
+  <td>
+      transaction_type
+  </td>
+  <td>
+      입금 유형
+      <ul>
+        <li>default: 일반 입금</li>
+        <li>internal: 바로 입금</li>
+      </ul>
+  </td>
+</tr>
+</table>
+<h2 id='deposit_coin_addresses'>Deposit_coin_addresses (전체 입금 주소 조회)</h2>
+<p>내가 보유한 자산 리스트를 보여줍니다.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.client</span> <span class="kn">import</span> <span class="n">Upbit</span>
+
+<span class="n">access_key</span> <span class="o">=</span> <span class="s">"Your Access Key"</span>
+<span class="n">secret_key</span> <span class="o">=</span> <span class="s">"Your Secret Key"</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Deposit</span><span class="p">.</span><span class="n">Deposit_coin_addresses</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
+</code></pre></div>
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"deposit_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3NVw2seiTQddGQwc1apqudKxuTqebpyL3s"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"secondary_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"deposit_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x60dd373f59862d9df776596889b997e24bee42eb"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"secondary_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EOS"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"deposit_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eosupbitsusr"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"secondary_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"516252ca-0993-454d-bd8b-6bc9db2d4c25"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"deposit_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"raQwCVAJVqjrVm1Nj5SFRcX8i22BhdC9WA"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"secondary_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22325934"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='method-3'>Method</h3>
+<p><strong>GET</strong> <code>/v1/deposits/coin_addresses</code></p>
+<h3 id='operation-code-3'>Operation Code</h3>
+<p><code>Deposit.Deposit_coin_addresses</code></p>
+<h3 id='request-3'>요청 (Request)</h3>
+<p>No Parameters</p>
+<h3 id='response-3'>응답 (Response)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>currency</td>
+<td>화폐를 의미하는 영문 대문자 코드</td>
+</tr>
+<tr>
+<td>deposit_address</td>
+<td>입금 주소</td>
+</tr>
+<tr>
+<td>secondary_address</td>
+<td>2차 입금 주소</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  <b>NOTE</b>: 입금 주소 조회 요청 API 유의사항
+  <br/>
+  <br/>
+  입금 주소 생성 요청 이후 아직 발급되지 않은 상태일 경우 <code>deposit_address</code>가 <code>null</code>일 수 있습니다.
+</aside>
+<h2 id='deposit_coin_address'>Deposit_coin_address (개별 입금 주소 조회)</h2>
+<p>내가 보유한 개별 자산 내역을 보여줍니다.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.client</span> <span class="kn">import</span> <span class="n">Upbit</span>
+
+<span class="n">access_key</span> <span class="o">=</span> <span class="s">"Your Access Key"</span>
+<span class="n">secret_key</span> <span class="o">=</span> <span class="s">"Your Secret Key"</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Deposit</span><span class="p">.</span><span class="n">Deposit_coin_address</span><span class="p">(</span>
+    <span class="n">currency</span><span class="o">=</span><span class="s">'BTC'</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
+</code></pre></div>
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"deposit_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3NVw2seiTQddGQwc1apqudKxuTqebpyL3s"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"secondary_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='method-4'>Method</h3>
+<p><strong>GET</strong> <code>/v1/deposits/coin_address</code></p>
+<h3 id='operation-code-4'>Operation Code</h3>
+<p><code>Deposit.Deposit_coin_address</code></p>
+<h3 id='request-4'>요청 (Request)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>currency *</td>
+<td>화폐를 의미하는 영문 대문자 코드</td>
+</tr>
+</tbody></table>
+<h3 id='response-4'>응답 (Response)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>currency</td>
+<td>화폐를 의미하는 영문 대문자 코드</td>
+</tr>
+<tr>
+<td>deposit_address</td>
+<td>입금 주소</td>
+</tr>
+<tr>
+<td>secondary_address</td>
+<td>2차 입금 주소</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  <b>NOTE</b>: 입금 주소 조회 요청 API 유의사항
+  <br/>
+  <br/>
+  입금 주소 생성 요청 이후 아직 발급되지 않은 상태일 경우 <code>deposit_address</code>가 <code>null</code>일 수 있습니다.
+</aside>
+<h2 id='deposit_generate_coin_address'>Deposit_generate_coin_address (입금 주소 생성 요청)</h2>
+<p>입금 주소 생성을 요청합니다.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.client</span> <span class="kn">import</span> <span class="n">Upbit</span>
+
+<span class="n">access_key</span> <span class="o">=</span> <span class="s">"Your Access Key"</span>
+<span class="n">secret_key</span> <span class="o">=</span> <span class="s">"Your Secret Key"</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Deposit</span><span class="p">.</span><span class="n">Deposit_generate_coin_address</span><span class="p">(</span>
+    <span class="n">currency</span><span class="o">=</span><span class="s">'SNT'</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
+</code></pre></div>
+<blockquote>
+<p>Response1 Example: 201 Created</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SNT 입금주소를 생성중입니다."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Response2 Example: 200 OK</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SNT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"deposit_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x72012d8af69263a509af8cd522374fc65c454539"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"secondary_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='method-5'>Method</h3>
+<p><strong>POST</strong> <code>/v1/deposits/generate_coin_address</code></p>
+<h3 id='operation-code-5'>Operation Code</h3>
+<p><code>Deposit.Deposit_generate_coin_address</code></p>
+<h3 id='request-5'>요청 (Request)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>currency *</td>
+<td>화폐를 의미하는 영문 대문자 코드</td>
+</tr>
+</tbody></table>
+<h3 id='response1'>응답 (Response1)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>success</td>
+<td>요청 성공 여부</td>
+</tr>
+<tr>
+<td>message</td>
+<td>요청 결과에 대한 메세지</td>
+</tr>
+</tbody></table>
+<h3 id='response2'>응답 (Response2)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>currency</td>
+<td>화폐를 의미하는 영문 대문자 코드</td>
+</tr>
+<tr>
+<td>deposit_address</td>
+<td>입금 주소</td>
+</tr>
+<tr>
+<td>secondary_address</td>
+<td>2차 입금 주소</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  <b>NOTE</b>: 입금 주소 생성 요청 API 유의사항
+  <br/><br/>
+  입금 주소의 생성은 서버에서 비동기적으로 이뤄집니다.
+  <br/><br/>
+  비동기적 생성 특성상 요청과 동시에 입금 주소가 발급되지 않을 수 있습니다.
+  <br/><br/>
+  주소 발급 요청 시 결과로 <code>Response1</code>이 반환되며 주소 발급 완료 이전까지 계속 <code>Response1</code>이 반환됩니다.
+  <br/><br/>
+  주소가 발급된 이후부터는 새로운 주소가 발급되는 것이 아닌 이전에 발급된 주소가 <code>Response2</code> 형태로 반환됩니다.
+  <br/><br/>
+  정상적으로 주소가 생성되지 않는다면 일정 시간 이후 해당 API를 다시 호출해주시길 부탁드립니다.
+</aside>

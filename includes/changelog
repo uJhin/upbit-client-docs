@@ -1,0 +1,102 @@
+<h1 id='change-logs'>Change Logs</h1><h2 id='2021'>2021</h2><h3 id='2021-02-26'>2021-02-26</h3>
+<p>Update Client Released: v1.1.7.5</p>
+
+<ul>
+<li><code>UpbitWebSocket</code> 클래스 파라미터 오타 수정: <code>ping_inverval</code> -&gt; <code>ping_interval</code></li>
+<li><code>UpbitWebSocket</code> 클래스 기능 추가: <code>socket.connect</code> 섹션 참고</li>
+<li>이전보다 원활한 패키지 버전 관리를 위해 <code>pkginfo.py</code> 모듈로 분리</li>
+<li>그 외 부분적인 소스 코드 리팩토링</li>
+</ul>
+<h3 id='2021-02-23'>2021-02-23</h3>
+<p>Update Client Released: v1.1.7.3</p>
+
+<ul>
+<li>전체적인 소스 코드 리팩토링</li>
+</ul>
+<h3 id='2021-02-20'>2021-02-20</h3>
+<p>Update Client Released: v1.1.7.0</p>
+
+<ul>
+<li>Upbit OPEN API 버전 1.1.7 업데이트 반영</li>
+</ul>
+<h3 id='2021-02-13'>2021-02-13</h3>
+<p>Update Client Released: v1.1.6.30</p>
+
+<ul>
+<li>부분적인 소스 코드 리팩토링</li>
+<li>성능 소폭 개선</li>
+</ul>
+<h3 id='2021-02-05'>2021-02-05</h3>
+<p>Update Client Released: v1.1.6.29</p>
+
+<ul>
+<li><code>models.py</code> 소스 코드 리팩토링: 구조 변경</li>
+<li>잘못된 요청을 보낼 시 하위 코드에서 <code>HTTPError</code> 예외를 발생하도록 수정</li>
+<li>WebSocket Payload Generate 부분 추가 (WebSocket 항목 참고)</li>
+</ul>
+<h3 id='2021-01-27'>2021-01-27</h3>
+<p>Update Client Released: v1.1.6.25</p>
+
+<ul>
+<li>웹 소켓(Web Socket) 연결 끊김 문제 해결</li>
+<li>UpbitWebSocket 클래스에 ping 관리를 위한 <code>ping_interval</code> 및 <code>ping_timeout</code> 파라미터 추가</li>
+</ul>
+<h3 id='2021-01-26'>2021-01-26</h3>
+<p>Update Client Released: v1.1.6.23</p>
+
+<ul>
+<li>모든 <code>response</code>에 요청 제한 수가 출력되도록 수정</li>
+<li>웹 소켓(Web Socket) 클라이언트 모듈 추가</li>
+<li><code>UpbitWebSocket</code> 항목 참고</li>
+<li>그 외 전체적인 소스 코드 리팩토링</li>
+</ul>
+<h3 id='2021-01-22'>2021-01-22</h3>
+<p>Update Upbit OPEN API</p>
+
+<ul>
+<li>Upbit OPEN API가 업데이트 됨에 따라 아래와 같이 변경되었습니다.</li>
+<li>주문 리스트 조회 (<strong>GET</strong> /v1/orders): <code>kind</code> 요청 파라미터 제거</li>
+<li>변경 결과: <code>normal</code> (일반 주문), <code>watch</code> (예약 주문) 동시 조회</li>
+</ul>
+<h3 id='2021-01-18'>2021-01-18</h3>
+<p>Upbit Client Released: v1.1.6.16</p>
+
+<ul>
+<li>유틸리티 모듈 <code>utils.py</code> 추가</li>
+<li>주문 가능한 가격 유닛을 검증하는 기능 추가</li>
+<li><code>validate_price</code> 함수 참고</li>
+</ul>
+<h3 id='2021-01-15'>2021-01-15</h3>
+<p>Upbit Client Released: v1.1.6.15</p>
+
+<ul>
+<li>남은 요청 수 확인 기능 추가</li>
+<li>본 문서의 <code>remaining_request</code> 파트 참고</li>
+</ul>
+<h3 id='2021-01-12'>2021-01-12</h3>
+<p>Upbit Client Released: v1.1.6.14</p>
+
+<ul>
+<li><code>setup.py</code> 소스 코드 리팩토링</li>
+<li><a href="https://github.com/uJhin/python-upbit-client">Python Upbit Client</a> 저장소 생성 후 분기</li>
+</ul>
+<h3 id='2021-01-10'>2021-01-10</h3>
+<p>Upbit Client Released: v1.1.6.12</p>
+
+<ul>
+<li><code>QUOTATION API</code> 관련 쿼리 파싱 부분 소스 코드 리팩토링</li>
+<li><code>PyPI</code> 버전 체크 기능 추가</li>
+</ul>
+<h3 id='2021-01-08'>2021-01-08</h3>
+<p>Upbit Client Released: v1.1.6.10</p>
+
+<ul>
+<li><code>uuids</code> 및 <code>txids</code> 쿼리 파싱 추가 구현 및 배포</li>
+<li><code>identifiers</code> 쿼리 파싱 추가 구현 및 배포</li>
+</ul>
+<h3 id='2021-01-07'>2021-01-07</h3>
+<p>Upbit Client Released: v1.1.6.8</p>
+
+<ul>
+<li>Upbit OPEN API 버전이 1.1.6로 업데이트 되어 최신 버전에 맞춰 구현 및 배포</li>
+</ul>

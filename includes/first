@@ -1,0 +1,69 @@
+<h1 id='upbitclient-upbit'>UpbitClient (Upbit 클라이언트 사용하기)</h1><h3 id='4d259256d6'>클라이언트 객체 생성</h3>
+<blockquote>
+<p>Code Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.client</span> <span class="kn">import</span> <span class="n">Upbit</span>
+
+<span class="n">access_key</span> <span class="o">=</span> <span class="s">"발급받은 액세스 키"</span>
+<span class="n">secret_key</span> <span class="o">=</span> <span class="s">"발급받은 시크릿 키"</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>Result</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="n">UpbitClient</span><span class="p">(</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="p">.</span><span class="n">upbit</span><span class="p">.</span><span class="n">com</span><span class="p">)</span>
+</code></pre></div>
+<p>설치가 완료되면 <code>from upbit.client import Upbit</code>로 패키지를 import 합니다.
+그 다음 <code>UpbitClient</code> 객체를 생성하면 클라이언트를 사용할 준비가 완료됩니다.</p>
+<h3 id='upbitclient-access_key-none-secret_key-none-kwargs'>UpbitClient(access_key=None, secret_key=None, **kwargs)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_key</td>
+<td>발급받은 액세스 키</td>
+</tr>
+<tr>
+<td>secret_key</td>
+<td>발급받은 시크릿 키</td>
+</tr>
+<tr>
+<td>spec_uri</td>
+<td>Swagger Mapping JSON Path</td>
+</tr>
+<tr>
+<td>config</td>
+<td>Swagger Client Configuration</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+    <b>NOTE</b>: <b>QUOTATION API (Market, Candle, Trade 섹션 참고)</b>에 대해서는 <code>access_key</code>와 <code>secret_key</code>가 강제되지 않습니다.
+</aside>
+<h3 id='71d855acd9'>결과</h3>
+<p>모든 요청에 대한 결과는 JSON 포맷으로 반환됩니다.</p>
+
+<p>남은 요청 제한 시간에 대한 <code>remaining_request</code>와 응답 결과 <code>result</code>의 키(key) 값을 가집니다.</p>
+
+<p>요청 제한에 대한 부분은 <code>Remaining Requests (요청 수 제한)</code> 섹션에서 다룹니다.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>remaining_request</td>
+<td>남은 요청 제한 시간</td>
+</tr>
+<tr>
+<td>result</td>
+<td>요청에 대한 결과</td>
+</tr>
+</tbody></table>

@@ -1,0 +1,213 @@
+<h1 id='account'>Account (계좌)</h1><h2 id='account_info'>Account_info (전체 계좌 조회)</h2>
+<p>내가 보유한 자산 리스트를 보여줍니다.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.client</span> <span class="kn">import</span> <span class="n">Upbit</span>
+
+<span class="n">access_key</span> <span class="o">=</span> <span class="s">"Your Access Key"</span>
+<span class="n">secret_key</span> <span class="o">=</span> <span class="s">"Your Secret Key"</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">Account_info</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
+</code></pre></div>
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00048"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"avg_buy_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20870000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"avg_buy_price_modified"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"unit_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.34202414"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4999.99999922"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"avg_buy_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"avg_buy_price_modified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"unit_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00935861"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"avg_buy_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1068000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"avg_buy_price_modified"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"unit_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='method'>Method</h3>
+<p><strong>GET</strong> <code>/v1/accounts</code></p>
+<h3 id='operation-code'>Operation Code</h3>
+<p><code>Account.Account_info</code></p>
+<h3 id='request'>요청 (Request)</h3>
+<p>No Parameters</p>
+<h3 id='response'>응답 (Response)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>currency</td>
+<td>화폐를 의미하는 영문 대문자 코드</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>주문가능 금액/수량</td>
+</tr>
+<tr>
+<td>locked</td>
+<td>주문 중 묶여있는 금액/수량</td>
+</tr>
+<tr>
+<td>avg_buy_price</td>
+<td>매수평균가</td>
+</tr>
+<tr>
+<td>avg_buy_price_modified</td>
+<td>매수평균가 수정 여부</td>
+</tr>
+<tr>
+<td>unit_currency</td>
+<td>평단가 기준 화폐</td>
+</tr>
+</tbody></table>
+<h2 id='account_wallet'>Account_wallet (입출금 현황)</h2>
+<p>입출금 현황 및 블록 상태를 조회합니다.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.client</span> <span class="kn">import</span> <span class="n">Upbit</span>
+
+<span class="n">access_key</span> <span class="o">=</span> <span class="s">"Your Access Key"</span>
+<span class="n">secret_key</span> <span class="o">=</span> <span class="s">"Your Secret Key"</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">Account_wallet</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
+</code></pre></div>
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"wallet_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"block_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"block_height"</span><span class="p">:</span><span class="w"> </span><span class="mi">665013</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"block_updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-07T19:44:40.005+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"block_elapsed_minutes"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POWR"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"wallet_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"block_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"block_height"</span><span class="p">:</span><span class="w"> </span><span class="mi">11609520</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"block_updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-07T19:54:27.007+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"block_elapsed_minutes"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"wallet_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"block_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"block_height"</span><span class="p">:</span><span class="w"> </span><span class="mi">11609520</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"block_updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-07T19:54:25.242+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"block_elapsed_minutes"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"wallet_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"block_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"block_height"</span><span class="p">:</span><span class="w"> </span><span class="mi">11947575</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"block_updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-07T19:54:38.171+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"block_elapsed_minutes"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='method-2'>Method</h3>
+<p><strong>GET</strong> <code>/v1/status/wallet</code></p>
+<h3 id='operation-code-2'>Operation Code</h3>
+<p><code>Account.Account_wallet</code></p>
+<h3 id='request-2'>요청 (Request)</h3>
+<p>No Parameters</p>
+
+<aside class="notice">
+    <b>NOTE</b>: 입출금 현황 데이터는 실제 서비스 상태와 다를 수 있습니다.
+    <br/>
+    <br/>
+    입출금 현황 API에서 제공하는 입출금 상태, 블록 상태 정보는 수 분 정도 지연되어 반영될 수 있습니다.
+    <br/>
+    본 API는 참고용으로만 사용하시길 바라며 실제 입출금을 수행하기  전에는 반드시 업비트 공지사항 및 입출금 현황 페이지를    참고해주시기 바랍니다.
+</aside>
+<h3 id='response-2'>응답 (Response)</h3>
+<table>
+  <tr>
+    <th>
+      Parameter
+    </th>
+    <th>
+      Description
+    </th>
+  </tr>
+  <tr>
+    <td>
+        currency
+    </td>
+    <td>
+        화폐를 의미하는 영문 대문자 코드
+    </td>
+  </tr>
+  <tr>
+    <td>
+      wallet_state
+    </td>
+    <td>
+      입출금 상태
+      <ul>
+        <li>working: 입출금 가능</li>
+        <li>withdraw_only: 출금만 가능</li>
+        <li>deposit_only: 입금만 가능</li>
+        <li>paused: 입출금 중단</li>
+        <li>unsupported : 입출금 미지원</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+  <td>
+      block_state
+  </td>
+  <td>
+      블록 상태
+      <ul>
+        <li>normal: 정상</li>
+        <li>delayed: 지연</li>
+        <li>inactive: 비활성 (점검 등)</li>
+      </ul>
+  </td>
+</tr>
+<tr>
+  <td>
+      block_height
+  </td>
+  <td>
+      블록 높이
+  </td>
+</tr>
+<tr>
+  <td>
+      block_updated_at
+  </td>
+  <td>
+      블록 갱신 시각
+  </td>
+</tr>
+</table>

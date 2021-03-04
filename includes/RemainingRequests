@@ -1,0 +1,83 @@
+<h1 id='remaining-requests'>Remaining Requests (요청 수 제한)</h1><h3 id='e193e9d311'>남은 요청 수 확인하기</h3>
+<p>UpbitClient 사용 시 모든 결과는 <code>json</code> 포맷으로 반환되며, <code>remaining_request</code> 키값을 가집니다.</p>
+
+<blockquote>
+<p>Example Code</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.client</span> <span class="kn">import</span> <span class="n">Upbit</span>
+
+<span class="n">access_key</span> <span class="o">=</span> <span class="s">"Your Access Key"</span>
+<span class="n">secret_key</span> <span class="o">=</span> <span class="s">"Your Secret Key"</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">APIKey</span><span class="p">.</span><span class="n">APIKey_info</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>Result Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"remaining_request"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"min"</span><span class="p">:</span><span class="w"> </span><span class="s2">"899"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sec"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29"</span><span class="w">
+</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="err">...</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='4274c598a1'>상세 설명</h3><h4 id='exchange-api'>EXCHANGE API</h4>
+<p><strong>주문</strong></p>
+
+<p><code>초당 8회</code>, <code>분당 200회</code></p>
+
+<p><strong>주문 외 API</strong></p>
+
+<p><code>초당 30회</code>, <code>분당 900회</code></p>
+
+<p><strong>Exchange API 추가 안내 사항</strong></p>
+
+<ul>
+<li>본 기준은 개별 Open API Key에 대한 요청 수 제한 기준 입니다.</li>
+<li>본 기준 내의 요청의 경우에도 하나의 계정으로 여러 개의 Open API Key를 이용하여 요청할 경우, 업비트 전체 서비스의 안정적인 제공을 위하여 요청 수 제한이 발생할 수 있습니다.</li>
+<li>서비스 및 서버 상황 등에 따라 상기 요청 수가 일시적으로 보장되지 않을 수 있습니다.</li>
+<li>사용 가능한 잔여 요청 수는 하단의 잔여 요청 수 확인 방법을 참고하시어 확인하실 수 있습니다.</li>
+<li>(업데이트) 주문 API와 주문 외 API 요청 수 제한은 별도로 계산 됩니다.</li>
+</ul>
+<h4 id='quotation-api'>QUOTATION API</h4>
+<p><strong>웹 소켓(Websocket) 연결 요청 수 제한</strong></p>
+
+<p><code>초당 5회</code>, <code>분당 100회</code></p>
+
+<p><strong>REST API 요청 수 제한</strong></p>
+
+<p><code>분당 600회</code>, <code>초당 10회</code> <strong>(종목, 캔들, 체결, 티커, 호가별)</strong></p>
+
+<p>[Quotation API 추가 안내 사항]</p>
+
+<ul>
+<li>Quotation API의 요청 수 제한은 IP 주소를 기준으로 합니다.</li>
+<li>향후 안정적인 서비스 제공을 위하여 API 요청 수는 추가적인 조정이 이루어질 수 있습니다. 요청 수 조정 필요 시 별도 공지를 통해 안내드리겠습니다. (<a href="https://upbit.com/service_center/notice">Upbit 공식 사이트 공지사항 바로가기</a>)</li>
+<li>초당 제한 조건과 분당 제한 조건 중 하나의 조건이라도 요청 수를 초과할 경우 요청 수 제한 적용 됩니다.</li>
+<li>요청 수 제한 조건에 적용되는 시간 조건은 첫 요청 시간을 기준으로하며, 일정 시간 이후 초기화됩니다. (실패한 요청은 요청 횟수에 포함되지 않습니다.)</li>
+<li>다수의 REST API 요청이 필요하신 경우, WebSocket을 통한 수신 부탁드립니다.</li>
+</ul>
+
+<p>[Exchange API 잔여 요청 수 확인 방법]</p>
+
+<ul>
+<li>업비트 Open API 서비스는 원활한 사용 환경을 위해 초당 / 분당 요청 수를 제한하고 있습니다.</li>
+<li>Open API 호출 시 남아있는 요청 수는 <code>Remaining-Req</code> 응답 해더를 통해 확인 가능합니다.</li>
+</ul>
+
+<p><code>Remaining-Req: group=default; min=1799; sec=29</code></p>
+
+<p>위와 같은 포멧의 응답 해더를 수신했다면, <code>default</code> 라는 그룹에 대하여 해당 초에 29개의 요청, 남은 1분간 1799개의 요청이 가능하다는 것을 의미합니다.</p>
+
+<p>주문하기 Open API의 경우,</p>
+
+<p><code>Remaining-Req: group=order; min=59; sec=4</code></p>
+
+<p>위와 같은 응답이 올 수 있으며, 이는 <code>order</code> 라는 그룹에 대해 해당 초에 4번, 남은 1분은 59번의 주문 요청이 가능하다는 것을 의미합니다.</p>
+
+<aside class="notice">
+  <b>NOTE</b>: 해당 시간 내 초과된 요청에 대해서 <code>429 Too Many   Requests</code> 오류가 발생할 수 있습니다. 하지만 별도의 추가적인   페널티는 부과되지 않습니다.
+</aside>

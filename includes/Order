@@ -1,0 +1,1086 @@
+<h1 id='order'>Order (주문)</h1><h2 id='order_orderbook-orderbook'>Order_orderbook (오더북; Orderbook)</h2>
+<p>현재 시세 호가 정보를 조회합니다.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.client</span> <span class="kn">import</span> <span class="n">Upbit</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">()</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Order</span><span class="p">.</span><span class="n">Order_orderbook</span><span class="p">(</span>
+    <span class="n">markets</span><span class="o">=</span><span class="p">[</span><span class="s">'KRW-BTC'</span><span class="p">,</span> <span class="s">'KRW-ETH'</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
+</code></pre></div>
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW-BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1610070624000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_ask_size"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.71050069</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_bid_size"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.33182914</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"orderbook_units"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"ask_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">43973000.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"bid_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">43952000.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"ask_size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00166408</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"bid_size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.03190123</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"ask_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">43974000.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"bid_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">43951000.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"ask_size"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.22621878</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"bid_size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00451153</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"ask_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">43984000.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"bid_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">43933000.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"ask_size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05844488</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"bid_size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"ask_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">43985000.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"bid_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">43920000.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"ask_size"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.24634891</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"bid_size"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.04638941</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW-ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1610070624062</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_ask_size"</span><span class="p">:</span><span class="w"> </span><span class="mf">292.1165831</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_bid_size"</span><span class="p">:</span><span class="w"> </span><span class="mf">368.94615831</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"orderbook_units"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"ask_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">1347000.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"bid_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">1346000.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"ask_size"</span><span class="p">:</span><span class="w"> </span><span class="mf">13.27655932</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"bid_size"</span><span class="p">:</span><span class="w"> </span><span class="mf">24.64993035</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"ask_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">1347500.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"bid_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">1345500.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"ask_size"</span><span class="p">:</span><span class="w"> </span><span class="mf">16.63316797</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"bid_size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.10945805</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"ask_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">1348000.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"bid_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">1345000.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"ask_size"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.27655416</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"bid_size"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.15483109</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"ask_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">1348500.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"bid_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">1344500.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"ask_size"</span><span class="p">:</span><span class="w"> </span><span class="mf">27.44579387</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"bid_size"</span><span class="p">:</span><span class="w"> </span><span class="mf">21.77733151</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='method'>Method</h3>
+<p><strong>GET</strong> <code>/v1/orderbook</code></p>
+<h3 id='operation-code'>Operation Code</h3>
+<p><code>Order.Order_orderbook</code></p>
+<h3 id='request'>요청 (Request)</h3>
+<table><thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>markets *</td>
+<td>마켓 코드 목록 (ex. KRW-BTC, KRW-ETH)</td>
+</tr>
+</tbody></table>
+<h3 id='response'>응답 (Response)</h3>
+<table><thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>market</td>
+<td>마켓 코드</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>호가 생성 시각</td>
+</tr>
+<tr>
+<td>total_ask_size</td>
+<td>호가 매도 총 잔량</td>
+</tr>
+<tr>
+<td>total_bid_size</td>
+<td>호가 매수 총량</td>
+</tr>
+<tr>
+<td>orderbook_units</td>
+<td>호가</td>
+</tr>
+<tr>
+<td>orderbook_units.ask_price</td>
+<td>매도호가</td>
+</tr>
+<tr>
+<td>orderbook_units.bid_price</td>
+<td>매수호가</td>
+</tr>
+<tr>
+<td>orderbook_units.ask_size</td>
+<td>매도 잔량</td>
+</tr>
+<tr>
+<td>orderbook_units.bid_size</td>
+<td>매수 잔량</td>
+</tr>
+</tbody></table>
+<h2 id='order_chance'>Order_chance (주문 가능 정보)</h2>
+<p>마켓별 주문 가능 정보를 확인합니다.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.client</span> <span class="kn">import</span> <span class="n">Upbit</span>
+
+<span class="n">access_key</span> <span class="o">=</span> <span class="s">"Your Access Key"</span>
+<span class="n">secret_key</span> <span class="o">=</span> <span class="s">"Your Secret Key"</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Order</span><span class="p">.</span><span class="n">Order_chance</span><span class="p">(</span>
+    <span class="n">market</span><span class="o">=</span><span class="s">'KRW-BTC'</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
+</code></pre></div>
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"bid_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0005"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ask_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0005"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"maker_bid_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0005"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"maker_ask_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0005"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW-BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC/KRW"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"order_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"limit"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"order_sides"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"ask"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bid"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"price_unit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"min_total"</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"price_unit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"min_total"</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"max_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000.0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"bid_account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.34202414"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4999.99999922"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"avg_buy_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"avg_buy_price_modified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"unit_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"ask_account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00048"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"avg_buy_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20870000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"avg_buy_price_modified"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"unit_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='method-2'>Method</h3>
+<p><strong>GET</strong> <code>/v1/orders/chance</code></p>
+<h3 id='operation-code-2'>Operation Code</h3>
+<p><code>Order.Order_chance</code></p>
+<h3 id='request-2'>요청 (Request)</h3>
+<table><thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>market *</td>
+<td>마켓 ID</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>응답 (Response)</h3>
+<table><thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>bid_fee</td>
+<td>매수 수수료 비율</td>
+</tr>
+<tr>
+<td>ask_fee</td>
+<td>매도 수수료 비율</td>
+</tr>
+<tr>
+<td>maker_bid_fee</td>
+<td>매수 시 메이커 수수료 비율</td>
+</tr>
+<tr>
+<td>maker_ask_fee</td>
+<td>매도 시 메이커 수수료 비율</td>
+</tr>
+<tr>
+<td>market</td>
+<td>마켓에 대한 정보</td>
+</tr>
+<tr>
+<td>market.id</td>
+<td>마켓 ID</td>
+</tr>
+<tr>
+<td>market.name</td>
+<td>마켓 이름</td>
+</tr>
+<tr>
+<td>market.order_types</td>
+<td>지원 주문 방식</td>
+</tr>
+<tr>
+<td>market.order_sides</td>
+<td>지원 주문 종류</td>
+</tr>
+<tr>
+<td>market.bid</td>
+<td>매수 시 제약사항</td>
+</tr>
+<tr>
+<td>market.bid.currency</td>
+<td>화폐를 의미하는 영문 대문자 코드</td>
+</tr>
+<tr>
+<td>market.bid.price_unit</td>
+<td>주문금액 단위</td>
+</tr>
+<tr>
+<td>market.bid.min_total</td>
+<td>최소 매도/매수 금액</td>
+</tr>
+<tr>
+<td>market.ask</td>
+<td>매도 시 제약사항</td>
+</tr>
+<tr>
+<td>market.ask.currency</td>
+<td>화폐를 의미하는 영문 대문자 코드</td>
+</tr>
+<tr>
+<td>market.ask.price_unit</td>
+<td>주문금액 단위</td>
+</tr>
+<tr>
+<td>market.ask.min_total</td>
+<td>최소 매도/매수 금액</td>
+</tr>
+<tr>
+<td>market.max_total</td>
+<td>최대 매도/매수 금액</td>
+</tr>
+<tr>
+<td>market.max_total</td>
+<td>최대 매도/매수 금액</td>
+</tr>
+<tr>
+<td>market.state</td>
+<td>마켓 운영 상태</td>
+</tr>
+<tr>
+<td>bid_account</td>
+<td>매수 시 사용하는 화폐의 계좌 상태</td>
+</tr>
+<tr>
+<td>bid_account.currency</td>
+<td>화폐를 의미하는 영문 대문자 코드</td>
+</tr>
+<tr>
+<td>bid_account.balance</td>
+<td>주문가능 금액/수량</td>
+</tr>
+<tr>
+<td>bid_account.locked</td>
+<td>주문 중 묶여있는 금액/수량</td>
+</tr>
+<tr>
+<td>bid_account.avg_buy_price</td>
+<td>매수평균가</td>
+</tr>
+<tr>
+<td>bid_account.avg_buy_price_modified</td>
+<td>매수평균가 수정 여부</td>
+</tr>
+<tr>
+<td>bid_account.unit_currency</td>
+<td>평단가 기준 화폐</td>
+</tr>
+<tr>
+<td>ask_account</td>
+<td>매도 시 사용하는 화폐의 계좌 상태</td>
+</tr>
+<tr>
+<td>ask_account.currency</td>
+<td>화폐를 의미하는 영문 대문자 코드</td>
+</tr>
+<tr>
+<td>ask_account.balance</td>
+<td>주문가능 금액/수량</td>
+</tr>
+<tr>
+<td>ask_account.locked</td>
+<td>주문 중 묶여있는 금액/수량</td>
+</tr>
+<tr>
+<td>ask_account.avg_buy_price</td>
+<td>매수평균가</td>
+</tr>
+<tr>
+<td>ask_account.avg_buy_price_modified</td>
+<td>매수평균가 수정 여부</td>
+</tr>
+<tr>
+<td>ask_account.unit_currency</td>
+<td>평단가 기준 화폐</td>
+</tr>
+</tbody></table>
+<h2 id='order_info'>Order_info (개별 주문 조회)</h2>
+<p>주문 UUID 를 통해 개별 주문건을 조회합니다.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.client</span> <span class="kn">import</span> <span class="n">Upbit</span>
+
+<span class="n">access_key</span> <span class="o">=</span> <span class="s">"Your Access Key"</span>
+<span class="n">secret_key</span> <span class="o">=</span> <span class="s">"Your Secret Key"</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Order</span><span class="p">.</span><span class="n">Order_info</span><span class="p">(</span>
+    <span class="n">uuid</span><span class="o">=</span><span class="s">'9ca023a5-851b-4fec-9f0a-48cd83c2eaae'</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
+</code></pre></div>
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9ca023a5-851b-4fec-9f0a-48cd83c2eaae"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ask"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ord_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4280000.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"done"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW-BTC"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-04T13:48:09+09:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"remaining_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"reserved_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"remaining_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paid_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2140.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"executed_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"trades_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"trades"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW-BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9e8f8eba-7050-4837-8969-cfc272cbe083"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4280000.0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"funds"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4280000.0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ask"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='method-3'>Method</h3>
+<p><strong>GET</strong> <code>/v1/order</code></p>
+<h3 id='operation-code-3'>Operation Code</h3>
+<p><code>Order.Order_info</code></p>
+<h3 id='request-3'>요청 (Request)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>주문 UUID</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td>조회용 사용자 지정 값</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+    <code>uuid</code> 혹은 <code>identifier</code> 둘 중 하나의 값이 반드시 포함되어야 합니다.
+</aside>
+<h3 id='response-3'>응답 (Response)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>주문의 고유 아이디</td>
+</tr>
+<tr>
+<td>side</td>
+<td>주문 종류</td>
+</tr>
+<tr>
+<td>ord_type</td>
+<td>주문 방식</td>
+</tr>
+<tr>
+<td>price</td>
+<td>주문 당시 화폐 가격</td>
+</tr>
+<tr>
+<td>state</td>
+<td>주문 상태</td>
+</tr>
+<tr>
+<td>market</td>
+<td>마켓의 유일키</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>주문 생성 시간</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>사용자가 입력한 주문 양</td>
+</tr>
+<tr>
+<td>remaining_volume</td>
+<td>체결 후 남은 주문 양</td>
+</tr>
+<tr>
+<td>reserved_fee</td>
+<td>수수료로 예약된 비용</td>
+</tr>
+<tr>
+<td>remaining_fee</td>
+<td>남은 수수료</td>
+</tr>
+<tr>
+<td>paid_fee</td>
+<td>사용된 수수료</td>
+</tr>
+<tr>
+<td>locked</td>
+<td>거래에 사용중인 비용</td>
+</tr>
+<tr>
+<td>executed_volume</td>
+<td>체결된 양</td>
+</tr>
+<tr>
+<td>trade_count</td>
+<td>해당 주문에 걸린 체결 수</td>
+</tr>
+<tr>
+<td>trades</td>
+<td>체결</td>
+</tr>
+<tr>
+<td>trades.market</td>
+<td>마켓의 유일 키</td>
+</tr>
+<tr>
+<td>trades.uuid</td>
+<td>체결의 고유 아이디</td>
+</tr>
+<tr>
+<td>trades.price</td>
+<td>체결 가격</td>
+</tr>
+<tr>
+<td>trades.volume</td>
+<td>체결 양</td>
+</tr>
+<tr>
+<td>trades.funds</td>
+<td>체결된 총 가격</td>
+</tr>
+<tr>
+<td>trades.side</td>
+<td>체결 종류</td>
+</tr>
+<tr>
+<td>trades.created_at</td>
+<td>체결 시각</td>
+</tr>
+</tbody></table>
+<h2 id='order_info_all'>Order_info_all (주문 리스트 조회)</h2>
+<p>주문 리스트를 조회합니다.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.client</span> <span class="kn">import</span> <span class="n">Upbit</span>
+
+<span class="n">access_key</span> <span class="o">=</span> <span class="s">"Your Access Key"</span>
+<span class="n">secret_key</span> <span class="o">=</span> <span class="s">"Your Secret Key"</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Order</span><span class="p">.</span><span class="n">Order_info_all</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
+</code></pre></div>
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9ca023a5-851b-4fec-9f0a-48cd83c2eaae"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ask"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ord_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">4280000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"done"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW-BTC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"remaining_volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"reserved_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"remaining_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"paid_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">2140</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"locked"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"executed_volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trades_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='method-4'>Method</h3>
+<p><strong>GET</strong> <code>/v1/orders</code></p>
+<h3 id='operation-code-4'>Operation Code</h3>
+<p><code>Order.Order_info_all</code></p>
+<h3 id='request-4'>요청 (Request)</h3>
+<table>
+  <tr>
+    <th>
+      Parameter
+    </th>
+    <th>
+      Description
+    </th>
+  </tr>
+  <tr>
+    <td>
+        market
+    </td>
+    <td>
+        마켓 ID
+    </td>
+  </tr>
+  <tr>
+    <td>
+        uuids
+    </td>
+    <td>
+        주문 UUID의 목록
+    </td>
+  </tr>
+  <tr>
+    <td>
+        identifiers
+    </td>
+    <td>
+        주문 identifier의 목록
+    </td>
+  </tr>
+  <tr>
+    <td>
+        state
+    </td>
+    <td>
+      주문 상태
+      <ul>
+        <li>wait: 주문 대기 (default)</li>
+        <li>done: 전체 체결 완료</li>
+        <li>cancel: 주문 취소</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+  <td>
+      states
+  </td>
+  <td>
+      주문 상태의 목록
+  </td>
+</tr>
+<tr>
+  <td>
+      page
+  </td>
+  <td>
+      페이지 수 (default: 1)
+  </td>
+</tr>
+<tr>
+  <td>
+      limit
+  </td>
+  <td>
+      요청 개수 (default: 100)
+  </td>
+</tr>
+<tr>
+  <td>
+      order_by
+  </td>
+  <td>
+      정렬 방식
+      <ul>
+        <li>asc: 오름 차순</li>
+        <li>desc: 내림 차순 (default)</li>
+      </ul>
+  </td>
+</tr>
+</table>
+<h3 id='response-4'>응답 (Response)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>주문의 고유 아이디</td>
+</tr>
+<tr>
+<td>side</td>
+<td>주문 종류</td>
+</tr>
+<tr>
+<td>ord_type</td>
+<td>주문 방식</td>
+</tr>
+<tr>
+<td>price</td>
+<td>주문 당시 화폐 가격</td>
+</tr>
+<tr>
+<td>state</td>
+<td>주문 상태</td>
+</tr>
+<tr>
+<td>market</td>
+<td>마켓의 유일키</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>주문 생성 시간</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>사용자가 입력한 주문 양</td>
+</tr>
+<tr>
+<td>remaining_volume</td>
+<td>체결 후 남은 주문 양</td>
+</tr>
+<tr>
+<td>reserved_fee</td>
+<td>수수료로 예약된 비용</td>
+</tr>
+<tr>
+<td>remaining_fee</td>
+<td>남은 수수료</td>
+</tr>
+<tr>
+<td>paid_fee</td>
+<td>사용된 수수료</td>
+</tr>
+<tr>
+<td>locked</td>
+<td>거래에 사용중인 비용</td>
+</tr>
+<tr>
+<td>executed_volume</td>
+<td>체결된 양</td>
+</tr>
+<tr>
+<td>trade_count</td>
+<td>해당 주문에 걸린 체결 수</td>
+</tr>
+</tbody></table>
+<h2 id='order_new'>Order_new (주문하기)</h2>
+<p>새로운 주문 요청을 합니다.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.client</span> <span class="kn">import</span> <span class="n">Upbit</span>
+
+<span class="n">access_key</span> <span class="o">=</span> <span class="s">"Your Access Key"</span>
+<span class="n">secret_key</span> <span class="o">=</span> <span class="s">"Your Secret Key"</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Order</span><span class="p">.</span><span class="n">Order_new</span><span class="p">(</span>
+    <span class="n">market</span><span class="o">=</span><span class="s">'KRW-BTC'</span><span class="p">,</span>
+    <span class="n">side</span><span class="o">=</span><span class="s">'bid'</span><span class="p">,</span>
+    <span class="n">volume</span><span class="o">=</span><span class="s">'0.01'</span><span class="p">,</span>
+    <span class="n">price</span><span class="o">=</span><span class="s">'100.0'</span><span class="p">,</span>
+    <span class="n">ord_type</span><span class="o">=</span><span class="s">'limit'</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
+</code></pre></div>
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"uuid"</span><span class="p">:</span><span class="s2">"cdd92199-2897-4e14-9448-f923320408ad"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"side"</span><span class="p">:</span><span class="s2">"bid"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ord_type"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"price"</span><span class="p">:</span><span class="s2">"100.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"avg_price"</span><span class="p">:</span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"wait"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"market"</span><span class="p">:</span><span class="s2">"KRW-BTC"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="s2">"2018-04-10T15:42:23+09:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"volume"</span><span class="p">:</span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"remaining_volume"</span><span class="p">:</span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"reserved_fee"</span><span class="p">:</span><span class="s2">"0.0015"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"remaining_fee"</span><span class="p">:</span><span class="s2">"0.0015"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paid_fee"</span><span class="p">:</span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"locked"</span><span class="p">:</span><span class="s2">"1.0015"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"executed_volume"</span><span class="p">:</span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"trades_count"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='method-5'>Method</h3>
+<p><strong>POST</strong> <code>/v1/orders</code></p>
+<h3 id='operation-code-5'>Operation Code</h3>
+<p><code>Order.Order_new</code></p>
+<h3 id='request-5'>요청 (Request)</h3>
+<table>
+  <tr>
+    <th>
+      Parameter
+    </th>
+    <th>
+      Description
+    </th>
+  </tr>
+  <tr>
+    <td>
+        market *
+    </td>
+    <td>
+        마켓 ID (필수)
+    </td>
+  </tr>
+  <tr>
+    <td>
+        side *
+    </td>
+    <td>
+      주문 종류 (필수)
+      <ul>
+        <li>bid: 매수</li>
+        <li>ask: 매도</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+  <td>
+      volume *
+  </td>
+  <td>
+      주문량 (지정가, 시장가 매도 시 필수)
+  </td>
+</tr>
+<tr>
+  <td>
+      price *
+  </td>
+  <td>
+      주문 가격. (지정가, 시장가 매수 시 필수)
+      <br/>
+      <br/>
+      ex) KRW-BTC 마켓에서 1BTC당 1,000 KRW로 거래할 경우, 값은 1000 이 된다.
+      <br/>
+      ex) KRW-BTC 마켓에서 1BTC당 매도 1호가가 500 KRW 인 경우, 시장가 매수 시 값을 1000으로 세팅하면 2BTC가 매수된다.
+      <br/>
+      (수수료가 존재하거나 매도 1호가의 수량에 따라 상이할 수 있음)
+  </td>
+</tr>
+<tr>
+  <td>
+      ord_type *
+  </td>
+  <td>
+      주문 유형 (필수)
+      <ul>
+        <li>limit: 지정가 주문</li>
+        <li>price: 시장가 주문 (매수)</li>
+        <li>market: 시장가 주문 (매도)</li>
+      </ul>
+  </td>
+</tr>
+<tr>
+  <td>
+      identifier
+  </td>
+  <td>
+      주문 조회용 사용자 지정값 (선택)
+  </td>
+</tr>
+</table>
+
+<aside class="warning">
+    <b>NOTE</b>: 원화 마켓 가격 단위를 확인하세요.
+    <br/>
+    <br/>
+    원화 마켓에서 주문을 요청 할 경우, <a href="https://docs.upbit.com/docs/%EC%9B%90%ED%99%94-%EB%A7%88%EC%BC%93-%EC%A3%BC%EB%AC%B8-%EA%B0%80%EA%B2%A9-%EB%8B%A8%EC%9C%84">원화 마켓 주문 가격 단위</a>를 확인하여 값을 입력해주세요.
+</aside>
+
+<aside class="warning">
+    <b>NOTE</b>: identifier 파라미터 사용
+    <br/>
+    <br/>
+    <code>identifier</code>는 서비스에서 발급하는 <code>uuid</code>가 아닌 이용자가 직접  발급하는 키값으로, 주문을 조회하기 위해 할당하는 값입니다. 해당  값은 사용자의 전체 주문 내 유일한 값을 전달해야하며, 비록 주문 요청 시 오류가 발생하더라도 같은 값으로 다시 요청을 보낼 수 없습니다.
+    <br/>
+    <br/>
+    주문의 성공 / 실패 여부와 관계없이 중복해서 들어온 <code>identifier</code> 값에서는 중복 오류가 발생하니, 매 요청시 새로운 값을  생성해주세요.
+</aside>
+
+<aside class="warning">
+    <b>NOTE</b>: 시장가 주문
+    <br/>
+    <br/>
+    시장가 주문은 <code>ord_type</code> 필드를 <code>price</code> or <code>market</code> 으로 설정해야됩니다.
+    <br/>
+    <br/>
+    매수 주문의 경우 <code>ord_type</code>을 <code>price</code>로 설정하고 <code>volume</code>을 <code>null</code> 혹은 제외해야 합니다.
+    <br/>
+    매도 주문의 경우 <code>ord_type</code>을 <code>market</code>으로 설정하고 <code>price</code>를 <code>null</code> 혹은 제외해야 합니다.
+</aside>
+<h3 id='response-5'>응답 (Response)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>주문의 고유 아이디</td>
+</tr>
+<tr>
+<td>side</td>
+<td>주문 종류</td>
+</tr>
+<tr>
+<td>ord_type</td>
+<td>주문 방식</td>
+</tr>
+<tr>
+<td>price</td>
+<td>주문 당시 화폐 가격</td>
+</tr>
+<tr>
+<td>avg_price</td>
+<td>체결 가격의 평균가</td>
+</tr>
+<tr>
+<td>state</td>
+<td>주문 상태</td>
+</tr>
+<tr>
+<td>market</td>
+<td>마켓의 유일키</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>주문 생성 시간</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>사용자가 입력한 주문 양</td>
+</tr>
+<tr>
+<td>remaining_volume</td>
+<td>체결 후 남은 주문 양</td>
+</tr>
+<tr>
+<td>reserved_fee</td>
+<td>수수료로 예약된 비용</td>
+</tr>
+<tr>
+<td>remaining_fee</td>
+<td>남은 수수료</td>
+</tr>
+<tr>
+<td>paid_fee</td>
+<td>사용된 수수료</td>
+</tr>
+<tr>
+<td>locked</td>
+<td>거래에 사용중인 비용</td>
+</tr>
+<tr>
+<td>executed_volume</td>
+<td>체결된 양</td>
+</tr>
+<tr>
+<td>trade_count</td>
+<td>해당 주문에 걸린 체결 수</td>
+</tr>
+</tbody></table>
+<h2 id='order_cancel'>Order_cancel (주문 취소 접수)</h2>
+<p>주문 UUID를 통해 해당 주문에 대한 취소 접수를 합니다.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.client</span> <span class="kn">import</span> <span class="n">Upbit</span>
+
+<span class="n">access_key</span> <span class="o">=</span> <span class="s">"Your Access Key"</span>
+<span class="n">secret_key</span> <span class="o">=</span> <span class="s">"Your Secret Key"</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Order</span><span class="p">.</span><span class="n">Order_cancel</span><span class="p">(</span>
+    <span class="n">uuid</span><span class="o">=</span><span class="s">'cdd92199-2897-4e14-9448-f923320408ad'</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
+</code></pre></div>
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"uuid"</span><span class="p">:</span><span class="s2">"cdd92199-2897-4e14-9448-f923320408ad"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"side"</span><span class="p">:</span><span class="s2">"bid"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ord_type"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"price"</span><span class="p">:</span><span class="s2">"100.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"wait"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"market"</span><span class="p">:</span><span class="s2">"KRW-BTC"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="s2">"2018-04-10T15:42:23+09:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"volume"</span><span class="p">:</span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"remaining_volume"</span><span class="p">:</span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"reserved_fee"</span><span class="p">:</span><span class="s2">"0.0015"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"remaining_fee"</span><span class="p">:</span><span class="s2">"0.0015"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paid_fee"</span><span class="p">:</span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"locked"</span><span class="p">:</span><span class="s2">"1.0015"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"executed_volume"</span><span class="p">:</span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"trades_count"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='method-6'>Method</h3>
+<p><strong>DELETE</strong> <code>/v1/order</code></p>
+<h3 id='operation-code-6'>Operation Code</h3>
+<p><code>Order.Order_cancel</code></p>
+<h3 id='request-6'>요청 (Request)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>주문 UUID</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td>조회용 사용자 지정 값</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+    <code>uuid</code> 혹은 <code>identifier</code> 둘 중 하나의 값이 반드시 포함되어야 합니다.
+</aside>
+<h3 id='response-6'>응답 (Response)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>주문의 고유 아이디</td>
+</tr>
+<tr>
+<td>side</td>
+<td>주문 종류</td>
+</tr>
+<tr>
+<td>ord_type</td>
+<td>주문 방식</td>
+</tr>
+<tr>
+<td>price</td>
+<td>주문 당시 화폐 가격</td>
+</tr>
+<tr>
+<td>state</td>
+<td>주문 상태</td>
+</tr>
+<tr>
+<td>market</td>
+<td>마켓의 유일키</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>주문 생성 시간</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>사용자가 입력한 주문 양</td>
+</tr>
+<tr>
+<td>remaining_volume</td>
+<td>체결 후 남은 주문 양</td>
+</tr>
+<tr>
+<td>reserved_fee</td>
+<td>수수료로 예약된 비용</td>
+</tr>
+<tr>
+<td>remaining_fee</td>
+<td>남은 수수료</td>
+</tr>
+<tr>
+<td>paid_fee</td>
+<td>사용된 수수료</td>
+</tr>
+<tr>
+<td>locked</td>
+<td>거래에 사용중인 비용</td>
+</tr>
+<tr>
+<td>executed_volume</td>
+<td>체결된 양</td>
+</tr>
+<tr>
+<td>trade_count</td>
+<td>해당 주문에 걸린 체결 수</td>
+</tr>
+</tbody></table>

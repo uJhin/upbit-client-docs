@@ -1,0 +1,1029 @@
+<h1 id='websocket'>WebSocket (웹 소켓)</h1><h2 id='476966c5a8'>개요</h2><h3 id='1'>1. 시세 정보</h3>
+<p>WebSocket을 이용하여 수신할 수 있는 정보는 다음과 같습니다.</p>
+
+<ol>
+<li>현재가 (스냅샷, 실시간 정보 제공)</li>
+<li>체결 (스냅샷, 실시간 정보 제공)</li>
+<li>호가 (스냅샷, 실시간 정보 제공)</li>
+</ol>
+
+<p>각각의 정보는 <code>스냅샷</code>과 <code>실시간 데이터</code>로 나뉘며 요청 방법에 따라 수신할 수 있는 데이터가 달라집니다.</p>
+
+<p><code>스냅샷</code> 정보란 요청 당시의 상태를 의미합니다.</p>
+
+<p><code>실시간</code> 정보란 요청 정보가 스트림 형태로 지속적으로 제공되는 것을 의미합니다.</p>
+
+<p>WebSocket을 이용하여 스냅샷 정보나 실시간 정보를 요청할 수 있으며 둘 중 하나의 정보만을 요청할 수도 있습니다.</p>
+
+<p>자세한 요청 방법은 <code>2. 요청 포맷</code> 섹션과 <code>UpbitWebSocket</code> 섹션에서 다룹니다.</p>
+<h3 id='2'>2. 요청 형식</h3>
+<p>연결이 성공적으로 이루어졌다면 웹소켓 서버에 여러가지 요청을 할 수 있습니다.
+요청은 JSON Object를 이용하며 응답 또한 JSON Object 입니다.</p>
+
+<p>요청은 크게 <code>[{ticket field}, {type field}, {format field}]</code> 로 나누어지며 각각의 필드는 다음 구성요소로 이루어져 있습니다.</p>
+
+<p><strong>Ticket Field</strong></p>
+
+<p>일반적으로 용도를 식별하기 위해 <code>ticket</code> 이라는 필드값이 필요합니다.</p>
+
+<p>이 값은 시세를 수신하는 대상을 식별하며 되도록 유니크한 값을 사용하도록 권장합니다. (UUID 등)</p>
+
+<table><thead>
+<tr>
+<th>필드 명</th>
+<th>내용</th>
+<th>타입</th>
+<th>필요 여부</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ticket</td>
+<td>식별값</td>
+<td>String</td>
+<td>O</td>
+</tr>
+</tbody></table>
+
+<p><strong>Type Field</strong></p>
+
+<p>수신하고 싶은 시세 정보를 나열하는 필드입니다.</p>
+
+<p><code>isOnlySnapshot</code>, <code>isOnlyRealtime</code> 필드는 생략 가능하며 모두 생략시 스냅샷과 실시간 데이터 모두를 수신합니다.</p>
+
+<p>하나의 요청에 <code>{type field}</code> 는 여러개를 명시할 수 있습니다.</p>
+
+<table><thead>
+<tr>
+<th>필드명</th>
+<th>내용</th>
+<th>타입</th>
+<th>필요 여부</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>수신할 시세 타입 (현재가: <code>ticker</code>, 체결: <code>trade</code>, 호가: <code>orderbook</code>)</td>
+<td>String</td>
+<td>O</td>
+</tr>
+<tr>
+<td>codes</td>
+<td>수신할 시세 종목 정보 (<strong>주의</strong>: codes 필드에 명시되는 종목들은 대문자로 요청해야 합니다.)</td>
+<td>List</td>
+<td>O</td>
+</tr>
+<tr>
+<td>isOnlySnapshot</td>
+<td>시세 스냅샷만 제공</td>
+<td>Boolean</td>
+<td>X</td>
+</tr>
+<tr>
+<td>isOnlyRealtime</td>
+<td>실시간 시세만 제공</td>
+<td>Boolean</td>
+<td>X</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+    <b>NOTE</b>: v1.1.0 Orderbook Unit 갯수 커스텀 수신기능 추가
+    <br/><br/>
+    v1.1.0 부터 orderbook 타입의 패킷에 한하여 Orderbook Unit의 갯수를 최대 제공 갯수(15개) 안에서 원하는 만큼 조절하여 호출 가능합니다.
+    <br/>
+    기존의 <code>codes</code> 항목에 시세 종목과 원하는 Unit 갯수를 넣어주시면 됩니다.
+    <br/>
+    형식: <code>{code}.{count}</code>
+    <br/>
+    ex) "KRW-BTC.5", "BTC-XRP.3"
+    <br/><br/>
+</aside>
+
+<p><strong>Format Field</strong></p>
+
+<p>마지막으로 포맷 정보입니다. <code>Simple</code>로 지정될 경우 응답의 필드명이 모두 간소화됩니다.</p>
+
+<p>트래픽 부담이 클 때 사용하는 방법입니다.</p>
+
+<table><thead>
+<tr>
+<th>필드명</th>
+<th>내용</th>
+<th>타입</th>
+<th>필요 여부</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>format</td>
+<td>포맷 (<code>SIMPLE</code>: 간소화된 필드명, <code>DEFAULT</code>: 기본값(생략 가능)</td>
+<td>String</td>
+<td>X (기본: <code>Default</code>)</td>
+</tr>
+</tbody></table>
+<h2 id='upbitwebsocket'>UpbitWebSocket</h2>
+<p>고성능 네트워크 및 웹 서버 비동기(async) 프레임워크 기반의 동시성 코드 작성을 위한 업비트 웹 소켓 클래스를 생성합니다.</p>
+
+<p>자세한 사항은 파이썬 표준 라이브러리 <a href="https://docs.python.org/3/library/asyncio.html"><code>asyncio</code></a> 패키지를 참고해주세요.</p>
+
+<blockquote>
+<p>Example Code</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.websocket</span> <span class="kn">import</span> <span class="n">UpbitWebSocket</span>
+
+<span class="n">sock</span> <span class="o">=</span> <span class="n">UpbitWebSocket</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">sock</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">with</span> <span class="n">sock</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="c1"># Do something
+</span>    <span class="k">pass</span>
+</code></pre></div>
+<blockquote>
+<p>Result Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="n">UpbitWebSocket</span><span class="p">(</span><span class="n">wss</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="p">.</span><span class="n">upbit</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">websocket</span><span class="o">/</span><span class="n">v1</span><span class="p">)</span>
+</code></pre></div><h3 id='upbitwebsocket-uri-websocket_uri-ping_interval-none-ping_timeout-none'>UpbitWebSocket(uri=WEBSOCKET_URI, ping_interval=None, ping_timeout=None)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uri</td>
+<td>웹 소켓에 연결할 URI. (기본값: <code>wss://api.upbit.com/websocket/v1</code>)</td>
+</tr>
+<tr>
+<td>ping_interval</td>
+<td>ping 간격 제한 (기본값: <code>None</code>)</td>
+</tr>
+<tr>
+<td>ping_timeout</td>
+<td>ping 시간 초과 제한 (기본값: <code>None</code>)</td>
+</tr>
+</tbody></table>
+<h2 id='socket-connection'>socket.Connection</h2>
+<p><strong>Property</strong></p>
+
+<p>웹 소켓에 연결하기 위해 생성된 Connection 객체입니다.</p>
+
+<p>위의 예제와 동일한 결과를 가집니다.</p>
+
+<blockquote>
+<p>Example Code</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.websocket</span> <span class="kn">import</span> <span class="n">UpbitWebSocket</span>
+
+<span class="n">sock</span> <span class="o">=</span> <span class="n">UpbitWebSocket</span><span class="p">()</span>
+<span class="n">connection</span> <span class="o">=</span> <span class="n">sock</span><span class="p">.</span><span class="n">Connection</span>
+
+<span class="k">async</span> <span class="k">with</span> <span class="n">connection</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="c1"># Do Something
+</span>    <span class="k">pass</span>
+</code></pre></div><h2 id='socket-connect'>socket.connect</h2>
+<p><strong>Method</strong></p>
+
+<p>URI에 연결을 시도하고 Connection 객체를 재생성합니다.</p>
+
+<p><code>UpbitWebSocket</code> 클래스의 <code>__init__</code> 메소드 호출 시 자동으로 호출됩니다.</p>
+
+<blockquote>
+<p>Example Code</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.websocket</span> <span class="kn">import</span> <span class="n">UpbitWebSocket</span>
+
+<span class="n">sock</span> <span class="o">=</span> <span class="n">UpbitWebSocket</span><span class="p">()</span>
+<span class="n">sock</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="n">ping_interval</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">ping_timeout</span><span class="o">=</span><span class="mi">20</span>
+<span class="p">)</span>
+
+<span class="k">async</span> <span class="k">with</span> <span class="n">sock</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="c1"># Do Something
+</span>    <span class="k">pass</span>
+</code></pre></div><h3 id='socket-connect-ping_interval-none-ping_timeout-none'>socket.connect(ping_interval=None, ping_timeout=None)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ping_interval</td>
+<td>ping 간격 제한 (기본값: <code>None</code>)</td>
+</tr>
+<tr>
+<td>ping_timeout</td>
+<td>ping 시간 초과 제한 (기본값: <code>None</code>)</td>
+</tr>
+</tbody></table>
+<h2 id='conn-send'>conn.send</h2>
+<p>웹 소켓에 데이터를 수신합니다.</p>
+
+<blockquote>
+<p>Example Code</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.websocket</span> <span class="kn">import</span> <span class="n">UpbitWebSocket</span>
+
+<span class="n">sock</span> <span class="o">=</span> <span class="n">UpbitWebSocket</span><span class="p">()</span>
+
+<span class="k">async</span> <span class="k">with</span> <span class="n">sock</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="k">await</span> <span class="n">conn</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="s">'PING'</span><span class="p">)</span>
+</code></pre></div><h3 id='conn-send-message'>conn.send(message)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>message *</td>
+<td>서버에 수신할 데이터</td>
+</tr>
+</tbody></table>
+<h2 id='conn-recv'>conn.recv</h2>
+<p>서버로부터 전달받은 바이트 스트림(bytes stream) 데이터를 받습니다.</p>
+
+<p>예외를 발생시키는 경우는 아래와 같습니다.</p>
+
+<ul>
+<li><strong>ConnectionClosed</strong>: <code>Connection</code> 객체가 <code>Close</code> 상태가 되었을 경우</li>
+<li><strong>RuntimeError</strong>: 두 가지 코루틴이 동시에 <code>recv</code> 를 호출하는 경우</li>
+</ul>
+
+<blockquote>
+<p>Example Code</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">upbit.websocket</span> <span class="kn">import</span> <span class="n">UpbitWebSocket</span>
+
+<span class="n">sock</span> <span class="o">=</span> <span class="n">UpbitWebSocket</span><span class="p">()</span>
+
+<span class="k">async</span> <span class="k">with</span> <span class="n">sock</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="k">await</span> <span class="n">conn</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="s">'PING'</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="k">await</span> <span class="n">conn</span><span class="p">.</span><span class="n">recv</span><span class="p">()</span>
+
+    <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="s">'{"\S+":"\S+"}'</span><span class="p">)</span>
+    <span class="n">search</span> <span class="o">=</span> <span class="n">pattern</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">))</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">loads</span><span class="p">(</span><span class="n">search</span><span class="p">.</span><span class="n">group</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>Result</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UP"</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='conn-recv-2'>conn.recv()</h3>
+<p>No Parameters</p>
+<h2 id='upbitwebsocket-generate_type_field-type-field-generate'>UpbitWebSocket.generate_type_field (Type Field Generate)</h2>
+<p><strong>staticmethod</strong></p>
+
+<p>웹 소켓 수신에 필요한 payload의 type field 데이터를 generate 합니다.</p>
+
+<p>요청 형식에 대한 사항은 위의 <code>2. 요청 형식</code> 섹션을 참고해주세요.</p>
+
+<blockquote>
+<p>Example Code</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.websocket</span> <span class="kn">import</span> <span class="n">UpbitWebSocket</span>
+
+<span class="n">currencies</span> <span class="o">=</span> <span class="p">[</span><span class="s">'KRW-BTC'</span><span class="p">,</span> <span class="s">'KRW-ETH'</span><span class="p">]</span>
+
+<span class="n">type_field</span> <span class="o">=</span> <span class="n">UpbitWebSocket</span><span class="p">.</span><span class="n">generate_type_field</span><span class="p">(</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s">"trade"</span><span class="p">,</span>
+    <span class="n">codes</span><span class="o">=</span><span class="n">currencies</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">type_field</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>Result</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"codes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"KRW-BTC"</span><span class="p">,</span><span class="w"> </span><span class="s2">"KRW-ETH"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='upbitwebsocket-generate_type_field-type-codes-isonlysnapshot-none-isonlyrealtime-none'>UpbitWebSocket.generate_type_field(type, codes, isOnlySnapshot=None, isOnlyRealtime=None)</h3>
+<p><strong>staticmethod</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type *</td>
+<td>수신할 시세 타입 (현재가: <code>ticker</code>, 체결: <code>trade</code>, 호가: <code>orderbook</code>)</td>
+</tr>
+<tr>
+<td>codes *</td>
+<td>수신할 시세 종목 정보 (ex. <code>[&#39;KRW-BTC&#39;, &#39;KRW-ETH&#39;]</code>)</td>
+</tr>
+<tr>
+<td>isOnlySnapshot</td>
+<td>시세 스냅샷만 제공 여부 (<code>True</code>, <code>False</code>)</td>
+</tr>
+<tr>
+<td>isOnlyRealtime</td>
+<td>실시간 시세만 제공 여부 (<code>True</code>, <code>False</code>)</td>
+</tr>
+</tbody></table>
+<h2 id='upbitwebsocket-generate_orderbook_codes-orderbook-codes-generate'>UpbitWebSocket.generate_orderbook_codes (Orderbook Codes Generate)</h2>
+<p><strong>staticmethod</strong></p>
+
+<p><code>type</code> 파라미터가 <code>orderbook</code>일 경우에 필요한 <code>codes</code> 파라미터를 요청 형식에 맞춰 generate 합니다.</p>
+
+<blockquote>
+<p>Example Code</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.websocket</span> <span class="kn">import</span> <span class="n">UpbitWebSocket</span>
+
+<span class="n">currencies</span> <span class="o">=</span> <span class="p">[</span><span class="s">'KRW-BTC'</span><span class="p">,</span> <span class="s">'KRW-ETH'</span><span class="p">]</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="n">codes</span> <span class="o">=</span> <span class="n">UpbitWebSocket</span><span class="p">.</span><span class="n">generate_orderbook_codes</span><span class="p">(</span>
+    <span class="n">currencies</span><span class="o">=</span><span class="n">currencies</span><span class="p">,</span>
+    <span class="n">counts</span><span class="o">=</span><span class="n">counts</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">codes</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>Result</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="s2">"KRW-BTC.5"</span><span class="p">,</span><span class="w"> </span><span class="s2">"KRW-ETH.5"</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='upbitwebsocket-generate_orderbook_codes-currencies-counts-none'>UpbitWebSocket.generate_orderbook_codes(currencies, counts=None)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>currencies *</td>
+<td>수신할 시세 종목들</td>
+</tr>
+<tr>
+<td>counts</td>
+<td>수신할 각 시세 종목에 대한 개수</td>
+</tr>
+</tbody></table>
+<h2 id='upbitwebsocket-generate_payload-payload-generate'>UpbitWebSocket.generate_payload (Payload Generate)</h2>
+<p><strong>staticmethod</strong></p>
+
+<p>웹 소켓 수신에 필요한 payload 데이터를 json 포맷 형식의 문자열로 generate 합니다.</p>
+
+<blockquote>
+<p>Example Code</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.websocket</span> <span class="kn">import</span> <span class="n">UpbitWebSocket</span>
+
+
+<span class="n">codes</span> <span class="o">=</span> <span class="p">[</span><span class="s">'KRW-BTC'</span><span class="p">,</span> <span class="s">'KRW-ETH'</span><span class="p">,</span> <span class="s">'KRW-BCH'</span><span class="p">,</span> <span class="s">'KRW-XRP'</span><span class="p">]</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">codes</span><span class="p">))]</span>
+
+<span class="n">ord_codes</span> <span class="o">=</span> <span class="n">UpbitWebSocket</span><span class="p">.</span><span class="n">generate_orderbook_codes</span><span class="p">(</span>
+    <span class="n">currencies</span><span class="o">=</span><span class="n">codes</span><span class="p">,</span>
+    <span class="n">counts</span><span class="o">=</span><span class="n">counts</span>
+<span class="p">)</span>
+
+<span class="n">trade</span> <span class="o">=</span> <span class="n">UpbitWebSocket</span><span class="p">.</span><span class="n">generate_type_field</span><span class="p">(</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s">'trade'</span><span class="p">,</span>
+    <span class="n">codes</span><span class="o">=</span><span class="n">codes</span>
+<span class="p">)</span>
+<span class="n">orderbook</span> <span class="o">=</span> <span class="n">UpbitWebSocket</span><span class="p">.</span><span class="n">generate_type_field</span><span class="p">(</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s">'orderbook'</span><span class="p">,</span>
+    <span class="n">codes</span><span class="o">=</span><span class="n">ord_codes</span>
+<span class="p">)</span>
+
+<span class="n">type_fields</span> <span class="o">=</span> <span class="p">[</span><span class="n">trade</span><span class="p">,</span> <span class="n">orderbook</span><span class="p">]</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="n">UpbitWebSocket</span><span class="p">.</span><span class="n">generate_payload</span><span class="p">(</span>
+    <span class="n">type_fields</span><span class="o">=</span><span class="n">type_fields</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s">'SIMPLE'</span>
+<span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>Result</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"ticket"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43552c23-6596-478d-8f71-b8289779a996"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"codes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"KRW-BTC"</span><span class="p">,</span><span class="w"> </span><span class="s2">"KRW-ETH"</span><span class="p">,</span><span class="w"> </span><span class="s2">"KRW-BCH"</span><span class="p">,</span><span class="w"> </span><span class="s2">"KRW-XRP"</span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orderbook"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"codes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"KRW-BTC.1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"KRW-ETH.1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"KRW-BCH.1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"KRW-XRP.1"</span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SIMPLE"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='upbitwebsocket-generate_payload-type_fields-ticket-none-format-39-default-39'>UpbitWebSocket.generate_payload(type_fields, ticket=None, format=&#39;DEFAULT&#39;)</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type_fields *</td>
+<td>Type Fields</td>
+</tr>
+<tr>
+<td>ticket</td>
+<td>식별값 (기본값은 <code>uuid4</code> 형식으로 생성)</td>
+</tr>
+<tr>
+<td>format</td>
+<td>포맷, <code>SIMPLE</code>: 간소화된 필드명, <code>DEFAULT</code>: 기본 포맷 (생략 가능)</td>
+</tr>
+</tbody></table>
+<h2 id='8240d4d69a'>웹 소켓으로 시세 정보 요청하기</h2>
+<p>웹 소켓을 통해 시세 정보를 요청합니다.</p>
+
+<blockquote>
+<p>Example Code</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">asyncio</span>
+
+<span class="kn">from</span> <span class="nn">upbit.websocket</span> <span class="kn">import</span> <span class="n">UpbitWebSocket</span>
+
+
+<span class="c1"># Definition async function
+</span><span class="k">async</span> <span class="k">def</span> <span class="nf">ticker</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">payload</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">sock</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">conn</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+            <span class="n">recv</span> <span class="o">=</span> <span class="k">await</span> <span class="n">conn</span><span class="p">.</span><span class="n">recv</span><span class="p">()</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">recv</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+
+<span class="n">sock</span> <span class="o">=</span> <span class="n">UpbitWebSocket</span><span class="p">()</span>
+
+<span class="n">currencies</span> <span class="o">=</span> <span class="p">[</span><span class="s">'KRW-BTC'</span><span class="p">,</span> <span class="s">'KRW-ETH'</span><span class="p">]</span>
+<span class="n">type_field</span> <span class="o">=</span> <span class="n">sock</span><span class="p">.</span><span class="n">generate_type_field</span><span class="p">(</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s">'ticker'</span><span class="p">,</span>
+    <span class="n">codes</span><span class="o">=</span><span class="n">currencies</span>
+<span class="p">)</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="n">sock</span><span class="p">.</span><span class="n">generate_payload</span><span class="p">(</span>
+    <span class="n">type_fields</span><span class="o">=</span><span class="p">[</span><span class="n">type_field</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">event_loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="p">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+<span class="n">event_loop</span><span class="p">.</span><span class="n">run_until_complete</span><span class="p">(</span> <span class="n">ticker</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span> <span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>Result</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW-BTC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"opening_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">36408000.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"high_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">38161000.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"low_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">35907000.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trade_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">36784000.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"prev_closing_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">36408000.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"acc_trade_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">466420626861.1874</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"change"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RISE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"change_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">376000.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signed_change_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">376000.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"change_rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0103274006</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signed_change_rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0103274006</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ask_bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BID"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trade_volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.004996</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"acc_trade_volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">12633.27063535</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trade_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20210201"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trade_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192943"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trade_timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1612207783000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"acc_ask_volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">6355.28646728</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"acc_bid_volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">6277.98416807</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"highest_52_week_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">48550000.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"highest_52_week_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lowest_52_week_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">5489000.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lowest_52_week_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-13"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trade_status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"market_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"market_state_for_ios"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_trading_suspended"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"delisting_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"market_warning"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NONE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1612207783496</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"acc_trade_price_24h"</span><span class="p">:</span><span class="w"> </span><span class="mf">503390500539.5724</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"acc_trade_volume_24h"</span><span class="p">:</span><span class="w"> </span><span class="mf">13650.71883738</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"stream_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SNAPSHOT"</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW-ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"opening_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">1444000.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"high_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">1509500.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"low_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">1413000.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trade_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">1444000.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"prev_closing_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">1444000.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"acc_trade_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">331846956832.1946</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"change"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVEN"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"change_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signed_change_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"change_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signed_change_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ask_bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ASK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trade_volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"acc_trade_volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">229202.315562</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trade_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20210201"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trade_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192925"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trade_timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1612207765000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"acc_ask_volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">126760.03539062</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"acc_bid_volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">102442.28017138</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"highest_52_week_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">1626000.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"highest_52_week_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lowest_52_week_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">124350.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lowest_52_week_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-13"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trade_status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"market_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"market_state_for_ios"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_trading_suspended"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"delisting_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"market_warning"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NONE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1612207765752</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"acc_trade_price_24h"</span><span class="p">:</span><span class="w"> </span><span class="mf">354570292652.8257</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"acc_trade_volume_24h"</span><span class="p">:</span><span class="w"> </span><span class="mf">244893.27187195</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"stream_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SNAPSHOT"</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="err">...</span><span class="w">
+</span></code></pre></div><h3 id='request-parameters'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payload</td>
+<td>포맷에 맞춰진 요청 데이터</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<p><strong>현재가(Ticker) 응답</strong></p>
+
+<table><thead>
+<tr>
+<th>필드명</th>
+<th>축약형 (format: SIMPLE)</th>
+<th>내용</th>
+<th>타입</th>
+<th>값</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>ty</td>
+<td>타입</td>
+<td>String</td>
+<td><code>ticker</code> : 현재가</td>
+</tr>
+<tr>
+<td>code</td>
+<td>cd</td>
+<td>마켓 코드 (ex. KRW-BTC)</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>opening_price</td>
+<td>op</td>
+<td>시가</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>high_price</td>
+<td>hp</td>
+<td>고가</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>low_price</td>
+<td>lp</td>
+<td>저가</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>trade_price</td>
+<td>tp</td>
+<td>현재가</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>prev_closing_price</td>
+<td>pcp</td>
+<td>전일 종가</td>
+<td>Double</td>
+<td></td>
+</tr>
+<tr>
+<td>change</td>
+<td>c</td>
+<td>전일 대비</td>
+<td>String</td>
+<td><code>RISE</code>: 상승, <code>EVEN</code>: 보합, <code>FALL</code>: 하락</td>
+</tr>
+<tr>
+<td>change_price</td>
+<td>cp</td>
+<td>부호 없는 전일 대비 값</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>signed_change_price</td>
+<td>scp</td>
+<td>전일 대비 값</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>change_rate</td>
+<td>cr</td>
+<td>부호 없는 전일 대비 등락율</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>signed_change_rate</td>
+<td>scr</td>
+<td>전일 대비 등락율</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>trade_volume</td>
+<td>tv</td>
+<td>가장 최근 거래량</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>acc_trade_volume</td>
+<td>atv</td>
+<td>누적 거래량(UTC 0시 기준)</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>acc_trade_volume_24h</td>
+<td>atv24h</td>
+<td>24시간 누적 거래량</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>acc_trade_price</td>
+<td>atp</td>
+<td>누적 거래대금(UTC 0시 기준)</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>acc_trade_price_24h</td>
+<td>atp24h</td>
+<td>24시간 누적 거래대금</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>trade_date</td>
+<td>tdt</td>
+<td>최근 거래 일자(UTC)</td>
+<td>String</td>
+<td><code>yyyyMMdd</code></td>
+</tr>
+<tr>
+<td>trade_time</td>
+<td>ttm</td>
+<td>최근 거래 시각(UTC)</td>
+<td>String</td>
+<td><code>HHmmss</code></td>
+</tr>
+<tr>
+<td>trade_timestamp</td>
+<td>ttms</td>
+<td>체결 타임스탬프 (milliseconds)</td>
+<td>Long</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ask_bid</td>
+<td>ab</td>
+<td>매수/매도 구분</td>
+<td>String</td>
+<td><code>ASK</code>: 매도, <code>BID</code>: 매수</td>
+</tr>
+<tr>
+<td>acc_ask_volume</td>
+<td>aav</td>
+<td>누적 매도량</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>acc_bid_volume</td>
+<td>abv</td>
+<td>누적 매수량</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>highest_52_week_price</td>
+<td>h52wp</td>
+<td>52주 최고가</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>highest_52_week_date</td>
+<td>h52wdt</td>
+<td>52주 최고가 달성일</td>
+<td>String</td>
+<td><code>yyyy-MM-dd</code></td>
+</tr>
+<tr>
+<td>lowest_52_week_price</td>
+<td>l52wp</td>
+<td>52주 최저가</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>lowest_52_week_date</td>
+<td>l52wdt</td>
+<td>52주 최저가 달성일</td>
+<td>String</td>
+<td><code>yyyy-MM-dd</code></td>
+</tr>
+<tr>
+<td>trade_status</td>
+<td>ts</td>
+<td>거래상태 *deprecated</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>market_state</td>
+<td>ms</td>
+<td>거래상태</td>
+<td>String</td>
+<td><code>PREVIEW</code>: 입금지원, <code>ACTIVE</code>: 거래지원가능, <code>DELISTED</code> : 거래지원종료</td>
+</tr>
+<tr>
+<td>market_state_for_ios</td>
+<td>msfi</td>
+<td>거래 상태 *deprecated</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>is_trading_suspended</td>
+<td>its</td>
+<td>거래 정지 여부</td>
+<td>Boolean</td>
+<td>-</td>
+</tr>
+<tr>
+<td>delisting_date</td>
+<td>dd</td>
+<td>상장폐지일</td>
+<td>Date</td>
+<td>-</td>
+</tr>
+<tr>
+<td>market_warning</td>
+<td>mw</td>
+<td>유의 종목 여부</td>
+<td>String</td>
+<td><code>NONE</code>: 해당없음, <code>CAUTION</code>: 투자유의</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>tms</td>
+<td>타임스탬프 (milliseconds)</td>
+<td>Long</td>
+<td>-</td>
+</tr>
+<tr>
+<td>stream_type</td>
+<td>st</td>
+<td>스트림 타입</td>
+<td>String</td>
+<td><code>SNAPSHOT</code>: 스냅샷, <code>REALTIME</code>: 실시간</td>
+</tr>
+</tbody></table>
+
+<p><strong>체결(Trade) 응답</strong></p>
+
+<table><thead>
+<tr>
+<th>필드명</th>
+<th>축약형 (format: SIMPLE)</th>
+<th>내용</th>
+<th>타입</th>
+<th>값</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>ty</td>
+<td>타입</td>
+<td>String</td>
+<td><code>trade</code>: 체결</td>
+</tr>
+<tr>
+<td>code</td>
+<td>cd</td>
+<td>마켓 코드 (ex. KRW-BTC)</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>trade_price</td>
+<td>tp</td>
+<td>체결 가격</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>trade_volume</td>
+<td>tv</td>
+<td>체결량</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ask_bid</td>
+<td>ab</td>
+<td>매수/매도 구분</td>
+<td>String</td>
+<td><code>ASK</code>: 매도, <code>BID</code>: 매수</td>
+</tr>
+<tr>
+<td>prev_closing_price</td>
+<td>pcp</td>
+<td>전일 종가</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>change</td>
+<td>c</td>
+<td>전일 대비</td>
+<td>String</td>
+<td><code>RISE</code> : 상승, <code>EVEN</code> : 보합, <code>FALL</code> : 하락</td>
+</tr>
+<tr>
+<td>change_price</td>
+<td>cp</td>
+<td>부호 없는 전일 대비 값</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>trade_date</td>
+<td>td</td>
+<td>체결 일자(UTC 기준)</td>
+<td>String</td>
+<td><code>yyyy-MM-dd</code></td>
+</tr>
+<tr>
+<td>trade_time</td>
+<td>ttm</td>
+<td>체결 시각(UTC 기준)</td>
+<td>String</td>
+<td><code>HH:mm:ss</code></td>
+</tr>
+<tr>
+<td>trade_timestamp</td>
+<td>ttms</td>
+<td>체결 타임스탬프 (millisecond)</td>
+<td>Long</td>
+<td>-</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>tms</td>
+<td>타임스탬프 (millisecond)</td>
+<td>Long</td>
+<td>-</td>
+</tr>
+<tr>
+<td>sequential_id</td>
+<td>sid</td>
+<td>체결 번호 (Unique)</td>
+<td>Long</td>
+<td>-</td>
+</tr>
+<tr>
+<td>stream_type</td>
+<td>st</td>
+<td>스트림 타입</td>
+<td>String</td>
+<td><code>SNAPSHOT</code>: 스냅샷, <code>REALTIME</code>: 실시간</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+    <code>sequential_id</code> 필드는 체결의 유일성 판단을 위한 근거로 쓰일 수 있습니다.
+    <br/>
+    하지만 체결의 순서를 보장하지는 못합니다.
+</aside>
+
+<p><strong>호가(Orderbook) 응답</strong></p>
+
+<table><thead>
+<tr>
+<th>필드명</th>
+<th>축약형 (format: SIMPLE)</th>
+<th>내용</th>
+<th>타입</th>
+<th>값</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>ty</td>
+<td>타입</td>
+<td>String</td>
+<td><code>orderbook</code>: 호가</td>
+</tr>
+<tr>
+<td>code</td>
+<td>cd</td>
+<td>마켓 코드 (ex. KRW-BTC)</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>total_ask_size</td>
+<td>tas</td>
+<td>호가 매도 총 잔량</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>total_bid_size</td>
+<td>tbs</td>
+<td>호가 매수 총 잔량</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>orderbook_units</td>
+<td>obu</td>
+<td>호가</td>
+<td>List of Objects</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ask_price</td>
+<td>ap</td>
+<td>매도 호가</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>bid_price</td>
+<td>bp</td>
+<td>매수 호가</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ask_size</td>
+<td>as</td>
+<td>매도 잔량</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>bid_size</td>
+<td>bs</td>
+<td>매수 잔량</td>
+<td>Double</td>
+<td>-</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>tms</td>
+<td>타임스탬프 (millisecond)</td>
+<td>Long</td>
+<td>-</td>
+</tr>
+</tbody></table>
