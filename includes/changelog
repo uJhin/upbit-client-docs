@@ -1,4 +1,12 @@
-<h1 id='change-logs'>Change Logs</h1><h2 id='2021'>2021</h2><h3 id='2021-02-26'>2021-02-26</h3>
+<h1 id='change-logs'>Change Logs</h1><h2 id='2021'>2021</h2><h3 id='2021-03-04'>2021-03-04</h3>
+<p>Update Client Released: v1.1.7.6</p>
+
+<ul>
+<li><code>models.py</code> 내부 클래스들의 Docstring 파라미터 타입 수정</li>
+<li>약간의 성능 개선</li>
+<li>그 외 전체적인 소스 코드 리팩토링</li>
+</ul>
+<h3 id='2021-02-26'>2021-02-26</h3>
 <p>Update Client Released: v1.1.7.5</p>
 
 <ul>
