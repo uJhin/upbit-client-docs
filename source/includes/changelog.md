@@ -2,6 +2,13 @@
 
 ## 2021
 
+### 2021-03-19
+Update Client Released: v1.2.0.1
+
+- Upbit OPEN API 버전 1.2.0 업데이트 반영: **Order** 섹션의 `전체 주문 조회` 항목을 참고하세요.
+- `authentication` JWT 서명 알고리즘 방식 중 array 타입 파라미터 요청 시 발생하는 버그 픽스
+- **에러 및 예외 처리 방식** 변경: 더 이상 `raise` 를 통해 예외를 발생시키지 않습니다. 모든 결과는 json 형식의 `result` 키 값을 통해 에러 메시지를 확인할 수 있도록 변경하였습니다. 자세한 사항은 **Errors** 섹션을 참고하세요.
+
 ### 2021-03-04
 Update Client Released: v1.1.7.6
 

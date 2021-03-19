@@ -11,28 +11,9 @@
 }
 ```
 
-> Exception Example
+API 요청값이 유효하지 않거나 처리 중 오류가 발생한 경우, 다음과 같은 형태의 JSON body가 리턴됩니다.
 
-```python
-from requests import HTTPError
-
-try:
-    # Do Something ..
-except HTTPError as e:
-    # Do Something ..
-finally:
-    # Do Something ..
-```
-
-> Exception Result Example
-
-```console
-HTTPError: 429 Client Error: Too Many Requests for url: https://api.upbit.com/v1/~
-```
-
-API 요청값이 유효하지 않거나 처리 중 오류가 발생한 경우, HTTP 상태 코드와 함께 다음과 같은 형태의 JSON body가 리턴됩니다.
-
-만약 요청에 실패할 경우, 다음과 같은 예외를 발생시킵니다.
+에러 메시지 목록은 다음과 같습니다.
 
 
 ### 400 Bad Request
