@@ -1,9 +1,10 @@
 <h1 id='change-logs'>Change Logs</h1><h2 id='2021'>2021</h2><h3 id='2021-03-19'>2021-03-19</h3>
-<p>Update Client Released: v1.2.0.1</p>
+<p>Update Client Released: v1.2.0.3</p>
 
 <ul>
 <li>Upbit OPEN API 버전 1.2.0 업데이트 반영: <strong>Order</strong> 섹션의 <code>전체 주문 조회</code> 항목을 참고하세요.</li>
 <li><code>authentication</code> JWT 서명 알고리즘 방식 중 array 타입 파라미터 요청 시 발생하는 버그 픽스</li>
+<li>모든 JSON 결과값에 <code>response</code> 키와 값을 추가하였습니다. <strong>UpbitClient (Upbit Client 사용하기)</strong> 섹션을 참고하세요.</li>
 <li><strong>에러 및 예외 처리 방식</strong> 변경: 더 이상 <code>raise</code> 를 통해 예외를 발생시키지 않습니다. 모든 결과는 json 형식의 <code>result</code> 키 값을 통해 에러 메시지를 확인할 수 있도록 변경하였습니다. 자세한 사항은 <strong>Errors</strong> 섹션을 참고하세요.</li>
 </ul>
 <h3 id='2021-03-04'>2021-03-04</h3>

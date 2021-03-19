@@ -59,11 +59,43 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>response</td>
+<td>요청에 대한 응답 객체</td>
+</tr>
+<tr>
+<td>response.url</td>
+<td>요청 URL</td>
+</tr>
+<tr>
+<td>response.headers</td>
+<td>요청 헤더값</td>
+</tr>
+<tr>
+<td>response.status_code</td>
+<td>HTTP 응답 코드</td>
+</tr>
+<tr>
+<td>response.reason</td>
+<td>응답 메시지</td>
+</tr>
+<tr>
+<td>response.text</td>
+<td>요청에 대한 결과(UTF-8 Text 포맷)</td>
+</tr>
+<tr>
+<td>response.content</td>
+<td>요청에 대한 결과(Byte string 포맷)</td>
+</tr>
+<tr>
+<td>response.ok</td>
+<td>HTTP 상태 코드의 200 OK 여부</td>
+</tr>
+<tr>
 <td>remaining_request</td>
 <td>남은 요청 제한 시간</td>
 </tr>
 <tr>
 <td>result</td>
-<td>요청에 대한 결과</td>
+<td>요청에 대한 결과(JSON 포맷)</td>
 </tr>
 </tbody></table>
