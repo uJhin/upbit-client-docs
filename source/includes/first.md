@@ -46,7 +46,15 @@ config     | Swagger Client Configuration
 
 요청 제한에 대한 부분은 `Remaining Requests (요청 수 제한)` 섹션에서 다룹니다.
 
-Parameter         | Description
-----------------  | ------------------
-remaining_request | 남은 요청 제한 시간
-result            | 요청에 대한 결과
+Parameter            | Description
+-------------------- | ------------------
+response             | 요청에 대한 응답 객체
+response.url         | 요청 URL
+response.headers     | 요청 헤더값
+response.status_code | HTTP 응답 코드
+response.reason      | 응답 메시지
+response.text        | 요청에 대한 결과(UTF-8 Text 포맷)
+response.content     | 요청에 대한 결과(Byte string 포맷)
+response.ok          | HTTP 상태 코드의 200 OK 여부
+remaining_request    | 남은 요청 제한 시간
+result               | 요청에 대한 결과(JSON 포맷)
