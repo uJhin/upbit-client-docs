@@ -588,8 +588,8 @@
   2021년 3월 22일부터 미체결 주문(wait, watch)과 완료 주문(done, cancel)을 혼합하여 조회하실 수 없습니다.
   <br/><br/>
   <ul>
-    <li>예시1) done, cancel 주문을 한 번에 조회 => 가능</li>
-    <li>예시2) wait, done 주문을 한 번에 조회 => 불가능 (각각 API 호출 필요)</li>
+    <li>예시1) done, cancel 주문을 한 번에 조회 => <b>가능</b></li>
+    <li>예시2) wait, done 주문을 한 번에 조회 => <b>불가능 (각각 API 호출 필요)</b></li>
   </ul>
   <br/>
   자세한 내용은 <a href="https://docs.upbit.com/changelog/%EC%95%88%EB%82%B4-open-api-%EB%B3%80%EA%B2%BD%EC%82%AC%ED%95%AD-%EC%95%88%EB%82%B4-%EC%A0%81%EC%9A%A9-%EC%9D%BC%EC%9E%90-0322-1">개발자 센터 공지사항</a>을 참조 부탁드립니다.
@@ -626,8 +626,6 @@
     </td>
     <td>
         주문 identifier의 목록
-        <br/><br/>
-        * 미체결 주문(wait, watch)과 완료 주문(done, cancel)은 혼합하여 조회하실 수 없습니다.
     </td>
   </tr>
   <tr>
@@ -649,6 +647,8 @@
   </td>
   <td>
       주문 상태의 목록
+      <br/><br/>
+      * 미체결 주문(wait, watch)과 완료 주문(done, cancel)은 혼합하여 조회하실 수 없습니다.
   </td>
 </tr>
 <tr>
