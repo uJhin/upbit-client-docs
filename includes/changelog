@@ -1,7 +1,9 @@
-<h1 id='change-logs'>Change Logs</h1><h2 id='2021'>2021</h2><h3 id='2021-10-13'>2021-10-13</h3>
-<p>Upbit OPEN API v 1.2.2 개선 사항</p>
+<h1 id='change-logs'>Change Logs</h1><h2 id='2021'>2021</h2><h3 id='2021-12-01'>2021-12-01</h3>
+<p>Update Client Released: v1.2.2.0</p>
 
 <ul>
+<li>Upbit OPEN API v 1.2.2 업데이트 반영</li>
+<li>UpbitWebSocket 클래스에 <code>ping</code> 메소드 추가</li>
 <li>Websocket의 응답 형식에서 <code>deprecated</code> 된 필드들이 삭제됩니다.</li>
 <li>Websocket Ticker(현재가) 응답의 <code>trade_status</code> , <code>market_state_for_ios</code> 필드 제거</li>
 <li>자세한 사항은 <a href="https://docs.upbit.com/changelog/open-api-%EA%B0%9C%EC%84%A0%EC%82%AC%ED%95%AD-%EC%95%88%EB%82%B4deprecated-%EB%90%9C-%ED%95%84%EB%93%9C-%EC%82%AD%EC%A0%9C">여기</a>를 통해 확인 바랍니다.</li>

@@ -637,10 +637,12 @@
 <li><strong>BTC</strong>: 3NVw2seiTQddGQwc1apqudKxuTqebpyL3s</li>
 <li><strong>ETH</strong>: 0x60dd373f59862d9df776596889b997e24bee42eb</li>
 </ul>
-<h1 id='change-logs'>Change Logs</h1><h2 id='2021'>2021</h2><h3 id='2021-10-13'>2021-10-13</h3>
-<p>Upbit OPEN API v 1.2.2 개선 사항</p>
+<h1 id='change-logs'>Change Logs</h1><h2 id='2021'>2021</h2><h3 id='2021-12-01'>2021-12-01</h3>
+<p>Update Client Released: v1.2.2.0</p>
 
 <ul>
+<li>Upbit OPEN API v 1.2.2 업데이트 반영</li>
+<li>UpbitWebSocket 클래스에 <code>ping</code> 메소드 추가</li>
 <li>Websocket의 응답 형식에서 <code>deprecated</code> 된 필드들이 삭제됩니다.</li>
 <li>Websocket Ticker(현재가) 응답의 <code>trade_status</code> , <code>market_state_for_ios</code> 필드 제거</li>
 <li>자세한 사항은 <a href="https://docs.upbit.com/changelog/open-api-%EA%B0%9C%EC%84%A0%EC%82%AC%ED%95%AD-%EC%95%88%EB%82%B4deprecated-%EB%90%9C-%ED%95%84%EB%93%9C-%EC%82%AD%EC%A0%9C">여기</a>를 통해 확인 바랍니다.</li>
@@ -5854,7 +5856,21 @@ Signature 생성시 secret encoding 옵션을 확인해주세요. <b>발급된 <
 <li>이를 방지하기 위해 클라이언트에서 서버로 PING 메시지를 보내서 Connection을 유지하고, WebSocket 서버의 상태와 WebSocket Connection Status를 파악할 수 있습니다.</li>
 <li>현재 업비트 OpenAPI WebSocket 서버에서는 <strong>PING Frame 수신 대응 준비가 되어있는 상황</strong>이며, 클라이언트에서 간단한 구현으로 PING 요청/PONG 응답(<em>PING에 대한 응답 Frame</em>)을 통해 서버의 상태를 파악할 수 있습니다.</li>
 </ul>
-<h2 id='websocket-compression'>WebSocket Compression</h2>
+
+<blockquote>
+<p>Example Code</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.websocket</span> <span class="kn">import</span> <span class="n">UpbitWebSocket</span>
+
+<span class="n">sock</span> <span class="o">=</span> <span class="n">UpbitWebSocket</span><span class="p">()</span>
+<span class="n">pong</span> <span class="o">=</span> <span class="k">await</span> <span class="n">sock</span><span class="p">.</span><span class="n">ping</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pong</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>Result</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UP"</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='websocket-compression'>WebSocket Compression</h2>
 <p>업비트 OpenAPI WebSocket 서버에서는 더 빠른 데이터 전송을 위해 WebSocket Compression을 제공하고 있습니다. (참고 문서 : https://tools.ietf.org/html/rfc7692 )</p>
 
 <ul>
