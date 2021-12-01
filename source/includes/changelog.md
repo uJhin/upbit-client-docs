@@ -2,6 +2,13 @@
 
 ## 2021
 
+### 2021-10-13
+Upbit OPEN API v 1.2.2 개선 사항
+
+- Websocket의 응답 형식에서 `deprecated` 된 필드들이 삭제됩니다.
+- Websocket Ticker(현재가) 응답의 `trade_status` , `market_state_for_ios` 필드 제거
+- 자세한 사항은 [여기](https://docs.upbit.com/changelog/open-api-%EA%B0%9C%EC%84%A0%EC%82%AC%ED%95%AD-%EC%95%88%EB%82%B4deprecated-%EB%90%9C-%ED%95%84%EB%93%9C-%EC%82%AD%EC%A0%9C)를 통해 확인 바랍니다.
+
 ### 2021-04-01
 Update Client Released: v1.2.0.4
 
