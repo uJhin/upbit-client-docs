@@ -572,3 +572,21 @@ bid_price | bp | 매수 호가 | Double | -
 ask_size | as | 매도 잔량 | Double | -
 bid_size | bs | 매수 잔량 | Double | -
 timestamp | tms | 타임스탬프 (millisecond) | Long | -
+
+## Connection 관리 및 기타
+
+**PING/PONG**
+
+업비트 OpenAPI WebSocket 서버는 2019년 3월 27일부터 안정적인 커넥션 관리와 유지를 위해 WebSocket PING/PONG Frame을 지원합니다. (참고 문서 : https://tools.ietf.org/html/rfc6455#section-5.5.2 )
+
+**Client to Server PING**
+
+- 서버에서는 기본적으로 아무런 데이터도 수/발신 되지 않은 채 약 120초가 경과하면 Idle Timeout으로 WebSocket Connection을 종료합니다.
+- 이를 방지하기 위해 클라이언트에서 서버로 PING 메시지를 보내서 Connection을 유지하고, WebSocket 서버의 상태와 WebSocket Connection Status를 파악할 수 있습니다.
+- 현재 업비트 OpenAPI WebSocket 서버에서는 **PING Frame 수신 대응 준비가 되어있는 상황**이며, 클라이언트에서 간단한 구현으로 PING 요청/PONG 응답(*PING에 대한 응답 Frame*)을 통해 서버의 상태를 파악할 수 있습니다.
+
+## WebSocket Compression
+업비트 OpenAPI WebSocket 서버에서는 더 빠른 데이터 전송을 위해 WebSocket Compression을 제공하고 있습니다. (참고 문서 : https://tools.ietf.org/html/rfc7692 )
+
+- WebSocket Compression을 지원하는 WebSocket 클라이언트 에서는, 각 클라이언트 별로 정해진 옵션을 활성화 하면 Compression 된 상태로 통신이 지속됩니다. 사용자의 코드 레벨에는 decompressed 상태의 raw data가 제공되기 때문에 **사용자는 설정 옵션 활성화 외에 다른 대응 코드를 작성할 필요가 없습니다.**
+- WebSocket Compression을 지원하지 않는 WebSocket 클라이언트 에서는 해당 기능을 사용할 수 없으며, Raw JSON 형태의 데이터를 주고받게 됩니다. 해당 기능을 사용하기 위해서는 WebSocket Client 교체가 필요합니다.
