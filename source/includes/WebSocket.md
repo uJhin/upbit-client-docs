@@ -585,6 +585,22 @@ timestamp | tms | 타임스탬프 (millisecond) | Long | -
 - 이를 방지하기 위해 클라이언트에서 서버로 PING 메시지를 보내서 Connection을 유지하고, WebSocket 서버의 상태와 WebSocket Connection Status를 파악할 수 있습니다.
 - 현재 업비트 OpenAPI WebSocket 서버에서는 **PING Frame 수신 대응 준비가 되어있는 상황**이며, 클라이언트에서 간단한 구현으로 PING 요청/PONG 응답(*PING에 대한 응답 Frame*)을 통해 서버의 상태를 파악할 수 있습니다.
 
+> Example Code
+
+```python
+from upbit.websocket import UpbitWebSocket
+
+sock = UpbitWebSocket()
+pong = await sock.ping()
+print(pong)
+```
+
+> Result
+
+```json
+{"status": "UP"}
+```
+
 ## WebSocket Compression
 업비트 OpenAPI WebSocket 서버에서는 더 빠른 데이터 전송을 위해 WebSocket Compression을 제공하고 있습니다. (참고 문서 : https://tools.ietf.org/html/rfc7692 )
 
