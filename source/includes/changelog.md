@@ -2,6 +2,13 @@
 
 ## 2021
 
+### 2021-12-06
+Upbit Client Released: v1.2.2.2
+
+- RestSharp 버전 업데이트: v105.1.0 -> 106.11.8-alpha.0.13
+- Python urllib3 Package 버전 업데이트: v1.26.4 -> v1.26.5
+- 그 외 원활한 형상관리를 위해 GitHub Repository에 Dependabot alerts와 CodeQL(Code scanning alerts) Action을 추가하였습니다.
+
 ### 2021-12-01
 Update Client Released: v1.2.2.1
 
