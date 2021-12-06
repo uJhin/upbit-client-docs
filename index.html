@@ -5848,18 +5848,6 @@ Signature 생성시 secret encoding 옵션을 확인해주세요. <b>발급된 <
 </tr>
 </tbody></table>
 <h2 id='connection'>Connection 관리 및 기타</h2>
-<p><strong>PING/PONG</strong></p>
-
-<p>업비트 OpenAPI WebSocket 서버는 2019년 3월 27일부터 안정적인 커넥션 관리와 유지를 위해 WebSocket PING/PONG Frame을 지원합니다. (참고 문서 : https://tools.ietf.org/html/rfc6455#section-5.5.2 )</p>
-
-<p><strong>Client to Server PING</strong></p>
-
-<ul>
-<li>서버에서는 기본적으로 아무런 데이터도 수/발신 되지 않은 채 약 120초가 경과하면 Idle Timeout으로 WebSocket Connection을 종료합니다.</li>
-<li>이를 방지하기 위해 클라이언트에서 서버로 PING 메시지를 보내서 Connection을 유지하고, WebSocket 서버의 상태와 WebSocket Connection Status를 파악할 수 있습니다.</li>
-<li>현재 업비트 OpenAPI WebSocket 서버에서는 <strong>PING Frame 수신 대응 준비가 되어있는 상황</strong>이며, 클라이언트에서 간단한 구현으로 PING 요청/PONG 응답(<em>PING에 대한 응답 Frame</em>)을 통해 서버의 상태를 파악할 수 있습니다.</li>
-</ul>
-
 <blockquote>
 <p>Example Code</p>
 </blockquote>
@@ -5873,7 +5861,19 @@ Signature 생성시 secret encoding 옵션을 확인해주세요. <b>발급된 <
 <p>Result</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UP"</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='websocket-compression'>WebSocket Compression</h2>
+</span></code></pre></div>
+<p><strong>PING/PONG</strong></p>
+
+<p>업비트 OpenAPI WebSocket 서버는 2019년 3월 27일부터 안정적인 커넥션 관리와 유지를 위해 WebSocket PING/PONG Frame을 지원합니다. (참고 문서 : https://tools.ietf.org/html/rfc6455#section-5.5.2 )</p>
+
+<p><strong>Client to Server PING</strong></p>
+
+<ul>
+<li>서버에서는 기본적으로 아무런 데이터도 수/발신 되지 않은 채 약 120초가 경과하면 Idle Timeout으로 WebSocket Connection을 종료합니다.</li>
+<li>이를 방지하기 위해 클라이언트에서 서버로 PING 메시지를 보내서 Connection을 유지하고, WebSocket 서버의 상태와 WebSocket Connection Status를 파악할 수 있습니다.</li>
+<li>현재 업비트 OpenAPI WebSocket 서버에서는 <strong>PING Frame 수신 대응 준비가 되어있는 상황</strong>이며, 클라이언트에서 간단한 구현으로 PING 요청/PONG 응답(<em>PING에 대한 응답 Frame</em>)을 통해 서버의 상태를 파악할 수 있습니다.</li>
+</ul>
+<h2 id='websocket-compression'>WebSocket Compression</h2>
 <p>업비트 OpenAPI WebSocket 서버에서는 더 빠른 데이터 전송을 위해 WebSocket Compression을 제공하고 있습니다. (참고 문서 : https://tools.ietf.org/html/rfc7692 )</p>
 
 <ul>
