@@ -575,16 +575,6 @@ timestamp | tms | 타임스탬프 (millisecond) | Long | -
 
 ## Connection 관리 및 기타
 
-**PING/PONG**
-
-업비트 OpenAPI WebSocket 서버는 2019년 3월 27일부터 안정적인 커넥션 관리와 유지를 위해 WebSocket PING/PONG Frame을 지원합니다. (참고 문서 : https://tools.ietf.org/html/rfc6455#section-5.5.2 )
-
-**Client to Server PING**
-
-- 서버에서는 기본적으로 아무런 데이터도 수/발신 되지 않은 채 약 120초가 경과하면 Idle Timeout으로 WebSocket Connection을 종료합니다.
-- 이를 방지하기 위해 클라이언트에서 서버로 PING 메시지를 보내서 Connection을 유지하고, WebSocket 서버의 상태와 WebSocket Connection Status를 파악할 수 있습니다.
-- 현재 업비트 OpenAPI WebSocket 서버에서는 **PING Frame 수신 대응 준비가 되어있는 상황**이며, 클라이언트에서 간단한 구현으로 PING 요청/PONG 응답(*PING에 대한 응답 Frame*)을 통해 서버의 상태를 파악할 수 있습니다.
-
 > Example Code
 
 ```python
@@ -600,6 +590,16 @@ print(pong)
 ```json
 {"status": "UP"}
 ```
+
+**PING/PONG**
+
+업비트 OpenAPI WebSocket 서버는 2019년 3월 27일부터 안정적인 커넥션 관리와 유지를 위해 WebSocket PING/PONG Frame을 지원합니다. (참고 문서 : https://tools.ietf.org/html/rfc6455#section-5.5.2 )
+
+**Client to Server PING**
+
+- 서버에서는 기본적으로 아무런 데이터도 수/발신 되지 않은 채 약 120초가 경과하면 Idle Timeout으로 WebSocket Connection을 종료합니다.
+- 이를 방지하기 위해 클라이언트에서 서버로 PING 메시지를 보내서 Connection을 유지하고, WebSocket 서버의 상태와 WebSocket Connection Status를 파악할 수 있습니다.
+- 현재 업비트 OpenAPI WebSocket 서버에서는 **PING Frame 수신 대응 준비가 되어있는 상황**이며, 클라이언트에서 간단한 구현으로 PING 요청/PONG 응답(*PING에 대한 응답 Frame*)을 통해 서버의 상태를 파악할 수 있습니다.
 
 ## WebSocket Compression
 업비트 OpenAPI WebSocket 서버에서는 더 빠른 데이터 전송을 위해 WebSocket Compression을 제공하고 있습니다. (참고 문서 : https://tools.ietf.org/html/rfc7692 )
