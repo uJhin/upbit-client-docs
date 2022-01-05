@@ -36,9 +36,9 @@
 
 <h1 align="center">Donation</h1>
 <div align="left">
-  <img alt="uJhin's BTC" src="https://img.shields.io/badge/BTC-3NVw2seiTQddGQwc1apqudKxuTqebpyL3s-blue?style=for-the-badge&logo=bitcoin">
+  <img alt="uJhin's BTC" src="https://img.shields.io/badge/BTC-3NVw2seiTQddGQwc1apqudKxuTqebpyL3s-blue?style=flat-square&logo=bitcoin">
   <br/>
-  <img alt="uJhin's ETH" src="https://img.shields.io/badge/ETH-0x60dd373f59862d9df776596889b997e24bee42eb-blue?style=for-the-badge&logo=ethereum">
+  <img alt="uJhin's ETH" src="https://img.shields.io/badge/ETH-0x60dd373f59862d9df776596889b997e24bee42eb-blue?style=flat-square&logo=ethereum">
 </div>
 
 <h1 align="center">Powered by</h1>
