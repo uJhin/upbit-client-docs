@@ -457,8 +457,8 @@
 <span class="c1"># Definition async function
 </span><span class="k">async</span> <span class="k">def</span> <span class="nf">ticker</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">payload</span><span class="p">):</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">sock</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">conn</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-            <span class="k">await</span> <span class="n">conn</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
             <span class="n">recv</span> <span class="o">=</span> <span class="k">await</span> <span class="n">conn</span><span class="p">.</span><span class="n">recv</span><span class="p">()</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">recv</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">)</span>
             <span class="n">result</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
