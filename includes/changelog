@@ -1,4 +1,12 @@
-<h1 id='change-logs'>Change Logs</h1><h2 id='2021'>2021</h2><h3 id='2021-12-06'>2021-12-06</h3>
+<h1 id='change-logs'>Change Logs</h1><h2 id='2022'>2022</h2><h3 id='2022-01-14'>2022-01-14</h3>
+<p>Upbit Client Released: v1.2.2.3</p>
+
+<ul>
+<li>Python Websocket Package 버전을 Release 하면서 v10.1 버전으로 반영</li>
+<li>Websocket Client 예제 코드 수정</li>
+<li>성능 개편 및 소스 코드 리팩토링</li>
+</ul>
+<h2 id='2021'>2021</h2><h3 id='2021-12-06'>2021-12-06</h3>
 <p>Upbit Client Released: v1.2.2.2</p>
 
 <ul>
