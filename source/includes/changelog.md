@@ -3,7 +3,7 @@
 ## 2022
 
 ### 2022-01-14
-Upbit Client Released: v1.2.2.3
+Upbit Client Released: v1.2.2.4
 
 - Python Websocket Package 버전을 Release 하면서 v10.1 버전으로 반영
 - Websocket Client 예제 코드 수정
