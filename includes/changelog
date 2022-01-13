@@ -1,5 +1,5 @@
 <h1 id='change-logs'>Change Logs</h1><h2 id='2022'>2022</h2><h3 id='2022-01-14'>2022-01-14</h3>
-<p>Upbit Client Released: v1.2.2.3</p>
+<p>Upbit Client Released: v1.2.2.4</p>
 
 <ul>
 <li>Python Websocket Package 버전을 Release 하면서 v10.1 버전으로 반영</li>
