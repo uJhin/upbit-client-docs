@@ -956,10 +956,12 @@ git clone https://github.com/uJhin/python-upbit-client.git
 <p>Upbit OPEN API는 기본적으로 REST API 요청시, 발급받은 access key와 secret key로 토큰을 생성하여 Authorization 헤더를 통해 전송합니다. 토큰은 <a href="https://jwt.io">JWT</a> 형식을 따릅니다.</p>
 
 <p>서명 방식은 HS256 을 권장하며, 서명에 사용할 secret은 발급받은 secret key를 사용합니다.
-Payload의 구성은 다음과 같습니다.</p>
+Payload의 구성은 예제와 같습니다.</p>
+
+<p>인증방식에 대한 세부적인 코드를 확인하고 싶으시면 <a href="https://github.com/uJhin/upbit-client/blob/main/client/python/upbit/authentication.py">여기</a>를 참고해주시기 바랍니다.</p>
 
 <aside class="notice">
-v1.0.3 업데이트부터 JWT payload를 생성하는 방식이 다음과 같이 변경되었습니다.
+<b> NOTE: v1.0.3 업데이트부터 JWT payload를 생성하는 방식이 다음과 같이 변경되었습니다.</b>
 
 <ul>
   <li><code>nonce</code> 필드의 값으로 무작위 UUID 문자열을 이용합니다.</li>
@@ -986,7 +988,7 @@ Signature 생성시 secret encoding 옵션을 확인해주세요. <b>발급된 <
 <br/>
 JSON 형식을 이용해주시기 바랍니다.
 <br/><br/>
-자세한 변경사항은 [공지사항](https://docs.upbit.com/changelog/open-api-%EB%B3%80%EA%B2%BD%EC%82%AC%ED%95%AD-%EC%95%88%EB%82%B4)을 참조해주세요.
+자세한 변경사항은 <a href="https://docs.upbit.com/changelog/open-api-%EB%B3%80%EA%B2%BD%EC%82%AC%ED%95%AD-%EC%95%88%EB%82%B4">공지사항</a>을 참조해주세요.
 </aside>
 
 <aside class="warning">
@@ -996,7 +998,7 @@ JSON 형식을 이용해주시기 바랍니다.
 <br/>
 query_hash 와 query_hash_alg 필드를 이용한 생성 방식을 이용해주시기 바랍니다.
 <br/><br/>
-자세한 변경사항은 [공지사항](https://docs.upbit.com/changelog/open-api-%EB%B3%80%EA%B2%BD%EC%82%AC%ED%95%AD-%EC%95%88%EB%82%B4)을 참조해주세요.
+자세한 변경사항은 <a href="https://docs.upbit.com/changelog/open-api-%EB%B3%80%EA%B2%BD%EC%82%AC%ED%95%AD-%EC%95%88%EB%82%B4">공지사항</a>을 참조해주세요.
 </aside>
 <h1 id='remaining-requests'>Remaining Requests (요청 수 제한)</h1><h3 id='e193e9d311'>남은 요청 수 확인하기</h3>
 <p>UpbitClient 사용 시 모든 결과는 <code>json</code> 포맷으로 반환되며, <code>remaining_request</code> 키값을 가집니다.</p>
