@@ -24,7 +24,7 @@
 </span><span class="p">},</span><span class="w">
   </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="err">...</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='4274c598a1'>상세 설명</h3><h4 id='exchange-api'>EXCHANGE API</h4>
+</span></code></pre></div><h3 id='4274c598a1'>상세 설명</h3><h3 id='1-exchange-api'>1. EXCHANGE API</h3>
 <p><strong>주문</strong></p>
 
 <p><code>초당 8회</code>, <code>분당 200회</code></p>
@@ -42,7 +42,7 @@
 <li>사용 가능한 잔여 요청 수는 하단의 잔여 요청 수 확인 방법을 참고하시어 확인하실 수 있습니다.</li>
 <li>(업데이트) 주문 API와 주문 외 API 요청 수 제한은 별도로 계산 됩니다.</li>
 </ul>
-<h4 id='quotation-api'>QUOTATION API</h4>
+<h3 id='2-quotation-api'>2. QUOTATION API</h3>
 <p><strong>웹 소켓(Websocket) 연결 요청 수 제한</strong></p>
 
 <p><code>초당 5회</code>, <code>분당 100회</code></p>

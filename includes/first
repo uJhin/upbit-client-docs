@@ -14,10 +14,7 @@
 <p>Result</p>
 </blockquote>
 <div class="highlight"><pre class="highlight python tab-python"><code><span class="n">UpbitClient</span><span class="p">(</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="p">.</span><span class="n">upbit</span><span class="p">.</span><span class="n">com</span><span class="p">)</span>
-</code></pre></div>
-<p>설치가 완료되면 <code>from upbit.client import Upbit</code>로 패키지를 import 합니다.
-그 다음 <code>UpbitClient</code> 객체를 생성하면 클라이언트를 사용할 준비가 완료됩니다.</p>
-<h3 id='upbitclient-access_key-none-secret_key-none-kwargs'>UpbitClient(access_key=None, secret_key=None, **kwargs)</h3>
+</code></pre></div><h3 id='upbitclient-access_key-none-secret_key-none-kwargs'>UpbitClient(access_key=None, secret_key=None, **kwargs)</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -99,3 +96,19 @@
 <td>요청에 대한 결과(JSON 포맷)</td>
 </tr>
 </tbody></table>
+<h3 id='468cdab5af'>참고사항</h3><h3 id='1-rest-api'>1. REST API 요청 시 오류가 발생합니다.</h3>
+<p>API 요청 처리 중 오류가 발생한 경우 HTTP 응답 body에 에러 코드가 함께 반환됩니다.
+주요 에러 코드는 본 문서의 에러코드 항목에서 확인하실 수 있습니다.</p>
+
+<p>만약 위 문서에서 확인되지 않는 오류가 발생하는 경우, 해당 에러 코드를 포함하여 업비트 측에 문의주시기 바랍니다.</p>
+<h3 id='2-ip'>2. IP 주소를 허용했으나 오류가 발생합니다.</h3>
+<p>로컬 네트워크에서 확인되는 IP 주소와 실제 통신에 사용하는 IP 주소가 다른 경우가 있습니다.</p>
+
+<ul>
+<li><strong>로컬 PC를 이용하시는 경우</strong>: 구글 등의 검색엔진에서 &quot;what is my ip&quot; 혹은 &quot;내 IP 주소&quot; 등을 검색하시어 나오는 외부 IP 주소</li>
+<li><strong>서버를 이용하시는 경우</strong>: 서버의 외부망 통신에 사용하는 IP 주소</li>
+</ul>
+
+<p>위 주소를 허용 목록에 등록하신 후 다시 시도 부탁드립니다.</p>
+<h3 id='3-ip'>3. 유동 IP 환경에서 이용하고 싶습니다.</h3>
+<p>주문하기 및 출금하기 API를 이용하시기 위해서는 허용 IP를 필수적으로 입력해주셔야합니다.</p>

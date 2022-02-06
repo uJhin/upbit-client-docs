@@ -359,6 +359,18 @@
                   <li>
                     <a href="#71d855acd9" class="toc-h2 toc-link" data-title="결과">결과</a>
                   </li>
+                  <li>
+                    <a href="#468cdab5af" class="toc-h2 toc-link" data-title="참고사항">참고사항</a>
+                  </li>
+                  <li>
+                    <a href="#1-rest-api" class="toc-h2 toc-link" data-title="1. REST API 요청 시 오류가 발생합니다.">1. REST API 요청 시 오류가 발생합니다.</a>
+                  </li>
+                  <li>
+                    <a href="#2-ip" class="toc-h2 toc-link" data-title="2. IP 주소를 허용했으나 오류가 발생합니다.">2. IP 주소를 허용했으나 오류가 발생합니다.</a>
+                  </li>
+                  <li>
+                    <a href="#3-ip" class="toc-h2 toc-link" data-title="3. 유동 IP 환경에서 이용하고 싶습니다.">3. 유동 IP 환경에서 이용하고 싶습니다.</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -372,6 +384,12 @@
                   </li>
                   <li>
                     <a href="#4274c598a1" class="toc-h2 toc-link" data-title="상세 설명">상세 설명</a>
+                  </li>
+                  <li>
+                    <a href="#1-exchange-api" class="toc-h2 toc-link" data-title="1. EXCHANGE API">1. EXCHANGE API</a>
+                  </li>
+                  <li>
+                    <a href="#2-quotation-api" class="toc-h2 toc-link" data-title="2. QUOTATION API">2. QUOTATION API</a>
                   </li>
               </ul>
           </li>
@@ -826,9 +844,9 @@
 <blockquote>
 <p>Command</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>pip <span class="nb">install </span>upbit-client
-git clone https://github.com/uJhin/upbit-client.git
-git clone https://github.com/uJhin/python-upbit-client.git
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="nv">$ </span>pip <span class="nb">install </span>upbit-client
+<span class="nv">$ </span>git clone https://github.com/uJhin/upbit-client.git
+<span class="nv">$ </span>git clone https://github.com/uJhin/python-upbit-client.git
 </code></pre></div>
 <p>설치는 <code>git</code> 커맨드를 사용하여 다음과 같이 진행합니다.</p>
 
@@ -857,10 +875,7 @@ git clone https://github.com/uJhin/python-upbit-client.git
 <p>Result</p>
 </blockquote>
 <div class="highlight"><pre class="highlight python tab-python"><code><span class="n">UpbitClient</span><span class="p">(</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="p">.</span><span class="n">upbit</span><span class="p">.</span><span class="n">com</span><span class="p">)</span>
-</code></pre></div>
-<p>설치가 완료되면 <code>from upbit.client import Upbit</code>로 패키지를 import 합니다.
-그 다음 <code>UpbitClient</code> 객체를 생성하면 클라이언트를 사용할 준비가 완료됩니다.</p>
-<h3 id='upbitclient-access_key-none-secret_key-none-kwargs'>UpbitClient(access_key=None, secret_key=None, **kwargs)</h3>
+</code></pre></div><h3 id='upbitclient-access_key-none-secret_key-none-kwargs'>UpbitClient(access_key=None, secret_key=None, **kwargs)</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -942,6 +957,22 @@ git clone https://github.com/uJhin/python-upbit-client.git
 <td>요청에 대한 결과(JSON 포맷)</td>
 </tr>
 </tbody></table>
+<h3 id='468cdab5af'>참고사항</h3><h3 id='1-rest-api'>1. REST API 요청 시 오류가 발생합니다.</h3>
+<p>API 요청 처리 중 오류가 발생한 경우 HTTP 응답 body에 에러 코드가 함께 반환됩니다.
+주요 에러 코드는 본 문서의 에러코드 항목에서 확인하실 수 있습니다.</p>
+
+<p>만약 위 문서에서 확인되지 않는 오류가 발생하는 경우, 해당 에러 코드를 포함하여 업비트 측에 문의주시기 바랍니다.</p>
+<h3 id='2-ip'>2. IP 주소를 허용했으나 오류가 발생합니다.</h3>
+<p>로컬 네트워크에서 확인되는 IP 주소와 실제 통신에 사용하는 IP 주소가 다른 경우가 있습니다.</p>
+
+<ul>
+<li><strong>로컬 PC를 이용하시는 경우</strong>: 구글 등의 검색엔진에서 &quot;what is my ip&quot; 혹은 &quot;내 IP 주소&quot; 등을 검색하시어 나오는 외부 IP 주소</li>
+<li><strong>서버를 이용하시는 경우</strong>: 서버의 외부망 통신에 사용하는 IP 주소</li>
+</ul>
+
+<p>위 주소를 허용 목록에 등록하신 후 다시 시도 부탁드립니다.</p>
+<h3 id='3-ip'>3. 유동 IP 환경에서 이용하고 싶습니다.</h3>
+<p>주문하기 및 출금하기 API를 이용하시기 위해서는 허용 IP를 필수적으로 입력해주셔야합니다.</p>
 <h1 id='authentication'>Authentication (인증)</h1>
 <blockquote>
 <p>Request Example</p>
@@ -1026,7 +1057,7 @@ query_hash 와 query_hash_alg 필드를 이용한 생성 방식을 이용해주�
 </span><span class="p">},</span><span class="w">
   </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="err">...</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='4274c598a1'>상세 설명</h3><h4 id='exchange-api'>EXCHANGE API</h4>
+</span></code></pre></div><h3 id='4274c598a1'>상세 설명</h3><h3 id='1-exchange-api'>1. EXCHANGE API</h3>
 <p><strong>주문</strong></p>
 
 <p><code>초당 8회</code>, <code>분당 200회</code></p>
@@ -1044,7 +1075,7 @@ query_hash 와 query_hash_alg 필드를 이용한 생성 방식을 이용해주�
 <li>사용 가능한 잔여 요청 수는 하단의 잔여 요청 수 확인 방법을 참고하시어 확인하실 수 있습니다.</li>
 <li>(업데이트) 주문 API와 주문 외 API 요청 수 제한은 별도로 계산 됩니다.</li>
 </ul>
-<h4 id='quotation-api'>QUOTATION API</h4>
+<h3 id='2-quotation-api'>2. QUOTATION API</h3>
 <p><strong>웹 소켓(Websocket) 연결 요청 수 제한</strong></p>
 
 <p><code>초당 5회</code>, <code>분당 100회</code></p>
@@ -2404,7 +2435,7 @@ query_hash 와 query_hash_alg 필드를 이용한 생성 방식을 이용해주�
 <td>해당 주문에 걸린 체결 수</td>
 </tr>
 </tbody></table>
-<h3 id='dc56e32222'>거래 관련 질문</h3><h3 id='api'>업비트 앱/웹에서 표시되는 거래내역과 API의 응답이 다릅니다.</h3>
+<h3 id='dc56e32222'>거래 관련 질문</h3><h3 id='1-api'>1. 업비트 앱/웹에서 표시되는 거래내역과 API의 응답이 다릅니다.</h3>
 <p>업비트 웹/앱에서 표시되는 거래내역은 체결 목록이며, Open API에서 확인하실 수 있는 내용은 주문 목록입니다.
 하나의 주문에 여러 개의 체결이 발생할 수 있으므로 두 내용은 다를 수 있습니다.</p>
 
@@ -2429,10 +2460,10 @@ query_hash 와 query_hash_alg 필드를 이용한 생성 방식을 이용해주�
 <strong>시장가 매도 주문</strong>의 경우 수량을 통해 요청이 이루어지므로 나눗셈 연산이 없어 <strong>잔량이 발생하지 않습니다.</strong></p>
 
 <p>또한 주문 리스트 조회 API에는 <code>states</code> 필드가 있어, 여러 상태를 동시에 조회할 수 있는 점 참고 부탁드립니다.</p>
-<h3 id='5104052c38'>시장가 주문 요청에 실패합니다.</h3>
+<h3 id='2'>2. 시장가 주문 요청에 실패합니다.</h3>
 <p><strong>시장가 주문</strong>의 경우 <em>매수/매도할 가격을 명시하지 않으므로</em>, <code>price</code> 혹은 <code>volume</code> 중 하나의 값만 존재해야합니다.
 자세한 내용은 위의 주문하기 문서를 다시 참고 부탁드립니다.</p>
-<h3 id='a16ea80967'>주문하기 요청 횟수 제한이 남아있는데 오류가 발생합니다.</h3>
+<h3 id='3'>3. 주문하기 요청 횟수 제한이 남아있는데 오류가 발생합니다.</h3>
 <p>해당 현상은 주문 요청이 일시적으로 폭증하는 상황에 주문 안정화 시스템이 동작할 때 발생합니다.</p>
 
 <p>주문 안정화 시스템은 Open API 및 업비트 앱/웹 여부와 무관하게 시스템 전체에 적용됩니다.
@@ -4917,6 +4948,39 @@ Open API를 이용하여 출금을 진행하기 위해서는 출금허용주소 
 <td>타임스탬프</td>
 </tr>
 </tbody></table>
+<h3 id='87e1a96ad1'>시세 관련 질문</h3><h3 id='1'>1. 차트 보조지표를 계산하고 싶습니다.</h3>
+<p>업비트 차트의 보조지표들은 <code>Chartiq</code>, <code>Tradingview</code> 에서 제공하고 있으니 해당 사이트들을 참고하시길 바랍니다.</p>
+<h3 id='2-ubci-api'>2. UBCI 지표를 API를 통해 수신하고 싶습니다.</h3>
+<p>UBCI API는 업비트 측에서 Open API로 제공하고 있지 않습니다.
+업비트 공지사항을 통해 확인하시기 바랍니다.</p>
+<h3 id='3-bid-ask'>3. 매수, 매도 (bid/ask) 결정 기준이 궁금합니다.</h3>
+<p>결정 기준은 아래와 같습니다.</p>
+
+<ul>
+<li>매도 호가에 누군가 매수를 하면 체결은 매수(BID) 타입</li>
+<li>매수 호가에 누군가 매도를 하면 체결은 매도(ASK) 타입
+<code>making/taking</code> 관점에서 보면 <code>taking</code>의 주문 타입으로 결정이 됩니다.</li>
+</ul>
+<h3 id='4-api'>4. 체결강도를 API를 통해 수신하고 싶습니다.</h3>
+<p>현재 업비트는 API를 통해 체결강도를 따로 제공해드리고 있지는 않습니다.
+다만 <code>websocket</code>의 체결 데이터 수신을 통해 체결강도를 계산하실 수 있습니다.</p>
+
+<aside class="notice">
+    <b>>[체결강도 계산식]</b>
+    <br/>
+    체결강도 = 매수체결량/매도체결량 × 100%
+    <br/>
+    체결강도가 100보다 클 경우 매도보다 매수가 많은 것이며, 100보다 작을 경우는 매수보다 매도가 많다는 것을 의미
+</aside>
+
+<p>체결강도는 UTC 0시(KST 9시)부터의 <em>매수누적체결량 / 매도누적체결량 * 100</em> 으로 계산됩니다.
+해당 계산식은 향후 서비스 운영 중 다른 형태로 별도의 고지 없이 변경될 수 있음을 참고 부탁드리겠습니다.</p>
+<h3 id='5-usdt'>5. USDT 마켓의 원화 환산가격를 알고 싶습니다.</h3>
+<p>USDT 마켓의 원화 환산가격은 업비트 자체 마켓 시세를 통하여 계산됩니다.</p>
+
+<ul>
+<li>KRW-USDT = KRW-BTC / USDT-BTC</li>
+</ul>
 <h1 id='websocket'>WebSocket (웹 소켓)</h1><h2 id='476966c5a8'>개요</h2><h3 id='1'>1. 시세 정보</h3>
 <p>WebSocket을 이용하여 수신할 수 있는 정보는 다음과 같습니다.</p>
 

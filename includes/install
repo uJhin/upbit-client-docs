@@ -2,9 +2,9 @@
 <blockquote>
 <p>Command</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>pip <span class="nb">install </span>upbit-client
-git clone https://github.com/uJhin/upbit-client.git
-git clone https://github.com/uJhin/python-upbit-client.git
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="nv">$ </span>pip <span class="nb">install </span>upbit-client
+<span class="nv">$ </span>git clone https://github.com/uJhin/upbit-client.git
+<span class="nv">$ </span>git clone https://github.com/uJhin/python-upbit-client.git
 </code></pre></div>
 <p>설치는 <code>git</code> 커맨드를 사용하여 다음과 같이 진행합니다.</p>
 
