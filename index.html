@@ -639,7 +639,10 @@
 <p><img alt="uJhin's BTC" src="https://img.shields.io/badge/BTC-3NVw2seiTQddGQwc1apqudKxuTqebpyL3s-blue?style=flat-square&logo=bitcoin">
 <br/>
 <img alt="uJhin's ETH" src="https://img.shields.io/badge/ETH-0x60dd373f59862d9df776596889b997e24bee42eb-blue?style=flat-square&logo=ethereum"></p>
-<h1 id='change-logs'>Change Logs</h1><h2 id='2022'>2022</h2><h3 id='2022-01-14'>2022-01-14</h3>
+<h1 id='change-logs'>Change Logs</h1><h2 id='2022'>2022</h2><h3 id='2022-02-06'>2022-02-06</h3>
+<p>Update Upbit OPEN API Version 1.3.1
+- <a href="https://docs.upbit.com/changelog/open-api-%EB%B3%80%EA%B2%BD%EC%82%AC%ED%95%AD-%EC%95%88%EB%82%B4">Upbit OPEN API 변경사항 안내</a>를 참고하세요.</p>
+<h3 id='2022-01-14'>2022-01-14</h3>
 <p>Upbit Client Released: v1.2.2.4</p>
 
 <ul>
@@ -970,6 +973,26 @@ payload의 <code>query_hash</code> 값을 생성할 때 사용하는 쿼리 값�
 
 <aside class="warning">
 Signature 생성시 secret encoding 옵션을 확인해주세요. <b>발급된 <code>secret key</code>는 base64로 encoding 되어있지 않습니다.</b> JWT 관련 library를 사용하신다면 해당 옵션을 확인해주세요.
+</aside>
+
+<aside class="warning">
+<b>NOTE: v1.3.0 업데이트 - urlencoded form 지원 종료 (2022. 3. 1.)</b>
+<br/><br/>
+2022년 3월부터 urlencoded form 형식을 이용한 HTTP body 요청은 지원이 종료될 예정입니다.
+<br/>
+JSON 형식을 이용해주시기 바랍니다.
+<br/><br/>
+자세한 변경사항은 [공지사항](https://docs.upbit.com/changelog/open-api-%EB%B3%80%EA%B2%BD%EC%82%AC%ED%95%AD-%EC%95%88%EB%82%B4)을 참조해주세요.
+</aside>
+
+<aside class="warning">
+<b>NOTE: v1.3.0 업데이트 - 기존 인증방식 지원 종료 (2022. 3. 1.)</b>
+<br/><br/>
+2022년 3월부터 query 필드를 이용한 JWT 페이로드 생성 방식은 지원이 종료될 예정입니다.
+<br/>
+query_hash 와 query_hash_alg 필드를 이용한 생성 방식을 이용해주시기 바랍니다.
+<br/><br/>
+자세한 변경사항은 [공지사항](https://docs.upbit.com/changelog/open-api-%EB%B3%80%EA%B2%BD%EC%82%AC%ED%95%AD-%EC%95%88%EB%82%B4)을 참조해주세요.
 </aside>
 <h1 id='remaining-requests'>Remaining Requests (요청 수 제한)</h1><h3 id='e193e9d311'>남은 요청 수 확인하기</h3>
 <p>UpbitClient 사용 시 모든 결과는 <code>json</code> 포맷으로 반환되며, <code>remaining_request</code> 키값을 가집니다.</p>
@@ -1545,6 +1568,8 @@ Signature 생성시 secret encoding 옵션을 확인해주세요. <b>발급된 <
 <td>매수 잔량</td>
 </tr>
 </tbody></table>
+
+<p><code>orderbook_unit</code> 리스트에는 15호가 정보가 들어가며 차례대로 1호가, 2호가 ... 15호가의 정보를 담고 있습니다.</p>
 <h2 id='order_chance'>Order_chance (주문 가능 정보)</h2>
 <p>마켓별 주문 가능 정보를 확인합니다.</p>
 
@@ -2038,6 +2063,7 @@ Signature 생성시 secret encoding 옵션을 확인해주세요. <b>발급된 <
       주문 상태
       <ul>
         <li>wait: 주문 대기 (default)</li>
+        <li>watch: 예약주문 대기</li>
         <li>done: 전체 체결 완료</li>
         <li>cancel: 주문 취소</li>
       </ul>
@@ -3768,6 +3794,20 @@ Signature 생성시 secret encoding 옵션을 확인해주세요. <b>발급된 <
 <h3 id='operation-code-4'>Operation Code</h3>
 <p><code>Withdraw.Withdraw_coin</code></p>
 <h3 id='request-4'>요청 (Request)</h3>
+<aside class="notice">
+<b>NOTE: 허용된 지갑 주소로만 출금을 진행할 수 있습니다.</b>
+<br/><br/>
+Open API를 이용하여 출금을 진행하기 위해서는 출금허용주소 등록이 필요합니다. 다음 페이지에서 출금 주소를 등록해주시길 바랍니다.
+<br/><br/>
+업비트 웹 [마이페이지] > [Open API 관리] > [암호화폐 출금주소 관리] 탭
+</aside>
+
+<aside class="warning">
+  <b>NOTE: 업비트 회원의 지갑 주소로만 바로출금을 진행할 수 있습니다.</b>
+  <br/><br/>
+  업비트 회원의 주소가 아닌 주소로 바로출금을 요청하는 경우, 출금이 정상적으로 수행되지 않습니다. 반드시 주소를 확인 후 출금을 진행하시기 바랍니다.
+</aside>
+
 <table>
   <tr>
     <th>

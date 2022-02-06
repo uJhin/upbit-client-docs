@@ -34,3 +34,23 @@ payload의 <code>query_hash</code> 값을 생성할 때 사용하는 쿼리 값�
 <aside class="warning">
 Signature 생성시 secret encoding 옵션을 확인해주세요. <b>발급된 <code>secret key</code>는 base64로 encoding 되어있지 않습니다.</b> JWT 관련 library를 사용하신다면 해당 옵션을 확인해주세요.
 </aside>
+
+<aside class="warning">
+<b>NOTE: v1.3.0 업데이트 - urlencoded form 지원 종료 (2022. 3. 1.)</b>
+<br/><br/>
+2022년 3월부터 urlencoded form 형식을 이용한 HTTP body 요청은 지원이 종료될 예정입니다.
+<br/>
+JSON 형식을 이용해주시기 바랍니다.
+<br/><br/>
+자세한 변경사항은 [공지사항](https://docs.upbit.com/changelog/open-api-%EB%B3%80%EA%B2%BD%EC%82%AC%ED%95%AD-%EC%95%88%EB%82%B4)을 참조해주세요.
+</aside>
+
+<aside class="warning">
+<b>NOTE: v1.3.0 업데이트 - 기존 인증방식 지원 종료 (2022. 3. 1.)</b>
+<br/><br/>
+2022년 3월부터 query 필드를 이용한 JWT 페이로드 생성 방식은 지원이 종료될 예정입니다.
+<br/>
+query_hash 와 query_hash_alg 필드를 이용한 생성 방식을 이용해주시기 바랍니다.
+<br/><br/>
+자세한 변경사항은 [공지사항](https://docs.upbit.com/changelog/open-api-%EB%B3%80%EA%B2%BD%EC%82%AC%ED%95%AD-%EC%95%88%EB%82%B4)을 참조해주세요.
+</aside>

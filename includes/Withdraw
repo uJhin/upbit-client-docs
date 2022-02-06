@@ -631,6 +631,20 @@
 <h3 id='operation-code-4'>Operation Code</h3>
 <p><code>Withdraw.Withdraw_coin</code></p>
 <h3 id='request-4'>요청 (Request)</h3>
+<aside class="notice">
+<b>NOTE: 허용된 지갑 주소로만 출금을 진행할 수 있습니다.</b>
+<br/><br/>
+Open API를 이용하여 출금을 진행하기 위해서는 출금허용주소 등록이 필요합니다. 다음 페이지에서 출금 주소를 등록해주시길 바랍니다.
+<br/><br/>
+업비트 웹 [마이페이지] > [Open API 관리] > [암호화폐 출금주소 관리] 탭
+</aside>
+
+<aside class="warning">
+  <b>NOTE: 업비트 회원의 지갑 주소로만 바로출금을 진행할 수 있습니다.</b>
+  <br/><br/>
+  업비트 회원의 주소가 아닌 주소로 바로출금을 요청하는 경우, 출금이 정상적으로 수행되지 않습니다. 반드시 주소를 확인 후 출금을 진행하시기 바랍니다.
+</aside>
+
 <table>
   <tr>
     <th>
