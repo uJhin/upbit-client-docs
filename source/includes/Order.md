@@ -114,6 +114,8 @@ orderbook_units.bid_price       | 매수호가
 orderbook_units.ask_size        | 매도 잔량
 orderbook_units.bid_size        | 매수 잔량
 
+`orderbook_unit` 리스트에는 15호가 정보가 들어가며 차례대로 1호가, 2호가 ... 15호가의 정보를 담고 있습니다.
+
 ## Order_chance (주문 가능 정보)
 마켓별 주문 가능 정보를 확인합니다.
 
@@ -430,6 +432,7 @@ print(resp['result'])
       주문 상태
       <ul>
         <li>wait: 주문 대기 (default)</li>
+        <li>watch: 예약주문 대기</li>
         <li>done: 전체 체결 완료</li>
         <li>cancel: 주문 취소</li>
       </ul>
