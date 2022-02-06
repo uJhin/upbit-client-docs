@@ -2031,11 +2031,11 @@ JSON 형식을 이용해주시기 바랍니다.
 <aside class="warning">
   <b>NOTE</b>: <b>states 파라미터 변경 안내 (2021. 03. 22 ~)</b>
   <br/><br/>
-  2021년 3월 22일부터 미체결 주문(wait, watch)과 완료 주문(done, cancel)을 혼합하여 조회하실 수 없습니다.
+  2021년 3월 22일부터 <b>미체결 주문(<code>wait</code>, <code>watch</code>)</b>과 <b>완료 주문(<code>done</code>, <code>cancel</code>)</b>을 혼합하여 조회하실 수 없습니다.
   <br/><br/>
   <ul>
-    <li>예시1) done, cancel 주문을 한 번에 조회 => <b>가능</b></li>
-    <li>예시2) wait, done 주문을 한 번에 조회 => <b>불가능 (각각 API 호출 필요)</b></li>
+    <li>예시1) <code>done</code>, <code>cancel</code> 주문을 한 번에 조회 => <b>가능</b></li>
+    <li>예시2) <code>wait</code>, <code>done</code> 주문을 한 번에 조회 => <b>불가능 (각각 API 호출 필요)</b></li>
   </ul>
   <br/>
   자세한 내용은 <a href="https://docs.upbit.com/changelog/%EC%95%88%EB%82%B4-open-api-%EB%B3%80%EA%B2%BD%EC%82%AC%ED%95%AD-%EC%95%88%EB%82%B4-%EC%A0%81%EC%9A%A9-%EC%9D%BC%EC%9E%90-0322-1">개발자 센터 공지사항</a>을 참조 부탁드립니다.
@@ -2422,9 +2422,8 @@ JSON 형식을 이용해주시기 바랍니다.
 하나의 주문에 여러 개의 체결이 발생할 수 있으므로 두 내용은 다를 수 있습니다.</p>
 
 <p>체결 목록을 확인하기 위해서는 주문 조회 API 응답의 <code>trades</code> 필드를 통해 확인하실 수 있습니다.</p>
-
-<p>주문 리스트 조회 API에서 시장가 주문이 조회되지 않습니다.
-<strong>시장가 매수 주문</strong>은 체결 후 주문 상태가 <code>cancel</code>, <code>done</code> 두 경우 <strong>모두</strong> 발생할 수 있습니다.</p>
+<h3 id='2-api'>2. 주문 리스트 조회 API에서 시장가 주문이 조회되지 않습니다.</h3>
+<p><strong>시장가 매수 주문</strong>은 체결 후 주문 상태가 <code>cancel</code>, <code>done</code> 두 경우 <strong>모두</strong> 발생할 수 있습니다.</p>
 
 <p><strong>시장가로 체결이 일어난 후 주문 잔량이 발생하는 경우</strong>, 남은 잔량이 반환되며 <code>cancel</code> 처리됩니다.
 대부분의 경우 소수점 아래 8자리까지 나누어 떨어지지 않는 미미한 금액이 주문 잔량으로 발생하게 됩니다.
@@ -2442,10 +2441,10 @@ JSON 형식을 이용해주시기 바랍니다.
 <strong>시장가 매도 주문</strong>의 경우 수량을 통해 요청이 이루어지므로 나눗셈 연산이 없어 <strong>잔량이 발생하지 않습니다.</strong></p>
 
 <p>또한 주문 리스트 조회 API에는 <code>states</code> 필드가 있어, 여러 상태를 동시에 조회할 수 있는 점 참고 부탁드립니다.</p>
-<h3 id='2'>2. 시장가 주문 요청에 실패합니다.</h3>
+<h3 id='3'>3. 시장가 주문 요청에 실패합니다.</h3>
 <p><strong>시장가 주문</strong>의 경우 <em>매수/매도할 가격을 명시하지 않으므로</em>, <code>price</code> 혹은 <code>volume</code> 중 하나의 값만 존재해야합니다.
 자세한 내용은 위의 주문하기 문서를 다시 참고 부탁드립니다.</p>
-<h3 id='3'>3. 주문하기 요청 횟수 제한이 남아있는데 오류가 발생합니다.</h3>
+<h3 id='4'>4. 주문하기 요청 횟수 제한이 남아있는데 오류가 발생합니다.</h3>
 <p>해당 현상은 주문 요청이 일시적으로 폭증하는 상황에 주문 안정화 시스템이 동작할 때 발생합니다.</p>
 
 <p>주문 안정화 시스템은 Open API 및 업비트 앱/웹 여부와 무관하게 시스템 전체에 적용됩니다.
