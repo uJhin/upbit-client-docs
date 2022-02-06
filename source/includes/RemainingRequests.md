@@ -1,8 +1,6 @@
 # Remaining Requests (요청 수 제한)
 
-### 남은 요청 수 확인하기
-
-UpbitClient 사용 시 모든 결과는 `json` 포맷으로 반환되며, `remaining_request` 키값을 가집니다.
+## 남은 요청 수 확인하기
 
 > Example Code
 
@@ -30,7 +28,9 @@ print(resp)
 }
 ```
 
-### 상세 설명
+UpbitClient 사용 시 모든 결과는 `json` 포맷으로 반환되며, `remaining_request` 키값을 가집니다.
+
+## 상세 설명
 
 ### 1. EXCHANGE API
 

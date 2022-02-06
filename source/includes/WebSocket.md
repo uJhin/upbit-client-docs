@@ -588,7 +588,7 @@ print(pong)
 > Result
 
 ```json
-{"status": "UP"}
+{ "status": "UP" }
 ```
 
 **PING/PONG**
