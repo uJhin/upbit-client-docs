@@ -1,6 +1,6 @@
 # UpbitClient (Upbit 클라이언트 사용하기)
 
-### 클라이언트 객체 생성
+## 클라이언트 객체 생성
 
 > Code Example
 
@@ -57,7 +57,7 @@ remaining_request    | 남은 요청 제한 시간
 result               | 요청에 대한 결과(JSON 포맷)
 
 
-### 참고사항
+## 참고사항
 
 ### 1. REST API 요청 시 오류가 발생합니다.
 

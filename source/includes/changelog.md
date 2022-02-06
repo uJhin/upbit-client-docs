@@ -7,6 +7,7 @@ Upbit Client Released: v1.3.1.0
 
 - Update Upbit OPEN API Version 1.3.1
 - [Upbit OPEN API 변경사항 안내](https://docs.upbit.com/changelog/open-api-%EB%B3%80%EA%B2%BD%EC%82%AC%ED%95%AD-%EC%95%88%EB%82%B4)를 참고하세요.
+- 2022년 3월부터 인증방식 중 JWT 서명방식 지원 사항이 변경될 수 있기 때문에 3월 이후 인증절차 알고리즘이 변경될 수 있습니다.
 
 
 ### 2022-01-14
