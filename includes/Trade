@@ -321,9 +321,10 @@
 
 <ul>
 <li>매도 호가에 누군가 매수를 하면 체결은 매수(BID) 타입</li>
-<li>매수 호가에 누군가 매도를 하면 체결은 매도(ASK) 타입
-<code>making/taking</code> 관점에서 보면 <code>taking</code>의 주문 타입으로 결정이 됩니다.</li>
+<li>매수 호가에 누군가 매도를 하면 체결은 매도(ASK) 타입</li>
 </ul>
+
+<p><code>making/taking</code> 관점에서 보면 <code>taking</code>의 주문 타입으로 결정이 됩니다.</p>
 <h3 id='4-api'>4. 체결강도를 API를 통해 수신하고 싶습니다.</h3>
 <p>현재 업비트는 API를 통해 체결강도를 따로 제공해드리고 있지는 않습니다.
 다만 <code>websocket</code>의 체결 데이터 수신을 통해 체결강도를 계산하실 수 있습니다.</p>

@@ -1040,7 +1040,7 @@
 <blockquote>
 <p>Result</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UP"</span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UP"</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p><strong>PING/PONG</strong></p>
 

@@ -1,6 +1,4 @@
-<h1 id='remaining-requests'>Remaining Requests (요청 수 제한)</h1><h3 id='e193e9d311'>남은 요청 수 확인하기</h3>
-<p>UpbitClient 사용 시 모든 결과는 <code>json</code> 포맷으로 반환되며, <code>remaining_request</code> 키값을 가집니다.</p>
-
+<h1 id='remaining-requests'>Remaining Requests (요청 수 제한)</h1><h2 id='e193e9d311'>남은 요청 수 확인하기</h2>
 <blockquote>
 <p>Example Code</p>
 </blockquote>
@@ -24,7 +22,9 @@
 </span><span class="p">},</span><span class="w">
   </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="err">...</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='4274c598a1'>상세 설명</h3><h3 id='1-exchange-api'>1. EXCHANGE API</h3>
+</span></code></pre></div>
+<p>UpbitClient 사용 시 모든 결과는 <code>json</code> 포맷으로 반환되며, <code>remaining_request</code> 키값을 가집니다.</p>
+<h2 id='4274c598a1'>상세 설명</h2><h3 id='1-exchange-api'>1. EXCHANGE API</h3>
 <p><strong>주문</strong></p>
 
 <p><code>초당 8회</code>, <code>분당 200회</code></p>
