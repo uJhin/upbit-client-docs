@@ -1,4 +1,5 @@
 # Remaining Requests (요청 수 제한)
+
 ### 남은 요청 수 확인하기
 
 UpbitClient 사용 시 모든 결과는 `json` 포맷으로 반환되며, `remaining_request` 키값을 가집니다.
@@ -30,7 +31,9 @@ print(resp)
 ```
 
 ### 상세 설명
-#### EXCHANGE API
+
+### 1. EXCHANGE API
+
 **주문**
 
 `초당 8회`, `분당 200회`
@@ -47,7 +50,8 @@ print(resp)
 - 사용 가능한 잔여 요청 수는 하단의 잔여 요청 수 확인 방법을 참고하시어 확인하실 수 있습니다.
 - (업데이트) 주문 API와 주문 외 API 요청 수 제한은 별도로 계산 됩니다.
 
-#### QUOTATION API
+### 2. QUOTATION API
+
 **웹 소켓(Websocket) 연결 요청 수 제한**
 
 `초당 5회`, `분당 100회`

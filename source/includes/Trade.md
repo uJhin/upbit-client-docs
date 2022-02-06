@@ -1,6 +1,7 @@
 # Trade (거래; 시세 체결)
 
 ## Trade_ticks (최근 체결 내역)
+
 최근 체결 내역을 조회합니다.
 
 > Request Example
@@ -36,9 +37,11 @@ print(resp['result'])
 ```
 
 ### Method
+
 **GET** `/v1/trades/ticks`
 
 ### Operation Code
+
 `Trade.Trade_ticks`
 
 ### 요청 (Request)
@@ -72,6 +75,7 @@ sequential_id      | 체결 번호 (Unique)
 </aside>
 
 ## Trade_ticker (시세 Ticker 조회 - 현재가 정보)
+
 요청 당시 종목의 스냅샷을 반환합니다.
 
 > Request Example
@@ -150,9 +154,11 @@ print(resp['result'])
 ```
 
 ### Method
+
 **GET** `/v1/ticker`
 
 ### Operation Code
+
 `Trade.Trade_ticker`
 
 ### 요청 (Request)
@@ -191,3 +197,44 @@ lowest_52_week_price  | 52주 신저가
 lowest_52_week_date   | 52주 신저가 달성일
 timestamp             | 타임스탬프
 
+### 시세 관련 질문
+
+### 1. 차트 보조지표를 계산하고 싶습니다.
+
+업비트 차트의 보조지표들은 `Chartiq`, `Tradingview` 에서 제공하고 있으니 해당 사이트들을 참고하시길 바랍니다.
+
+### 2. UBCI 지표를 API를 통해 수신하고 싶습니다.
+
+UBCI API는 업비트 측에서 Open API로 제공하고 있지 않습니다.
+업비트 공지사항을 통해 확인하시기 바랍니다.
+
+### 3. 매수, 매도 (bid/ask) 결정 기준이 궁금합니다.
+
+결정 기준은 아래와 같습니다.
+
+- 매도 호가에 누군가 매수를 하면 체결은 매수(BID) 타입
+- 매수 호가에 누군가 매도를 하면 체결은 매도(ASK) 타입
+`making/taking` 관점에서 보면 `taking`의 주문 타입으로 결정이 됩니다.
+
+### 4. 체결강도를 API를 통해 수신하고 싶습니다.
+
+현재 업비트는 API를 통해 체결강도를 따로 제공해드리고 있지는 않습니다.
+다만 `websocket`의 체결 데이터 수신을 통해 체결강도를 계산하실 수 있습니다.
+
+<aside class="notice">
+    <b>>[체결강도 계산식]</b>
+    <br/>
+	체결강도 = 매수체결량/매도체결량 × 100%
+	<br/>
+	체결강도가 100보다 클 경우 매도보다 매수가 많은 것이며, 100보다 작을 경우는 매수보다 매도가 많다는 것을 의미
+</aside>
+
+
+체결강도는 UTC 0시(KST 9시)부터의 _매수누적체결량 / 매도누적체결량 * 100_ 으로 계산됩니다.
+해당 계산식은 향후 서비스 운영 중 다른 형태로 별도의 고지 없이 변경될 수 있음을 참고 부탁드리겠습니다.
+
+### 5. USDT 마켓의 원화 환산가격를 알고 싶습니다.
+
+USDT 마켓의 원화 환산가격은 업비트 자체 마켓 시세를 통하여 계산됩니다.
+
+- KRW-USDT = KRW-BTC / USDT-BTC
