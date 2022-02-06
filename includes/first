@@ -1,4 +1,4 @@
-<h1 id='upbitclient-upbit'>UpbitClient (Upbit 클라이언트 사용하기)</h1><h3 id='4d259256d6'>클라이언트 객체 생성</h3>
+<h1 id='upbitclient-upbit'>UpbitClient (Upbit 클라이언트 사용하기)</h1><h2 id='4d259256d6'>클라이언트 객체 생성</h2>
 <blockquote>
 <p>Code Example</p>
 </blockquote>
@@ -96,7 +96,7 @@
 <td>요청에 대한 결과(JSON 포맷)</td>
 </tr>
 </tbody></table>
-<h3 id='468cdab5af'>참고사항</h3><h3 id='1-rest-api'>1. REST API 요청 시 오류가 발생합니다.</h3>
+<h2 id='468cdab5af'>참고사항</h2><h3 id='1-rest-api'>1. REST API 요청 시 오류가 발생합니다.</h3>
 <p>API 요청 처리 중 오류가 발생한 경우 HTTP 응답 body에 에러 코드가 함께 반환됩니다.
 주요 에러 코드는 본 문서의 에러코드 항목에서 확인하실 수 있습니다.</p>
 
