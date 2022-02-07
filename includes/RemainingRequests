@@ -24,6 +24,26 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>UpbitClient 사용 시 모든 결과는 <code>json</code> 포맷으로 반환되며, <code>remaining_request</code> 키값을 가집니다.</p>
+<h3 id='71d855acd9'>결과</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>group</td>
+<td>요청에 대한 API Namespace Group (Operation Code)</td>
+</tr>
+<tr>
+<td>min</td>
+<td>분(minutes)당 남은 요청 횟수</td>
+</tr>
+<tr>
+<td>sec</td>
+<td>초(seconds)당 남은 요청 횟수</td>
+</tr>
+</tbody></table>
 <h2 id='4274c598a1'>상세 설명</h2><h3 id='1-exchange-api'>1. EXCHANGE API</h3>
 <p><strong>주문</strong></p>
 
