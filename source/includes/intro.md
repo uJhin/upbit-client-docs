@@ -25,8 +25,10 @@ Upbit Client(업비트 클라이언트)는 Upbit(업비트) OPEN API에 접근�
   </li>
 </ul>
 
-### Powered By
+<div align="center">
+  <h3>Powered By</h3>
 
-<a href="https://github.com/slatedocs/slate">
-  <img src="/images/logo-slate.png">
-</a>
+  <a href="https://github.com/slatedocs/slate">
+    <img src="/images/logo-slate.png">
+  </a>
+</div>
