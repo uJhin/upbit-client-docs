@@ -19,7 +19,11 @@
     </b>
   </li>
 </ul>
-<h3 id='powered-by'>Powered By</h3>
-<p><a href="https://github.com/slatedocs/slate">
-  <img src="/images/logo-slate.png">
-</a></p>
+
+<div align="center">
+  <h3>Powered By</h3>
+
+  <a href="https://github.com/slatedocs/slate">
+    <img src="/images/logo-slate.png">
+  </a>
+</div>
