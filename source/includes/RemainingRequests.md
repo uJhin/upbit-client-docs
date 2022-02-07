@@ -30,6 +30,14 @@ print(resp)
 
 UpbitClient 사용 시 모든 결과는 `json` 포맷으로 반환되며, `remaining_request` 키값을 가집니다.
 
+### 결과
+
+Parameter      | Description
+-------------- | -----------
+group          | 요청에 대한 API Namespace Group (Operation Code)
+min            | 분(minutes)당 남은 요청 횟수
+sec            | 초(seconds)당 남은 요청 횟수
+
 ## 상세 설명
 
 ### 1. EXCHANGE API
