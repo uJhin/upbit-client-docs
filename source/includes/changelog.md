@@ -2,6 +2,9 @@
 
 ## 2022
 
+### 2022-03-01
+Upbit OPEN API 인증 방식 테스트 완료
+
 ### 2022-02-06
 Upbit Client Released: v1.3.1.0
 
