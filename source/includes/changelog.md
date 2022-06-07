@@ -2,6 +2,12 @@
 
 ## 2022
 
+### 2022-06-07
+Upbit Client released: v1.3.1.1
+
+- PyJWT Version Update v2.4.0
+- 자세한 내용은 [여기](https://github.com/uJhin/upbit-client/pull/43#issuecomment-1148090773)를 참고해주시기 바랍니다.
+
 ### 2022-03-01
 Upbit OPEN API 인증 방식 테스트 완료
 
