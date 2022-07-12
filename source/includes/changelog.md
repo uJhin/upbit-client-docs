@@ -2,6 +2,12 @@
 
 ## 2022
 
+### 2022-07-12
+Update Upbit OPEN API
+
+- Upbit OPEN API Version 1.3.2 업데이트 반영
+- QUOTATION API 파라미터 조회 시 예외가 발생하는 [이슈사항](https://github.com/uJhin/upbit-client/issues/46) 수정 및 반영
+
 ### 2022-06-07
 Upbit Client released: v1.3.1.1
 
