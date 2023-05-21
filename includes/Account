@@ -101,6 +101,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"net_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"wallet_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"block_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"block_height"</span><span class="p">:</span><span class="w"> </span><span class="mi">665013</span><span class="p">,</span><span class="w">
@@ -109,6 +110,7 @@
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POWR"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"net_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POWR"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"wallet_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"block_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"block_height"</span><span class="p">:</span><span class="w"> </span><span class="mi">11609520</span><span class="p">,</span><span class="w">
@@ -117,6 +119,7 @@
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"net_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"wallet_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"block_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"block_height"</span><span class="p">:</span><span class="w"> </span><span class="mi">11609520</span><span class="p">,</span><span class="w">
@@ -125,6 +128,7 @@
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETC"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"net_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETC"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"wallet_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"block_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"block_height"</span><span class="p">:</span><span class="w"> </span><span class="mi">11947575</span><span class="p">,</span><span class="w">
@@ -146,7 +150,13 @@
     <br/>
     입출금 현황 API에서 제공하는 입출금 상태, 블록 상태 정보는 수 분 정도 지연되어 반영될 수 있습니다.
     <br/>
-    본 API는 참고용으로만 사용하시길 바라며 실제 입출금을 수행하기  전에는 반드시 업비트 공지사항 및 입출금 현황 페이지를    참고해주시기 바랍니다.
+    본 API는 참고용으로만 사용하시길 바라며 실제 입출금을 수행하기 전에는 반드시 업비트 공지사항 및 입출금 현황 페이지를 참고해주시기 바랍니다.
+</aside>
+
+<aside class="notice">
+    <b>네트워크 타입( <code>net_type</code> )이란?</b>
+    <br/><br/>
+    디지털 자산 입출금에 활용되는 블록체인 네트워크를 뜻하며, 디지털 자산의 종류에 따라 활용되는 네트워크(체인)이 다를 수 있습니다.
 </aside>
 <h3 id='response-2'>응답 (Response)</h3>
 <table>
@@ -164,6 +174,14 @@
     </td>
     <td>
         화폐를 의미하는 영문 대문자 코드
+    </td>
+  </tr>
+  <tr>
+    <td>
+        net_type
+    </td>
+    <td>
+        입출금 네트워크
     </td>
   </tr>
   <tr>

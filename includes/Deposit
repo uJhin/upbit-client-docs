@@ -21,6 +21,7 @@
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deposit"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20c84493-6e70-4e54-83ce-90915a19d110"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"net_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"txid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BKD-2021-01-07-82a877188ce61d7b4b3c709dad"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACCEPTED"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-07T11:59:31+09:00"</span><span class="p">,</span><span class="w">
@@ -33,6 +34,7 @@
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deposit"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7b34ea4d-fb46-4da1-9172-8dd42b8814f5"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"net_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"txid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BKD-2021-01-06-fd2ba0cc92670c72fba22f78d0"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACCEPTED"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-06T20:42:41+09:00"</span><span class="p">,</span><span class="w">
@@ -161,6 +163,14 @@
   </td>
 </tr>
 <tr>
+    <td>
+        net_type
+    </td>
+    <td>
+        입금 네트워크
+    </td>
+</tr>
+<tr>
   <td>
       txid
   </td>
@@ -245,6 +255,7 @@
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deposit"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20c84493-6e70-4e54-83ce-90915a19d110"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"net_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"txid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BKD-2021-01-07-82a877188ce61d7b4b3c709dad"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACCEPTED"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-07T11:59:31+09:00"</span><span class="p">,</span><span class="w">
@@ -331,6 +342,14 @@
   </td>
 </tr>
 <tr>
+    <td>
+        net_type
+    </td>
+    <td>
+        입금 네트워크
+    </td>
+</tr>
+<tr>
   <td>
       txid
   </td>
@@ -412,21 +431,25 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"net_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deposit_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3NVw2seiTQddGQwc1apqudKxuTqebpyL3s"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"secondary_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"net_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deposit_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x60dd373f59862d9df776596889b997e24bee42eb"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"secondary_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EOS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"net_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EOS"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deposit_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eosupbitsusr"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"secondary_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"516252ca-0993-454d-bd8b-6bc9db2d4c25"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"net_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deposit_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"raQwCVAJVqjrVm1Nj5SFRcX8i22BhdC9WA"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"secondary_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22325934"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -448,6 +471,10 @@
 <tr>
 <td>currency</td>
 <td>화폐를 의미하는 영문 대문자 코드</td>
+</tr>
+<tr>
+<td>net_type</td>
+<td>입금 네트워크</td>
 </tr>
 <tr>
 <td>deposit_address</td>
@@ -478,7 +505,8 @@
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
 <span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Deposit</span><span class="p">.</span><span class="n">Deposit_coin_address</span><span class="p">(</span>
-    <span class="n">currency</span><span class="o">=</span><span class="s">'BTC'</span>
+    <span class="n">currency</span><span class="o">=</span><span class="s">'BTC'</span><span class="p">,</span>
+    <span class="n">net_type</span><span class="o">=</span><span class="s">'BTC'</span>
 <span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
 </code></pre></div>
@@ -487,6 +515,7 @@
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"net_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"deposit_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3NVw2seiTQddGQwc1apqudKxuTqebpyL3s"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"secondary_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -505,6 +534,10 @@
 <td>currency *</td>
 <td>화폐를 의미하는 영문 대문자 코드</td>
 </tr>
+<tr>
+<td>net_type *</td>
+<td>입금 네트워크</td>
+</tr>
 </tbody></table>
 <h3 id='response-4'>응답 (Response)</h3>
 <table><thead>
@@ -516,6 +549,10 @@
 <tr>
 <td>currency</td>
 <td>화폐를 의미하는 영문 대문자 코드</td>
+</tr>
+<tr>
+<td>net_type</td>
+<td>입금 네트워크</td>
 </tr>
 <tr>
 <td>deposit_address</td>
@@ -546,7 +583,8 @@
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
 <span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Deposit</span><span class="p">.</span><span class="n">Deposit_generate_coin_address</span><span class="p">(</span>
-    <span class="n">currency</span><span class="o">=</span><span class="s">'SNT'</span>
+    <span class="n">currency</span><span class="o">=</span><span class="s">'SNT'</span><span class="p">,</span>
+    <span class="n">net_type</span><span class="o">=</span><span class="s">'SNT'</span>
 <span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
 </code></pre></div>
@@ -563,6 +601,7 @@
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SNT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"net_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SNT"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"deposit_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x72012d8af69263a509af8cd522374fc65c454539"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"secondary_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -580,6 +619,10 @@
 <tr>
 <td>currency *</td>
 <td>화폐를 의미하는 영문 대문자 코드</td>
+</tr>
+<tr>
+<td>net_type *</td>
+<td>입금 네트워크</td>
 </tr>
 </tbody></table>
 <h3 id='response1'>응답 (Response1)</h3>
@@ -608,6 +651,10 @@
 <tr>
 <td>currency</td>
 <td>화폐를 의미하는 영문 대문자 코드</td>
+</tr>
+<tr>
+<td>net_type</td>
+<td>입금 네트워크</td>
 </tr>
 <tr>
 <td>deposit_address</td>

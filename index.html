@@ -328,6 +328,9 @@
             <a href="#change-logs" class="toc-h1 toc-link" data-title="Change Logs">Change Logs</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#2023" class="toc-h2 toc-link" data-title="2023">2023</a>
+                  </li>
+                  <li>
                     <a href="#2022" class="toc-h2 toc-link" data-title="2022">2022</a>
                   </li>
                   <li>
@@ -460,10 +463,13 @@
                     <a href="#withdraw_chance" class="toc-h2 toc-link" data-title="Withdraw_chance (출금 가능 정보)">Withdraw_chance (출금 가능 정보)</a>
                   </li>
                   <li>
-                    <a href="#withdraw_coin" class="toc-h2 toc-link" data-title="Withdraw_coin (코인 출금 하기)">Withdraw_coin (코인 출금 하기)</a>
+                    <a href="#withdraw_coin" class="toc-h2 toc-link" data-title="Withdraw_coin (디지털 자산 출금 하기)">Withdraw_coin (디지털 자산 출금 하기)</a>
                   </li>
                   <li>
                     <a href="#withdraw_krw" class="toc-h2 toc-link" data-title="Withdraw_krw (원화 출금 하기)">Withdraw_krw (원화 출금 하기)</a>
+                  </li>
+                  <li>
+                    <a href="#withdraw_coin_addresses" class="toc-h2 toc-link" data-title="Withdraw_coin_addresses (출금 허용 주소 리스트 조회)">Withdraw_coin_addresses (출금 허용 주소 리스트 조회)</a>
                   </li>
               </ul>
           </li>
@@ -641,7 +647,27 @@
 <p><img alt="uJhin's BTC" src="https://img.shields.io/badge/BTC-3NVw2seiTQddGQwc1apqudKxuTqebpyL3s-blue?style=flat-square&logo=bitcoin">
 <br/>
 <img alt="uJhin's ETH" src="https://img.shields.io/badge/ETH-0x60dd373f59862d9df776596889b997e24bee42eb-blue?style=flat-square&logo=ethereum"></p>
-<h1 id='change-logs'>Change Logs</h1><h2 id='2022'>2022</h2><h3 id='2022-07-12'>2022-07-12</h3>
+<h1 id='change-logs'>Change Logs</h1><h2 id='2023'>2023</h2><h3 id='2023-05-22'>2023-05-22</h3>
+<p>Update Upbit OPEN API</p>
+
+<ul>
+<li>Upbit OPEN API Version 1.3.4 업데이트 반영</li>
+<li>Upbit Client released: v1.3.4.0</li>
+<li>EXCHANGE API 변경사항 및 신규 API 추가
+
+<ul>
+<li>입출금 관련 API 호출 시 <code>net_type</code> 파라미터 추가</li>
+<li><strong>네트워크 타입( <code>net_type</code> )</strong> 이란?
+
+<ul>
+<li>디지털 자산 입출금에 활용되는 블록체인 네트워크를 뜻하며, 디지털 자산의 종류에 따라 활용되는 네트워크(체인)이 다를 수 있습니다.</li>
+</ul></li>
+<li>출금 허용 주소 리스트 조회</li>
+<li>해당 업데이트 내역은 <a href="https://github.com/uJhin/upbit-client/pull/56">Pull Request #56</a>을 참고 해주시길 바랍니다.</li>
+<li>해당 API에 대한 세부적인 내용을 알고 싶다면 <a href="https://docs.upbit.com/changelog/net_type">공지사항</a>을 참고 해주세요.</li>
+</ul></li>
+</ul>
+<h2 id='2022'>2022</h2><h3 id='2022-07-12'>2022-07-12</h3>
 <p>Update Upbit OPEN API</p>
 
 <ul>
@@ -1292,6 +1318,7 @@ JSON 형식을 이용해주시기 바랍니다.
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"net_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"wallet_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"block_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"block_height"</span><span class="p">:</span><span class="w"> </span><span class="mi">665013</span><span class="p">,</span><span class="w">
@@ -1300,6 +1327,7 @@ JSON 형식을 이용해주시기 바랍니다.
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POWR"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"net_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POWR"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"wallet_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"block_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"block_height"</span><span class="p">:</span><span class="w"> </span><span class="mi">11609520</span><span class="p">,</span><span class="w">
@@ -1308,6 +1336,7 @@ JSON 형식을 이용해주시기 바랍니다.
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"net_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"wallet_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"block_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"block_height"</span><span class="p">:</span><span class="w"> </span><span class="mi">11609520</span><span class="p">,</span><span class="w">
@@ -1316,6 +1345,7 @@ JSON 형식을 이용해주시기 바랍니다.
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETC"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"net_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETC"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"wallet_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"block_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"block_height"</span><span class="p">:</span><span class="w"> </span><span class="mi">11947575</span><span class="p">,</span><span class="w">
@@ -1337,7 +1367,13 @@ JSON 형식을 이용해주시기 바랍니다.
     <br/>
     입출금 현황 API에서 제공하는 입출금 상태, 블록 상태 정보는 수 분 정도 지연되어 반영될 수 있습니다.
     <br/>
-    본 API는 참고용으로만 사용하시길 바라며 실제 입출금을 수행하기  전에는 반드시 업비트 공지사항 및 입출금 현황 페이지를    참고해주시기 바랍니다.
+    본 API는 참고용으로만 사용하시길 바라며 실제 입출금을 수행하기 전에는 반드시 업비트 공지사항 및 입출금 현황 페이지를 참고해주시기 바랍니다.
+</aside>
+
+<aside class="notice">
+    <b>네트워크 타입( <code>net_type</code> )이란?</b>
+    <br/><br/>
+    디지털 자산 입출금에 활용되는 블록체인 네트워크를 뜻하며, 디지털 자산의 종류에 따라 활용되는 네트워크(체인)이 다를 수 있습니다.
 </aside>
 <h3 id='response-2'>응답 (Response)</h3>
 <table>
@@ -1355,6 +1391,14 @@ JSON 형식을 이용해주시기 바랍니다.
     </td>
     <td>
         화폐를 의미하는 영문 대문자 코드
+    </td>
+  </tr>
+  <tr>
+    <td>
+        net_type
+    </td>
+    <td>
+        입출금 네트워크
     </td>
   </tr>
   <tr>
@@ -2655,6 +2699,7 @@ JSON 형식을 이용해주시기 바랍니다.
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deposit"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20c84493-6e70-4e54-83ce-90915a19d110"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"net_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"txid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BKD-2021-01-07-82a877188ce61d7b4b3c709dad"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACCEPTED"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-07T11:59:31+09:00"</span><span class="p">,</span><span class="w">
@@ -2667,6 +2712,7 @@ JSON 형식을 이용해주시기 바랍니다.
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deposit"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7b34ea4d-fb46-4da1-9172-8dd42b8814f5"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"net_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"txid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BKD-2021-01-06-fd2ba0cc92670c72fba22f78d0"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACCEPTED"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-06T20:42:41+09:00"</span><span class="p">,</span><span class="w">
@@ -2795,6 +2841,14 @@ JSON 형식을 이용해주시기 바랍니다.
   </td>
 </tr>
 <tr>
+    <td>
+        net_type
+    </td>
+    <td>
+        입금 네트워크
+    </td>
+</tr>
+<tr>
   <td>
       txid
   </td>
@@ -2879,6 +2933,7 @@ JSON 형식을 이용해주시기 바랍니다.
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deposit"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20c84493-6e70-4e54-83ce-90915a19d110"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"net_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"txid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BKD-2021-01-07-82a877188ce61d7b4b3c709dad"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACCEPTED"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-07T11:59:31+09:00"</span><span class="p">,</span><span class="w">
@@ -2965,6 +3020,14 @@ JSON 형식을 이용해주시기 바랍니다.
   </td>
 </tr>
 <tr>
+    <td>
+        net_type
+    </td>
+    <td>
+        입금 네트워크
+    </td>
+</tr>
+<tr>
   <td>
       txid
   </td>
@@ -3046,21 +3109,25 @@ JSON 형식을 이용해주시기 바랍니다.
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"net_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deposit_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3NVw2seiTQddGQwc1apqudKxuTqebpyL3s"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"secondary_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"net_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deposit_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x60dd373f59862d9df776596889b997e24bee42eb"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"secondary_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EOS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"net_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EOS"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deposit_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eosupbitsusr"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"secondary_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"516252ca-0993-454d-bd8b-6bc9db2d4c25"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"net_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deposit_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"raQwCVAJVqjrVm1Nj5SFRcX8i22BhdC9WA"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"secondary_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22325934"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -3082,6 +3149,10 @@ JSON 형식을 이용해주시기 바랍니다.
 <tr>
 <td>currency</td>
 <td>화폐를 의미하는 영문 대문자 코드</td>
+</tr>
+<tr>
+<td>net_type</td>
+<td>입금 네트워크</td>
 </tr>
 <tr>
 <td>deposit_address</td>
@@ -3112,7 +3183,8 @@ JSON 형식을 이용해주시기 바랍니다.
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
 <span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Deposit</span><span class="p">.</span><span class="n">Deposit_coin_address</span><span class="p">(</span>
-    <span class="n">currency</span><span class="o">=</span><span class="s">'BTC'</span>
+    <span class="n">currency</span><span class="o">=</span><span class="s">'BTC'</span><span class="p">,</span>
+    <span class="n">net_type</span><span class="o">=</span><span class="s">'BTC'</span>
 <span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
 </code></pre></div>
@@ -3121,6 +3193,7 @@ JSON 형식을 이용해주시기 바랍니다.
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"net_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"deposit_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3NVw2seiTQddGQwc1apqudKxuTqebpyL3s"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"secondary_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3139,6 +3212,10 @@ JSON 형식을 이용해주시기 바랍니다.
 <td>currency *</td>
 <td>화폐를 의미하는 영문 대문자 코드</td>
 </tr>
+<tr>
+<td>net_type *</td>
+<td>입금 네트워크</td>
+</tr>
 </tbody></table>
 <h3 id='response-4'>응답 (Response)</h3>
 <table><thead>
@@ -3150,6 +3227,10 @@ JSON 형식을 이용해주시기 바랍니다.
 <tr>
 <td>currency</td>
 <td>화폐를 의미하는 영문 대문자 코드</td>
+</tr>
+<tr>
+<td>net_type</td>
+<td>입금 네트워크</td>
 </tr>
 <tr>
 <td>deposit_address</td>
@@ -3180,7 +3261,8 @@ JSON 형식을 이용해주시기 바랍니다.
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
 <span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Deposit</span><span class="p">.</span><span class="n">Deposit_generate_coin_address</span><span class="p">(</span>
-    <span class="n">currency</span><span class="o">=</span><span class="s">'SNT'</span>
+    <span class="n">currency</span><span class="o">=</span><span class="s">'SNT'</span><span class="p">,</span>
+    <span class="n">net_type</span><span class="o">=</span><span class="s">'SNT'</span>
 <span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
 </code></pre></div>
@@ -3197,6 +3279,7 @@ JSON 형식을 이용해주시기 바랍니다.
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SNT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"net_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SNT"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"deposit_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x72012d8af69263a509af8cd522374fc65c454539"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"secondary_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3214,6 +3297,10 @@ JSON 형식을 이용해주시기 바랍니다.
 <tr>
 <td>currency *</td>
 <td>화폐를 의미하는 영문 대문자 코드</td>
+</tr>
+<tr>
+<td>net_type *</td>
+<td>입금 네트워크</td>
 </tr>
 </tbody></table>
 <h3 id='response1'>응답 (Response1)</h3>
@@ -3242,6 +3329,10 @@ JSON 형식을 이용해주시기 바랍니다.
 <tr>
 <td>currency</td>
 <td>화폐를 의미하는 영문 대문자 코드</td>
+</tr>
+<tr>
+<td>net_type</td>
+<td>입금 네트워크</td>
 </tr>
 <tr>
 <td>deposit_address</td>
@@ -3289,6 +3380,7 @@ JSON 형식을 이용해주시기 바랍니다.
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"withdraw"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35a4f1dc-1db5-4d6b-89b5-7ec137875956"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"net_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"txid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98c15999f0bdc4ae0e8a-ed35868bb0c204fe6ec29e4058a3451e-88636d1040f4baddf943274ce37cf9cc"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DONE"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-28T15:17:51+09:00"</span><span class="p">,</span><span class="w">
@@ -3419,6 +3511,22 @@ JSON 형식을 이용해주시기 바랍니다.
   </td>
 </tr>
 <tr>
+    <td>
+        net_type
+    </td>
+    <td>
+      출금 네트워크
+    </td>
+  </tr>
+  <tr>
+  <td>
+      currency
+  </td>
+  <td>
+      화폐를 의미하는 영문 대문자 코드
+  </td>
+</tr>
+<tr>
   <td>
       txid
   </td>
@@ -3503,6 +3611,7 @@ JSON 형식을 이용해주시기 바랍니다.
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"withdraw"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35a4f1dc-1db5-4d6b-89b5-7ec137875956"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"net_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"txid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98c15999f0bdc4ae0e8a-ed35868bb0c204fe6ec29e4058a3451e-88636d1040f4baddf943274ce37cf9cc"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DONE"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-28T15:17:51+09:00"</span><span class="p">,</span><span class="w">
@@ -3589,6 +3698,22 @@ JSON 형식을 이용해주시기 바랍니다.
   </td>
 </tr>
 <tr>
+    <td>
+        net_type
+    </td>
+    <td>
+      출금 네트워크
+    </td>
+  </tr>
+  <tr>
+  <td>
+      currency
+  </td>
+  <td>
+      화폐를 의미하는 영문 대문자 코드
+  </td>
+</tr>
+<tr>
   <td>
       txid
   </td>
@@ -3662,7 +3787,8 @@ JSON 형식을 이용해주시기 바랍니다.
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
 <span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Withdraw</span><span class="p">.</span><span class="n">Withdraw_chance</span><span class="p">(</span>
-    <span class="n">currency</span><span class="o">=</span><span class="s">'BTC'</span>
+    <span class="n">currency</span><span class="o">=</span><span class="s">'BTC'</span><span class="p">,</span>
+    <span class="n">net_type</span><span class="o">=</span><span class="s">'BTC'</span>
 <span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
 </code></pre></div>
@@ -3725,6 +3851,10 @@ JSON 형식을 이용해주시기 바랍니다.
 <tr>
 <td>currency *</td>
 <td>화폐를 의미하는 영문 대문자 코드</td>
+</tr>
+<tr>
+<td>net_type *</td>
+<td>출금 네트워크</td>
 </tr>
 </tbody></table>
 <h3 id='response-3'>응답 (Response)</h3>
@@ -3859,8 +3989,8 @@ JSON 형식을 이용해주시기 바랍니다.
 <td>출금 지원 여부</td>
 </tr>
 </tbody></table>
-<h2 id='withdraw_coin'>Withdraw_coin (코인 출금 하기)</h2>
-<p>코인 출금을 요청합니다.</p>
+<h2 id='withdraw_coin'>Withdraw_coin (디지털 자산 출금 하기)</h2>
+<p>디지털 자산 출금을 요청합니다.</p>
 
 <blockquote>
 <p>Request Example</p>
@@ -3873,6 +4003,7 @@ JSON 형식을 이용해주시기 바랍니다.
 <span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
 <span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Withdraw</span><span class="p">.</span><span class="n">Withdraw_coin</span><span class="p">(</span>
     <span class="n">currency</span><span class="o">=</span><span class="s">'BTC'</span><span class="p">,</span>
+    <span class="n">net_type</span><span class="o">=</span><span class="s">'BTC'</span><span class="p">,</span>
     <span class="n">amount</span><span class="o">=</span><span class="s">'0.01'</span><span class="p">,</span>
     <span class="n">address</span><span class="o">=</span><span class="s">'3NVw2seiTQddGQwc1apqudKxuTqebpyL3s'</span>
 <span class="p">)</span>
@@ -3885,6 +4016,7 @@ JSON 형식을 이용해주시기 바랍니다.
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"withdraw"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9f432943-54e0-40b7-825f-b6fec8b42b79"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"net_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"txid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ebe6937b-130e-4066-8ac6-4b0e67f28adc"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"processing"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-13T11:24:01+09:00"</span><span class="p">,</span><span class="w">
@@ -3913,6 +4045,15 @@ Open API를 이용하여 출금을 진행하기 위해서는 출금허용주소 
   업비트 회원의 주소가 아닌 주소로 바로출금을 요청하는 경우, 출금이 정상적으로 수행되지 않습니다. 반드시 주소를 확인 후 출금을 진행하시기 바랍니다.
 </aside>
 
+<aside class="warning">
+  <b>NOTE: (2023-05-22) 출금 네트워크( <code>net_type</code> ) 파라미터가 추가됩니다.</b>
+  <br/><br/>
+  멀티체인 입출금 지원에 따라, 디지털 자산 출금 요청 시 출금 네트워크( <code>net_type</code> ) 파라미터가 필수로 입력되어야 합니다.
+  출금하실 네트워크의 <code>net_type</code> 값은 출금 허용 주소 조회 API를 통해 확인 가능합니다.
+  <br/><br/>
+  자세한 내용은 <a href="https://docs.upbit.com/changelog/net_type">공지사항</a>을 참조 부탁드립니다.
+</aside>
+
 <table>
   <tr>
     <th>
@@ -3928,6 +4069,14 @@ Open API를 이용하여 출금을 진행하기 위해서는 출금허용주소 
     </td>
     <td>
         Currency 코드
+    </td>
+  </tr>
+  <tr>
+    <td>
+        net_type *
+    </td>
+    <td>
+        출금 네트워크
     </td>
   </tr>
   <tr>
@@ -4001,6 +4150,14 @@ Open API를 이용하여 출금을 진행하기 위해서는 출금허용주소 
       화폐를 의미하는 영문 대문자 코드
   </td>
 </tr>
+<tr>
+    <td>
+        net_type
+    </td>
+    <td>
+        출금 네트워크
+    </td>
+  </tr>
 <tr>
   <td>
       txid
@@ -4210,6 +4367,91 @@ Open API를 이용하여 출금을 진행하기 위해서는 출금허용주소 
         <li>default: 일반 출금</li>
         <li>internal: 바로 출금</li>
       </ul>
+  </td>
+</tr>
+</table>
+<h2 id='withdraw_coin_addresses'>Withdraw_coin_addresses (출금 허용 주소 리스트 조회)</h2>
+<p>등록된 출금 허용 주소 목록을 조회한다.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">upbit.client</span> <span class="kn">import</span> <span class="n">Upbit</span>
+
+<span class="n">access_key</span> <span class="o">=</span> <span class="s">"Your Access Key"</span>
+<span class="n">secret_key</span> <span class="o">=</span> <span class="s">"Your Secret Key"</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Withdraw</span><span class="p">.</span><span class="n">Withdraw_krw</span><span class="p">(</span>
+    <span class="n">amount</span><span class="o">=</span><span class="s">'10000'</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
+</code></pre></div>
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"net_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"withdraw_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3NVw2seiTQddGQwc1apqudKxuTqebpyL3s"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"secondary_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='method-6'>Method</h3>
+<p><strong>POST</strong> <code>/v1/withdraws/krw</code></p>
+<h3 id='operation-code-6'>Operation Code</h3>
+<p><code>Withdraw.Withdraw_krw</code></p>
+<h3 id='request-6'>요청 (Request)</h3>
+<p>No Parameters</p>
+
+<aside class="notice">
+  <b>[NOTE] 출금 기능을 이용하기 위해서는 주소 등록이 필요합니다.</b>
+  <br/><br/>
+  Open API를 통해 디지털 자산을 출금하기 위해서는 출금 허용 주소 등록이 필요합니다.
+  <br/><br/>
+  <b>[출금 허용 주소 등록 방법]</b>
+  <br/>
+  업비트 웹 > [MY] > [Open API 관리] > [디지털 자산 출금주소 관리] 페이지에서 진행하실 수 있습니다.
+</aside>
+<h3 id='response-6'>응답 (Response)</h3>
+<table>
+  <tr>
+    <th>
+      Parameter
+    </th>
+    <th>
+      Description
+    </th>
+  </tr>
+  <tr>
+    <td>
+      currency
+    </td>
+    <td>
+      출금 화폐
+    </td>
+  </tr>
+  <tr>
+    <td>
+      net_type
+    </td>
+    <td>
+      출금 네트워크
+    </td>
+  </tr>
+<tr>
+  <td>
+      withdraw_address
+  </td>
+  <td>
+      출금 주소
+  </td>
+</tr>
+<tr>
+  <td>
+      secondary_address
+  </td>
+  <td>
+      2차 출금 주소 (필요한 디지털 자산에 한해서)
   </td>
 </tr>
 </table>
