@@ -997,7 +997,7 @@ print(resp['result'])
 No Parameters
 
 <aside class="notice">
-  <b>[NOTE] 출금 기능을 이용하기 위해서는 주소 등록이 필요합니다.</b>
+  <b>NOTE: 출금 기능을 이용하기 위해서는 주소 등록이 필요합니다.</b>
   <br/><br/>
   Open API를 통해 디지털 자산을 출금하기 위해서는 출금 허용 주소 등록이 필요합니다.
   <br/><br/>

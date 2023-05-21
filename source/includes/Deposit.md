@@ -271,7 +271,7 @@ print(resp['result'])
 	"type": "deposit",
 	"uuid": "20c84493-6e70-4e54-83ce-90915a19d110",
 	"currency": "KRW",
-        "net_type": "KRW",
+    "net_type": "KRW",
 	"txid": "BKD-2021-01-07-82a877188ce61d7b4b3c709dad",
 	"state": "ACCEPTED",
 	"created_at": "2021-01-07T11:59:31+09:00",
@@ -459,25 +459,25 @@ print(resp['result'])
 [
 	{
 		"currency": "BTC",
-                "net_type": "BTC",
+        "net_type": "BTC",
 		"deposit_address": "3NVw2seiTQddGQwc1apqudKxuTqebpyL3s",
 		"secondary_address": null
 	},
 	{
 		"currency": "ETH",
-                "net_type": "ETH",
+        "net_type": "ETH",
 		"deposit_address": "0x60dd373f59862d9df776596889b997e24bee42eb",
 		"secondary_address": null
 	},
 	{
 		"currency": "EOS",
-                "net_type": "EOS",
+        "net_type": "EOS",
 		"deposit_address": "eosupbitsusr",
 		"secondary_address": "516252ca-0993-454d-bd8b-6bc9db2d4c25"
 	},
 	{
 		"currency": "XRP",
-                "net_type": "XRP",
+        "net_type": "XRP",
 		"deposit_address": "raQwCVAJVqjrVm1Nj5SFRcX8i22BhdC9WA",
 		"secondary_address": "22325934"
 	},
@@ -501,10 +501,10 @@ No Parameters
 
 | Parameter         | Description                      |
 | ----------------- | -------------------------------- |
-| currency          | 화폐를 의미하는 영문 대문자 코드 |
-| net_type          | 입금 네트워크                    |
-| deposit_address   | 입금 주소                        |
-| secondary_address | 2차 입금 주소                    |
+| currency          | 화폐를 의미하는 영문 대문자 코드            |
+| net_type          | 입금 네트워크                         |
+| deposit_address   | 입금 주소                           |
+| secondary_address | 2차 입금 주소                        |
 
 <aside class="notice">
   <b>NOTE</b>: 입금 주소 조회 요청 API 유의사항
@@ -556,17 +556,17 @@ print(resp['result'])
 
 | Parameter  | Description                      |
 | ---------- | -------------------------------- |
-| currency * | 화폐를 의미하는 영문 대문자 코드 |
-| net_type * | 입금 네트워크                    |
+| currency * | 화폐를 의미하는 영문 대문자 코드            |
+| net_type * | 입금 네트워크                         |
 
 ### 응답 (Response)
 
 | Parameter         | Description                      |
 | ----------------- | -------------------------------- |
-| currency          | 화폐를 의미하는 영문 대문자 코드 |
-| net_type          | 입금 네트워크                    |
-| deposit_address   | 입금 주소                        |
-| secondary_address | 2차 입금 주소                    |
+| currency          | 화폐를 의미하는 영문 대문자 코드            |
+| net_type          | 입금 네트워크                         |
+| deposit_address   | 입금 주소                           |
+| secondary_address | 2차 입금 주소                        |
 
 <aside class="notice">
   <b>NOTE</b>: 입금 주소 조회 요청 API 유의사항
@@ -609,7 +609,7 @@ print(resp['result'])
 ```json
 {
 	"currency": "SNT",
-        "net_type": "SNT",
+    "net_type": "SNT",
 	"deposit_address": "0x72012d8af69263a509af8cd522374fc65c454539",
 	"secondary_address": null
 }
@@ -627,24 +627,24 @@ print(resp['result'])
 
 | Parameter  | Description                      |
 | ---------- | -------------------------------- |
-| currency * | 화폐를 의미하는 영문 대문자 코드 |
-| net_type * | 입금 네트워크                    |
+| currency * | 화폐를 의미하는 영문 대문자 코드            |
+| net_type * | 입금 네트워크                         |
 
 ### 응답 (Response1)
 
 | Parameter | Description             |
 | --------- | ----------------------- |
-| success   | 요청 성공 여부          |
-| message   | 요청 결과에 대한 메세지 |
+| success   | 요청 성공 여부               |
+| message   | 요청 결과에 대한 메세지         |
 
 ### 응답 (Response2)
 
 | Parameter         | Description                      |
 | ----------------- | -------------------------------- |
-| currency          | 화폐를 의미하는 영문 대문자 코드 |
-| net_type          | 입금 네트워크                    |
-| deposit_address   | 입금 주소                        |
-| secondary_address | 2차 입금 주소                    |
+| currency          | 화폐를 의미하는 영문 대문자 코드            |
+| net_type          | 입금 네트워크                         |
+| deposit_address   | 입금 주소                           |
+| secondary_address | 2차 입금 주소                        |
 
 <aside class="notice">
   <b>NOTE</b>: 입금 주소 생성 요청 API 유의사항
