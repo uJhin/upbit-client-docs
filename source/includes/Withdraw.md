@@ -988,11 +988,11 @@ print(resp['result'])
 
 ### Method
 
-**POST** `/v1/withdraws/krw`
+**POST** `/v1/withdraws/coin_addresses`
 
 ### Operation Code
 
-`Withdraw.Withdraw_krw`
+`Withdraw.Withdraw_coin_addresses`
 
 ### 요청 (Request)
 
