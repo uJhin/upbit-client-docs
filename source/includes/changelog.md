@@ -1,5 +1,20 @@
 # Change Logs
 
+## 2023
+
+### 2023-05-22
+Update Upbit OPEN API
+
+- Upbit OPEN API Version 1.3.4 업데이트 반영
+- Upbit Client released: v1.3.4.0
+- EXCHANGE API 변경사항 및 신규 API 추가
+  - 입출금 관련 API 호출 시 `net_type` 파라미터 추가
+    - **네트워크 타입( `net_type` )** 이란?
+      - 디지털 자산 입출금에 활용되는 블록체인 네트워크를 뜻하며, 디지털 자산의 종류에 따라 활용되는 네트워크(체인)이 다를 수 있습니다.
+  - 출금 허용 주소 리스트 조회
+    - 해당 업데이트 내역은 [Pull Request #56](https://github.com/uJhin/upbit-client/pull/56)을 참고 해주시길 바랍니다.
+    - 해당 API에 대한 세부적인 내용을 알고 싶다면 [공지사항](https://docs.upbit.com/changelog/net_type)을 참고 해주세요.
+
 ## 2022
 
 ### 2022-07-12

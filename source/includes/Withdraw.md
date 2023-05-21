@@ -1,6 +1,7 @@
 # Withdraw (출금)
 
 ## Withdraw_info_all (출금 리스트 조회)
+
 출금 리스트 조회합니다.
 
 > Request Example
@@ -24,6 +25,7 @@ print(resp['result'])
     "type": "withdraw",
     "uuid": "35a4f1dc-1db5-4d6b-89b5-7ec137875956",
     "currency": "XRP",
+    "net_type": "XRP",
     "txid": "98c15999f0bdc4ae0e8a-ed35868bb0c204fe6ec29e4058a3451e-88636d1040f4baddf943274ce37cf9cc",
     "state": "DONE",
     "created_at": "2019-02-28T15:17:51+09:00",
@@ -37,9 +39,11 @@ print(resp['result'])
 ```
 
 ### Method
+
 **GET** `/v1/withdraws`
 
 ### Operation Code
+
 `Withdraw.Withdraw_info_all`
 
 ### 요청 (Request)
@@ -161,6 +165,22 @@ print(resp['result'])
   </td>
 </tr>
 <tr>
+    <td>
+        net_type
+    </td>
+    <td>
+      출금 네트워크
+    </td>
+  </tr>
+  <tr>
+  <td>
+      currency
+  </td>
+  <td>
+      화폐를 의미하는 영문 대문자 코드
+  </td>
+</tr>
+<tr>
   <td>
       txid
   </td>
@@ -223,6 +243,7 @@ print(resp['result'])
 </table>
 
 ## Withdraw_info (개별 출금 조회)
+
 출금 UUID를 통해 개별 출금 정보를 조회합니다.
 
 > Request Example
@@ -247,6 +268,7 @@ print(resp['result'])
   "type": "withdraw",
   "uuid": "35a4f1dc-1db5-4d6b-89b5-7ec137875956",
   "currency": "XRP",
+  "net_type": "XRP",
   "txid": "98c15999f0bdc4ae0e8a-ed35868bb0c204fe6ec29e4058a3451e-88636d1040f4baddf943274ce37cf9cc",
   "state": "DONE",
   "created_at": "2019-02-28T15:17:51+09:00",
@@ -258,9 +280,11 @@ print(resp['result'])
 ```
 
 ### Method
+
 **GET** `/v1/withdraw`
 
 ### Operation Code
+
 `Withdraw.Withdraw_info`
 
 ### 요청 (Request)
@@ -340,6 +364,22 @@ print(resp['result'])
   </td>
 </tr>
 <tr>
+    <td>
+        net_type
+    </td>
+    <td>
+      출금 네트워크
+    </td>
+  </tr>
+  <tr>
+  <td>
+      currency
+  </td>
+  <td>
+      화폐를 의미하는 영문 대문자 코드
+  </td>
+</tr>
+<tr>
   <td>
       txid
   </td>
@@ -402,6 +442,7 @@ print(resp['result'])
 </table>
 
 ## Withdraw_chance (출금 가능 정보)
+
 해당 통화의 가능한 출금 정보를 확인합니다.
 
 > Request Example
@@ -414,7 +455,8 @@ secret_key = "Your Secret Key"
 
 client = Upbit(access_key, secret_key)
 resp = client.Withdraw.Withdraw_chance(
-    currency='BTC'
+    currency='BTC',
+    net_type='BTC'
 )
 print(resp['result'])
 ```
@@ -467,56 +509,59 @@ print(resp['result'])
 ```
 
 ### Method
+
 **GET** `/v1/withdraws/chance`
 
 ### Operation Code
+
 `Withdraw.Withdraw_chance`
 
 ### 요청 (Request)
 
-Parameter         | Description
-----------------  | -----------
-currency *        | 화폐를 의미하는 영문 대문자 코드
+| Parameter  | Description                      |
+| ---------- | -------------------------------- |
+| currency * | 화폐를 의미하는 영문 대문자 코드 |
+| net_type * | 출금 네트워크                    |
 
 ### 응답 (Response)
 
-Parameter                            | Description
------------------------------------- | -----------
-member_level                         | 사용자의 보안 등급 정보
-member_level.security_level          | 사용자의 보안 등급
-member_level.fee_level               | 사용자의 수수료 등급
-member_level.email_verified          | 사용자의 이메일 인증 여부
-member_level.identity_auth_verified  | 사용자의 실명 인증 여부
-member_level.bank_account_verified   | 사용자의 계좌 인증 여부
-member_level.kakao_pay_auth_verified | 사용자의 카카오페이 인증 여부
-member_level.locked                  | 사용자의 계정 보호 상태
-member_level.wallet_locked           | 사용자의 출금 보호 상태
-currency                             | 화폐 정보
-currency.code                        | 화폐를 의미하는 영문 대문자 코드
-currency.withdraw_fee                | 해당 화폐의 출금 수수료
-currency.is_coin                     | 화폐의 코인 여부
-currency.wallet_state                | 해당 화폐의 지갑 상태
-currency.wallet_support              | 해당 화폐가 지원하는 입출금 정보
-account                              | 사용자의 계좌 정보
-account.currency                     | 화폐를 의미하는 영문 대문자 코드
-account.balance                      | 주문 가능 금액/수량
-account.locked                       | 주문 중 묶여있는 금액/수량
-account.avg_buy_price                | 매수 평균가
-account.avg_buy_price_modified       | 매수 평균가 수정 여부
-account.unit_currency                | 평단가 기준 화폐
-withdraw_limit                       | 출금 제약 정보
-withdraw_limit.currency              | 화폐를 의미하는 영문 대문자 코드
-withdraw_limit.minimum               | 출금 최소 금액/수량
-withdraw_limit.onetime               | 1회 출금 한도
-withdraw_limit.daily                 | 1일 출금 한도
-withdraw_limit.remaining_daily       | 1일 잔여 출금 한도
-withdraw_limit.remaining_daily_krw   | 통합 1일 잔여 출금 한도
-withdraw_limit.fixed                 | 출금 금액/수량 소수점 자리 수
-withdraw_limit.can_withdraw          | 출금 지원 여부
+| Parameter                            | Description                      |
+| ------------------------------------ | -------------------------------- |
+| member_level                         | 사용자의 보안 등급 정보          |
+| member_level.security_level          | 사용자의 보안 등급               |
+| member_level.fee_level               | 사용자의 수수료 등급             |
+| member_level.email_verified          | 사용자의 이메일 인증 여부        |
+| member_level.identity_auth_verified  | 사용자의 실명 인증 여부          |
+| member_level.bank_account_verified   | 사용자의 계좌 인증 여부          |
+| member_level.kakao_pay_auth_verified | 사용자의 카카오페이 인증 여부    |
+| member_level.locked                  | 사용자의 계정 보호 상태          |
+| member_level.wallet_locked           | 사용자의 출금 보호 상태          |
+| currency                             | 화폐 정보                        |
+| currency.code                        | 화폐를 의미하는 영문 대문자 코드 |
+| currency.withdraw_fee                | 해당 화폐의 출금 수수료          |
+| currency.is_coin                     | 화폐의 코인 여부                 |
+| currency.wallet_state                | 해당 화폐의 지갑 상태            |
+| currency.wallet_support              | 해당 화폐가 지원하는 입출금 정보 |
+| account                              | 사용자의 계좌 정보               |
+| account.currency                     | 화폐를 의미하는 영문 대문자 코드 |
+| account.balance                      | 주문 가능 금액/수량              |
+| account.locked                       | 주문 중 묶여있는 금액/수량       |
+| account.avg_buy_price                | 매수 평균가                      |
+| account.avg_buy_price_modified       | 매수 평균가 수정 여부            |
+| account.unit_currency                | 평단가 기준 화폐                 |
+| withdraw_limit                       | 출금 제약 정보                   |
+| withdraw_limit.currency              | 화폐를 의미하는 영문 대문자 코드 |
+| withdraw_limit.minimum               | 출금 최소 금액/수량              |
+| withdraw_limit.onetime               | 1회 출금 한도                    |
+| withdraw_limit.daily                 | 1일 출금 한도                    |
+| withdraw_limit.remaining_daily       | 1일 잔여 출금 한도               |
+| withdraw_limit.remaining_daily_krw   | 통합 1일 잔여 출금 한도          |
+| withdraw_limit.fixed                 | 출금 금액/수량 소수점 자리 수    |
+| withdraw_limit.can_withdraw          | 출금 지원 여부                   |
 
+## Withdraw_coin (디지털 자산 출금 하기)
 
-## Withdraw_coin (코인 출금 하기)
-코인 출금을 요청합니다.
+디지털 자산 출금을 요청합니다.
 
 > Request Example
 
@@ -529,6 +574,7 @@ secret_key = "Your Secret Key"
 client = Upbit(access_key, secret_key)
 resp = client.Withdraw.Withdraw_coin(
     currency='BTC',
+    net_type='BTC',
     amount='0.01',
     address='3NVw2seiTQddGQwc1apqudKxuTqebpyL3s'
 )
@@ -542,6 +588,7 @@ print(resp['result'])
   "type": "withdraw",
   "uuid": "9f432943-54e0-40b7-825f-b6fec8b42b79",
   "currency": "BTC",
+  "net_type": "BTC",
   "txid": "ebe6937b-130e-4066-8ac6-4b0e67f28adc",
   "state": "processing",
   "created_at": "2018-04-13T11:24:01+09:00",
@@ -554,9 +601,11 @@ print(resp['result'])
 ```
 
 ### Method
+
 **POST** `/v1/withdraws/coin`
 
 ### Operation Code
+
 `Withdraw.Withdraw_coin`
 
 ### 요청 (Request)
@@ -575,6 +624,15 @@ Open API를 이용하여 출금을 진행하기 위해서는 출금허용주소 
   업비트 회원의 주소가 아닌 주소로 바로출금을 요청하는 경우, 출금이 정상적으로 수행되지 않습니다. 반드시 주소를 확인 후 출금을 진행하시기 바랍니다.
 </aside>
 
+<aside class="warning">
+  <b>NOTE: (2023-05-22) 출금 네트워크( <code>net_type</code> ) 파라미터가 추가됩니다.</b>
+  <br/><br/>
+  멀티체인 입출금 지원에 따라, 디지털 자산 출금 요청 시 출금 네트워크( <code>net_type</code> ) 파라미터가 필수로 입력되어야 합니다.
+  출금하실 네트워크의 <code>net_type</code> 값은 출금 허용 주소 조회 API를 통해 확인 가능합니다.
+  <br/><br/>
+  자세한 내용은 <a href="https://docs.upbit.com/changelog/net_type">공지사항</a>을 참조 부탁드립니다.
+</aside>
+
 <table>
   <tr>
     <th>
@@ -590,6 +648,14 @@ Open API를 이용하여 출금을 진행하기 위해서는 출금허용주소 
     </td>
     <td>
         Currency 코드
+    </td>
+  </tr>
+  <tr>
+    <td>
+        net_type *
+    </td>
+    <td>
+        출금 네트워크
     </td>
   </tr>
   <tr>
@@ -666,6 +732,14 @@ Open API를 이용하여 출금을 진행하기 위해서는 출금허용주소 
   </td>
 </tr>
 <tr>
+    <td>
+        net_type
+    </td>
+    <td>
+        출금 네트워크
+    </td>
+  </tr>
+<tr>
   <td>
       txid
   </td>
@@ -736,6 +810,7 @@ Open API를 이용하여 출금을 진행하기 위해서는 출금허용주소 
 </table>
 
 ## Withdraw_krw (원화 출금 하기)
+
 원화 출금 요청을 합니다. 등록된 출금 계좌로 출금됩니다.
 
 > Request Example
@@ -771,16 +846,18 @@ print(resp['result'])
 ```
 
 ### Method
+
 **POST** `/v1/withdraws/krw`
 
 ### Operation Code
+
 `Withdraw.Withdraw_krw`
 
 ### 요청 (Request)
 
-Parameter  | Description
----------- | -----------
-amount *   | 출금액 (출금 원화 수량)
+| Parameter | Description             |
+| --------- | ----------------------- |
+| amount *  | 출금액 (출금 원화 수량) |
 
 ### 응답 (Response)
 
@@ -875,6 +952,103 @@ amount *   | 출금액 (출금 원화 수량)
         <li>default: 일반 출금</li>
         <li>internal: 바로 출금</li>
       </ul>
+  </td>
+</tr>
+</table>
+
+## Withdraw_coin_addresses (출금 허용 주소 리스트 조회)
+
+등록된 출금 허용 주소 목록을 조회한다.
+
+> Request Example
+
+```python
+from upbit.client import Upbit
+
+access_key = "Your Access Key"
+secret_key = "Your Secret Key"
+
+client = Upbit(access_key, secret_key)
+resp = client.Withdraw.Withdraw_krw(
+    amount='10000'
+)
+print(resp['result'])
+```
+
+> Response Example
+
+```json
+{
+  "currency": "BTC",
+  "net_type": "BTC",
+  "withdraw_address": "3NVw2seiTQddGQwc1apqudKxuTqebpyL3s",
+  "secondary_address": null
+}
+```
+
+### Method
+
+**POST** `/v1/withdraws/krw`
+
+### Operation Code
+
+`Withdraw.Withdraw_krw`
+
+### 요청 (Request)
+
+No Parameters
+
+<aside class="notice">
+  <b>[NOTE] 출금 기능을 이용하기 위해서는 주소 등록이 필요합니다.</b>
+  <br/><br/>
+  Open API를 통해 디지털 자산을 출금하기 위해서는 출금 허용 주소 등록이 필요합니다.
+  <br/><br/>
+  <b>[출금 허용 주소 등록 방법]</b>
+  <br/>
+  업비트 웹 > [MY] > [Open API 관리] > [디지털 자산 출금주소 관리] 페이지에서 진행하실 수 있습니다.
+</aside>
+
+### 응답 (Response)
+
+<table>
+  <tr>
+    <th>
+      Parameter
+    </th>
+    <th>
+      Description
+    </th>
+  </tr>
+  <tr>
+    <td>
+      currency
+    </td>
+    <td>
+      출금 화폐
+    </td>
+  </tr>
+  <tr>
+    <td>
+      net_type
+    </td>
+    <td>
+      출금 네트워크
+    </td>
+  </tr>
+<tr>
+  <td>
+      withdraw_address
+  </td>
+  <td>
+      출금 주소
+  </td>
+</tr>
+<tr>
+  <td>
+      secondary_address
+  </td>
+  <td>
+      2차 출금 주소 (필요한 디지털 자산에 한해서)
   </td>
 </tr>
 </table>

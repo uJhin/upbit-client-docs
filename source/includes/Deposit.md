@@ -24,6 +24,7 @@ print(resp['result'])
 		"type": "deposit",
 		"uuid": "20c84493-6e70-4e54-83ce-90915a19d110",
 		"currency": "KRW",
+    "net_type": "KRW",
 		"txid": "BKD-2021-01-07-82a877188ce61d7b4b3c709dad",
 		"state": "ACCEPTED",
 		"created_at": "2021-01-07T11:59:31+09:00",
@@ -36,6 +37,7 @@ print(resp['result'])
 		"type": "deposit",
 		"uuid": "7b34ea4d-fb46-4da1-9172-8dd42b8814f5",
 		"currency": "KRW",
+    "net_type": "KRW",
 		"txid": "BKD-2021-01-06-fd2ba0cc92670c72fba22f78d0",
 		"state": "ACCEPTED",
 		"created_at": "2021-01-06T20:42:41+09:00",
@@ -171,6 +173,14 @@ print(resp['result'])
   </td>
 </tr>
 <tr>
+    <td>
+        net_type
+    </td>
+    <td>
+        입금 네트워크
+    </td>
+</tr>
+<tr>
   <td>
       txid
   </td>
@@ -257,6 +267,7 @@ print(resp['result'])
 	"type": "deposit",
 	"uuid": "20c84493-6e70-4e54-83ce-90915a19d110",
 	"currency": "KRW",
+  "net_type": "KRW",
 	"txid": "BKD-2021-01-07-82a877188ce61d7b4b3c709dad",
 	"state": "ACCEPTED",
 	"created_at": "2021-01-07T11:59:31+09:00",
@@ -350,6 +361,14 @@ print(resp['result'])
   </td>
 </tr>
 <tr>
+    <td>
+        net_type
+    </td>
+    <td>
+        입금 네트워크
+    </td>
+</tr>
+<tr>
   <td>
       txid
   </td>
@@ -433,21 +452,25 @@ print(resp['result'])
 [
 	{
 		"currency": "BTC",
+    "net_type": "BTC",
 		"deposit_address": "3NVw2seiTQddGQwc1apqudKxuTqebpyL3s",
 		"secondary_address": null
 	},
 	{
 		"currency": "ETH",
+    "net_type": "ETH",
 		"deposit_address": "0x60dd373f59862d9df776596889b997e24bee42eb",
 		"secondary_address": null
 	},
 	{
 		"currency": "EOS",
+    "net_type": "EOS",
 		"deposit_address": "eosupbitsusr",
 		"secondary_address": "516252ca-0993-454d-bd8b-6bc9db2d4c25"
 	},
 	{
 		"currency": "XRP",
+    "net_type": "XRP",
 		"deposit_address": "raQwCVAJVqjrVm1Nj5SFRcX8i22BhdC9WA",
 		"secondary_address": "22325934"
 	},
@@ -470,6 +493,7 @@ No Parameters
 Parameter         | Description
 ----------------  | -----------
 currency          | 화폐를 의미하는 영문 대문자 코드
+net_type          | 입금 네트워크
 deposit_address   | 입금 주소
 secondary_address | 2차 입금 주소
 
@@ -493,7 +517,8 @@ secret_key = "Your Secret Key"
 
 client = Upbit(access_key, secret_key)
 resp = client.Deposit.Deposit_coin_address(
-    currency='BTC'
+    currency='BTC',
+    net_type='BTC'
 )
 print(resp['result'])
 ```
@@ -503,6 +528,7 @@ print(resp['result'])
 ```json
 {
 	"currency": "BTC",
+  "net_type": "BTC",
 	"deposit_address": "3NVw2seiTQddGQwc1apqudKxuTqebpyL3s",
 	"secondary_address": null
 }
@@ -519,12 +545,14 @@ print(resp['result'])
 Parameter         | Description
 ----------------  | -----------
 currency *        | 화폐를 의미하는 영문 대문자 코드
+net_type *        | 입금 네트워크
 
 ### 응답 (Response)
 
 Parameter         | Description
 ----------------  | -----------
 currency          | 화폐를 의미하는 영문 대문자 코드
+net_type          | 입금 네트워크
 deposit_address   | 입금 주소
 secondary_address | 2차 입금 주소
 
@@ -548,7 +576,8 @@ secret_key = "Your Secret Key"
 
 client = Upbit(access_key, secret_key)
 resp = client.Deposit.Deposit_generate_coin_address(
-    currency='SNT'
+    currency='SNT',
+    net_type='SNT'
 )
 print(resp['result'])
 ```
@@ -567,6 +596,7 @@ print(resp['result'])
 ```json
 {
 	"currency": "SNT",
+  "net_type": "SNT",
 	"deposit_address": "0x72012d8af69263a509af8cd522374fc65c454539",
 	"secondary_address": null
 }
@@ -583,6 +613,7 @@ print(resp['result'])
 Parameter         | Description
 ----------------  | -----------
 currency *        | 화폐를 의미하는 영문 대문자 코드
+net_type *        | 입금 네트워크
 
 ### 응답 (Response1)
 
@@ -597,6 +628,7 @@ message    | 요청 결과에 대한 메세지
 Parameter         | Description
 ----------------  | -----------
 currency          | 화폐를 의미하는 영문 대문자 코드
+net_type          | 입금 네트워크
 deposit_address   | 입금 주소
 secondary_address | 2차 입금 주소
 
