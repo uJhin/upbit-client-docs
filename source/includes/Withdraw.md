@@ -969,9 +969,7 @@ access_key = "Your Access Key"
 secret_key = "Your Secret Key"
 
 client = Upbit(access_key, secret_key)
-resp = client.Withdraw.Withdraw_krw(
-    amount='10000'
-)
+resp = client.Withdraw.Withdraw_coin_addresses()
 print(resp['result'])
 ```
 

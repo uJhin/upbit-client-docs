@@ -94,7 +94,7 @@ print(resp['result'])
 [
     {
         "currency": "BTC",
-	      "net_state": "BTC",
+        "net_type": "BTC",
         "wallet_state": "working",
         "block_state": "normal",
         "block_height": 665013,
@@ -103,7 +103,7 @@ print(resp['result'])
     },
     {
         "currency": "POWR",
-	      "net_state": "POWR",
+        "net_type": "POWR",
         "wallet_state": "working",
         "block_state": "normal",
         "block_height": 11609520,
@@ -112,7 +112,7 @@ print(resp['result'])
     },
     {
         "currency": "ETH",
-	      "net_state": "ETH",
+        "net_type": "ETH",
         "wallet_state": "working",
         "block_state": "normal",
         "block_height": 11609520,
@@ -121,7 +121,7 @@ print(resp['result'])
     },
     {
         "currency": "ETC",
-	      "net_state": "ETC",
+        "net_type": "ETC",
         "wallet_state": "working",
         "block_state": "normal",
         "block_height": 11947575,

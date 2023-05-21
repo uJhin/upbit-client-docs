@@ -1,6 +1,7 @@
 # Deposit (입금)
 
 ## Deposit_info_all (입금 리스트 조회)
+
 입금 리스트 조회합니다.
 
 > Request Example
@@ -24,7 +25,7 @@ print(resp['result'])
 		"type": "deposit",
 		"uuid": "20c84493-6e70-4e54-83ce-90915a19d110",
 		"currency": "KRW",
-    "net_type": "KRW",
+		"net_type": "KRW",
 		"txid": "BKD-2021-01-07-82a877188ce61d7b4b3c709dad",
 		"state": "ACCEPTED",
 		"created_at": "2021-01-07T11:59:31+09:00",
@@ -37,7 +38,7 @@ print(resp['result'])
 		"type": "deposit",
 		"uuid": "7b34ea4d-fb46-4da1-9172-8dd42b8814f5",
 		"currency": "KRW",
-    "net_type": "KRW",
+		"net_type": "KRW",
 		"txid": "BKD-2021-01-06-fd2ba0cc92670c72fba22f78d0",
 		"state": "ACCEPTED",
 		"created_at": "2021-01-06T20:42:41+09:00",
@@ -51,9 +52,11 @@ print(resp['result'])
 ```
 
 ### Method
+
 **GET** `/v1/deposits`
 
 ### Operation Code
+
 `Deposit.Deposit_info_all`
 
 ### 요청 (Request)
@@ -243,6 +246,7 @@ print(resp['result'])
 </table>
 
 ## Deposit_info (개별 입금 조회)
+
 개별 입금 내역을 조회합니다.
 
 > Request Example
@@ -267,7 +271,7 @@ print(resp['result'])
 	"type": "deposit",
 	"uuid": "20c84493-6e70-4e54-83ce-90915a19d110",
 	"currency": "KRW",
-  "net_type": "KRW",
+        "net_type": "KRW",
 	"txid": "BKD-2021-01-07-82a877188ce61d7b4b3c709dad",
 	"state": "ACCEPTED",
 	"created_at": "2021-01-07T11:59:31+09:00",
@@ -279,9 +283,11 @@ print(resp['result'])
 ```
 
 ### Method
+
 **GET** `/v1/deposit`
 
 ### Operation Code
+
 `Deposit.Deposit_info`
 
 ### 요청 (Request)
@@ -431,6 +437,7 @@ print(resp['result'])
 </table>
 
 ## Deposit_coin_addresses (전체 입금 주소 조회)
+
 내가 보유한 자산 리스트를 보여줍니다.
 
 > Request Example
@@ -452,25 +459,25 @@ print(resp['result'])
 [
 	{
 		"currency": "BTC",
-    "net_type": "BTC",
+                "net_type": "BTC",
 		"deposit_address": "3NVw2seiTQddGQwc1apqudKxuTqebpyL3s",
 		"secondary_address": null
 	},
 	{
 		"currency": "ETH",
-    "net_type": "ETH",
+                "net_type": "ETH",
 		"deposit_address": "0x60dd373f59862d9df776596889b997e24bee42eb",
 		"secondary_address": null
 	},
 	{
 		"currency": "EOS",
-    "net_type": "EOS",
+                "net_type": "EOS",
 		"deposit_address": "eosupbitsusr",
 		"secondary_address": "516252ca-0993-454d-bd8b-6bc9db2d4c25"
 	},
 	{
 		"currency": "XRP",
-    "net_type": "XRP",
+                "net_type": "XRP",
 		"deposit_address": "raQwCVAJVqjrVm1Nj5SFRcX8i22BhdC9WA",
 		"secondary_address": "22325934"
 	},
@@ -479,9 +486,11 @@ print(resp['result'])
 ```
 
 ### Method
+
 **GET** `/v1/deposits/coin_addresses`
 
 ### Operation Code
+
 `Deposit.Deposit_coin_addresses`
 
 ### 요청 (Request)
@@ -490,12 +499,12 @@ No Parameters
 
 ### 응답 (Response)
 
-Parameter         | Description
-----------------  | -----------
-currency          | 화폐를 의미하는 영문 대문자 코드
-net_type          | 입금 네트워크
-deposit_address   | 입금 주소
-secondary_address | 2차 입금 주소
+| Parameter         | Description                      |
+| ----------------- | -------------------------------- |
+| currency          | 화폐를 의미하는 영문 대문자 코드 |
+| net_type          | 입금 네트워크                    |
+| deposit_address   | 입금 주소                        |
+| secondary_address | 2차 입금 주소                    |
 
 <aside class="notice">
   <b>NOTE</b>: 입금 주소 조회 요청 API 유의사항
@@ -505,6 +514,7 @@ secondary_address | 2차 입금 주소
 </aside>
 
 ## Deposit_coin_address (개별 입금 주소 조회)
+
 내가 보유한 개별 자산 내역을 보여줍니다.
 
 > Request Example
@@ -528,33 +538,35 @@ print(resp['result'])
 ```json
 {
 	"currency": "BTC",
-  "net_type": "BTC",
+        "net_type": "BTC",
 	"deposit_address": "3NVw2seiTQddGQwc1apqudKxuTqebpyL3s",
 	"secondary_address": null
 }
 ```
 
 ### Method
+
 **GET** `/v1/deposits/coin_address`
 
 ### Operation Code
+
 `Deposit.Deposit_coin_address`
 
 ### 요청 (Request)
 
-Parameter         | Description
-----------------  | -----------
-currency *        | 화폐를 의미하는 영문 대문자 코드
-net_type *        | 입금 네트워크
+| Parameter  | Description                      |
+| ---------- | -------------------------------- |
+| currency * | 화폐를 의미하는 영문 대문자 코드 |
+| net_type * | 입금 네트워크                    |
 
 ### 응답 (Response)
 
-Parameter         | Description
-----------------  | -----------
-currency          | 화폐를 의미하는 영문 대문자 코드
-net_type          | 입금 네트워크
-deposit_address   | 입금 주소
-secondary_address | 2차 입금 주소
+| Parameter         | Description                      |
+| ----------------- | -------------------------------- |
+| currency          | 화폐를 의미하는 영문 대문자 코드 |
+| net_type          | 입금 네트워크                    |
+| deposit_address   | 입금 주소                        |
+| secondary_address | 2차 입금 주소                    |
 
 <aside class="notice">
   <b>NOTE</b>: 입금 주소 조회 요청 API 유의사항
@@ -564,6 +576,7 @@ secondary_address | 2차 입금 주소
 </aside>
 
 ## Deposit_generate_coin_address (입금 주소 생성 요청)
+
 입금 주소 생성을 요청합니다.
 
 > Request Example
@@ -596,41 +609,42 @@ print(resp['result'])
 ```json
 {
 	"currency": "SNT",
-  "net_type": "SNT",
+        "net_type": "SNT",
 	"deposit_address": "0x72012d8af69263a509af8cd522374fc65c454539",
 	"secondary_address": null
 }
 ```
 
 ### Method
+
 **POST** `/v1/deposits/generate_coin_address`
 
 ### Operation Code
+
 `Deposit.Deposit_generate_coin_address`
 
 ### 요청 (Request)
 
-Parameter         | Description
-----------------  | -----------
-currency *        | 화폐를 의미하는 영문 대문자 코드
-net_type *        | 입금 네트워크
+| Parameter  | Description                      |
+| ---------- | -------------------------------- |
+| currency * | 화폐를 의미하는 영문 대문자 코드 |
+| net_type * | 입금 네트워크                    |
 
 ### 응답 (Response1)
 
-Parameter  | Description
----------- | -----------
-success    | 요청 성공 여부
-message    | 요청 결과에 대한 메세지
-
+| Parameter | Description             |
+| --------- | ----------------------- |
+| success   | 요청 성공 여부          |
+| message   | 요청 결과에 대한 메세지 |
 
 ### 응답 (Response2)
 
-Parameter         | Description
-----------------  | -----------
-currency          | 화폐를 의미하는 영문 대문자 코드
-net_type          | 입금 네트워크
-deposit_address   | 입금 주소
-secondary_address | 2차 입금 주소
+| Parameter         | Description                      |
+| ----------------- | -------------------------------- |
+| currency          | 화폐를 의미하는 영문 대문자 코드 |
+| net_type          | 입금 네트워크                    |
+| deposit_address   | 입금 주소                        |
+| secondary_address | 2차 입금 주소                    |
 
 <aside class="notice">
   <b>NOTE</b>: 입금 주소 생성 요청 API 유의사항
@@ -645,4 +659,3 @@ secondary_address | 2차 입금 주소
   <br/><br/>
   정상적으로 주소가 생성되지 않는다면 일정 시간 이후 해당 API를 다시 호출해주시길 부탁드립니다.
 </aside>
-
