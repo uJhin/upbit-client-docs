@@ -1023,9 +1023,7 @@ Open API를 이용하여 출금을 진행하기 위해서는 출금허용주소 
 <span class="n">secret_key</span> <span class="o">=</span> <span class="s">"Your Secret Key"</span>
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">Upbit</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
-<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Withdraw</span><span class="p">.</span><span class="n">Withdraw_krw</span><span class="p">(</span>
-    <span class="n">amount</span><span class="o">=</span><span class="s">'10000'</span>
-<span class="p">)</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Withdraw</span><span class="p">.</span><span class="n">Withdraw_coin_addresses</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s">'result'</span><span class="p">])</span>
 </code></pre></div>
 <blockquote>
