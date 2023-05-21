@@ -1038,9 +1038,9 @@ Open API를 이용하여 출금을 진행하기 위해서는 출금허용주소 
   </span><span class="nl">"secondary_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='method-6'>Method</h3>
-<p><strong>POST</strong> <code>/v1/withdraws/krw</code></p>
+<p><strong>POST</strong> <code>/v1/withdraws/coin_addresses</code></p>
 <h3 id='operation-code-6'>Operation Code</h3>
-<p><code>Withdraw.Withdraw_krw</code></p>
+<p><code>Withdraw.Withdraw_coin_addresses</code></p>
 <h3 id='request-6'>요청 (Request)</h3>
 <p>No Parameters</p>
 
