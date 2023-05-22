@@ -538,7 +538,7 @@ print(resp['result'])
 ```json
 {
 	"currency": "BTC",
-        "net_type": "BTC",
+    "net_type": "BTC",
 	"deposit_address": "3NVw2seiTQddGQwc1apqudKxuTqebpyL3s",
 	"secondary_address": null
 }

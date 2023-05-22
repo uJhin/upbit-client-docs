@@ -855,9 +855,36 @@ print(resp['result'])
 
 ### 요청 (Request)
 
-| Parameter | Description             |
-| --------- | ----------------------- |
-| amount *  | 출금액 (출금 원화 수량) |
+<table>
+  <tr>
+    <th>
+      Parameter
+    </th>
+    <th>
+      Description
+    </th>
+  </tr>
+  <tr>
+    <td>
+        amount *
+    </td>
+    <td>
+        출금액 (출금 원화 수량)
+    </td>
+  </tr>
+  <tr>
+    <td>
+        two_factor_type
+    </td>
+    <td>
+        2차 인증 수단 (기본값: <code>kakao_pay</code>)
+        <ul>
+            <li>kakao_pay: 카카오 페이 인증 (기본값)</li>
+            <li>naver: 네이버 인증</li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
 ### 응답 (Response)
 
