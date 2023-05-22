@@ -3203,7 +3203,7 @@ JSON 형식을 이용해주시기 바랍니다.
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"net_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"net_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"deposit_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3NVw2seiTQddGQwc1apqudKxuTqebpyL3s"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"secondary_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -4274,17 +4274,36 @@ Open API를 이용하여 출금을 진행하기 위해서는 출금허용주소 
 <h3 id='operation-code-5'>Operation Code</h3>
 <p><code>Withdraw.Withdraw_krw</code></p>
 <h3 id='request-5'>요청 (Request)</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>amount *</td>
-<td>출금액 (출금 원화 수량)</td>
-</tr>
-</tbody></table>
+<table>
+  <tr>
+    <th>
+      Parameter
+    </th>
+    <th>
+      Description
+    </th>
+  </tr>
+  <tr>
+    <td>
+        amount *
+    </td>
+    <td>
+        출금액 (출금 원화 수량)
+    </td>
+  </tr>
+  <tr>
+    <td>
+        two_factor_type
+    </td>
+    <td>
+        2차 인증 수단 (기본값: <code>kakao_pay</code>)
+        <ul>
+            <li>kakao_pay: 카카오 페이 인증 (기본값)</li>
+            <li>naver: 네이버 인증</li>
+      </ul>
+    </td>
+  </tr>
+</table>
 <h3 id='response-5'>응답 (Response)</h3>
 <table>
   <tr>
